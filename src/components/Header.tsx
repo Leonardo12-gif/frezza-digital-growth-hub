@@ -38,11 +38,11 @@ const Header = () => {
     >
       <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
         <a href="#home" className="flex items-center">
-          <div className="h-12 w-auto">
+          <div className="h-16 w-auto">
             <img 
-              src="/lovable-uploads/be2896ed-d56c-4196-b094-88aa9e255918.png" 
+              src="/lovable-uploads/4b80931e-5adb-42b6-951f-e0afe443a9ca.png" 
               alt="Frezza Marketing Logo" 
-              className="h-12 w-auto"
+              className="h-16 w-auto"
             />
           </div>
         </a>

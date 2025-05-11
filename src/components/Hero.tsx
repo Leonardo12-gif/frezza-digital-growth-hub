@@ -32,11 +32,12 @@ const Hero = () => {
             </div>
           </div>
           
-          <div className="relative animate-float hidden md:block">
-            {/* Replace with actual hero image */}
-            <div className="rounded-lg overflow-hidden shadow-2xl">
-              <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1074&q=80" alt="Marketing digital e análise de dados" className="w-full h-auto" />
-            </div>
+          <div className="relative animate-float hidden md:flex justify-center items-center">
+            <img 
+              src="/lovable-uploads/4b80931e-5adb-42b6-951f-e0afe443a9ca.png" 
+              alt="Frezza Marketing Logo" 
+              className="w-3/4 h-auto"
+            />
             
             {/* Floating accent elements */}
             <div className="absolute -top-6 -right-6 bg-frezza-red w-24 h-24 rounded-full opacity-20"></div>

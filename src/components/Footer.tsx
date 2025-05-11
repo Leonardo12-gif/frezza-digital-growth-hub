@@ -18,8 +18,13 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Logo and Description */}
           <div className="space-y-4">
-            {/* Replace with actual logo when provided */}
-            <div className="font-bold text-2xl text-white mb-4">Frezza Marketing</div>
+            <div className="mb-4">
+              <img 
+                src="/lovable-uploads/4b80931e-5adb-42b6-951f-e0afe443a9ca.png" 
+                alt="Frezza Marketing Logo" 
+                className="h-16 w-auto"
+              />
+            </div>
             
             <p className="text-gray-300">
               Sua agência de marketing digital focada em performance e resultados reais.
