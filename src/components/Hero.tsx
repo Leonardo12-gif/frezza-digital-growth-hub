@@ -1,8 +1,14 @@
 
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+
 const Hero = () => {
   return <section id="home" className="relative bg-gradient-to-br from-red-50 to-white pt-28 pb-16 md:pt-40 md:pb-24">
+      {/* Background Elements */}
+      <div className="absolute top-20 left-10 w-32 h-32 rounded-full bg-frezza-red opacity-5"></div>
+      <div className="absolute bottom-20 right-10 w-40 h-40 rounded-full bg-frezza-red opacity-5"></div>
+      <div className="absolute top-1/3 right-1/4 w-16 h-16 rounded-full bg-frezza-red opacity-5"></div>
+      
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6 animate-fadeIn">
