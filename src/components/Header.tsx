@@ -38,9 +38,12 @@ const Header = () => {
     >
       <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
         <a href="#home" className="flex items-center">
-          {/* Replace with actual logo when provided */}
           <div className="h-12 w-auto">
-            <div className="text-frezza-DEFAULT font-bold text-xl">Frezza Marketing</div>
+            <img 
+              src="/lovable-uploads/be2896ed-d56c-4196-b094-88aa9e255918.png" 
+              alt="Frezza Marketing Logo" 
+              className="h-12 w-auto"
+            />
           </div>
         </a>
 
@@ -50,7 +53,7 @@ const Header = () => {
             <a
               key={link.name}
               href={link.href}
-              className="text-gray-700 hover:text-frezza transition-colors font-medium"
+              className="text-gray-700 hover:text-frezza-red transition-colors font-medium"
             >
               {link.name}
             </a>
@@ -60,7 +63,7 @@ const Header = () => {
         {/* CTA Button - Desktop */}
         <div className="hidden md:block">
           <Button 
-            className="bg-frezza hover:bg-frezza-dark text-white" 
+            className="bg-frezza-red hover:bg-frezza-dark text-white" 
             asChild
           >
             <a href="#contact">Fale Conosco</a>
@@ -84,14 +87,14 @@ const Header = () => {
               <a
                 key={link.name}
                 href={link.href}
-                className="text-gray-700 hover:text-frezza py-2 transition-colors font-medium"
+                className="text-gray-700 hover:text-frezza-red py-2 transition-colors font-medium"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {link.name}
               </a>
             ))}
             <Button 
-              className="bg-frezza hover:bg-frezza-dark text-white w-full mt-4" 
+              className="bg-frezza-red hover:bg-frezza-dark text-white w-full mt-4" 
               asChild
             >
               <a href="#contact" onClick={() => setMobileMenuOpen(false)}>Fale Conosco</a>

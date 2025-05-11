@@ -59,6 +59,7 @@ export default {
 					dark: '#1E40AF', // blue-800
 					accent: '#F59E0B', // amber-500
 					gray: '#6B7280', // gray-500
+					red: '#ea384c', // red from logo
 				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
