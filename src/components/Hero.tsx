@@ -1,10 +1,7 @@
-
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-
 const Hero = () => {
-  return (
-    <section id="home" className="relative bg-gradient-to-br from-blue-50 to-white pt-28 pb-16 md:pt-40 md:pb-24">
+  return <section id="home" className="relative bg-gradient-to-br from-blue-50 to-white pt-28 pb-16 md:pt-40 md:pb-24">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6 animate-fadeIn">
@@ -12,7 +9,7 @@ const Hero = () => {
               Transformamos 
               <span className="text-frezza"> cliques </span>
               em 
-              <span className="text-frezza-accent"> resultados reais</span>
+              <span className="text-red-600"> resultados reais</span>
             </h1>
             
             <p className="text-lg md:text-xl text-gray-700">
@@ -21,21 +18,14 @@ const Hero = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <Button 
-                className="bg-frezza hover:bg-frezza-dark text-white px-6 py-6 text-lg"
-                asChild
-              >
+              <Button className="bg-frezza hover:bg-frezza-dark text-white px-6 py-6 text-lg" asChild>
                 <a href="#services">
                   Nossos Serviços
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </a>
               </Button>
               
-              <Button 
-                variant="outline" 
-                className="border-frezza text-frezza hover:bg-frezza hover:text-white px-6 py-6 text-lg"
-                asChild
-              >
+              <Button variant="outline" className="border-frezza text-frezza hover:bg-frezza hover:text-white px-6 py-6 text-lg" asChild>
                 <a href="#contact">Fale Conosco</a>
               </Button>
             </div>
@@ -44,11 +34,7 @@ const Hero = () => {
           <div className="relative animate-float hidden md:block">
             {/* Replace with actual hero image */}
             <div className="rounded-lg overflow-hidden shadow-2xl">
-              <img 
-                src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1074&q=80" 
-                alt="Marketing digital e análise de dados" 
-                className="w-full h-auto"
-              />
+              <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1074&q=80" alt="Marketing digital e análise de dados" className="w-full h-auto" />
             </div>
             
             {/* Floating accent elements */}
@@ -66,8 +52,6 @@ const Hero = () => {
           </a>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Hero;
