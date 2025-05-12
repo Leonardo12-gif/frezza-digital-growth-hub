@@ -1,6 +1,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { MessageSquare } from "lucide-react";
 
 const WhatsAppButton = () => {
   const [isHovered, setIsHovered] = useState(false);
@@ -19,28 +20,12 @@ const WhatsAppButton = () => {
           asChild
         >
           <a 
-            href="https://wa.me/5500000000000" 
+            href="https://wa.me/5515991273423" 
             target="_blank" 
             rel="noopener noreferrer"
             aria-label="Chat on WhatsApp"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="28"
-              height="28"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="transition-transform duration-300"
-            >
-              <path d="M3 21l1.65-3.8a9 9 0 1112.4-12.4 9 9 0 01-12.4 12.4L3 21" />
-              <path d="M9 10a.5.5 0 001 0V9a.5.5 0 00-1 0v1z" />
-              <path d="M14 10a.5.5 0 001 0V9a.5.5 0 00-1 0v1z" />
-              <path d="M10 13.5a3.5 3.5 0 003.5 0" />
-            </svg>
+            <MessageSquare size={28} />
           </a>
         </Button>
       </div>

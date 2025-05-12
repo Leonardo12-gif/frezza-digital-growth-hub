@@ -1,13 +1,14 @@
 
-import { Facebook, Instagram, Linkedin, Mail, Phone } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Mail, Phone, MessageSquare } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   
   const services = [
-    "Tráfego Pago",
-    "Tráfego Orgânico"
+    "Gravação de Vídeo",
+    "Edição de Vídeo",
+    "Modelo para Publicidade"
   ];
   
   return (
@@ -25,7 +26,7 @@ const Footer = () => {
             </div>
             
             <p className="text-gray-400 leading-relaxed">
-              Sua agência de marketing digital focada em performance e resultados reais para empresas que querem crescer online.
+              Sua agência de marketing digital focada em performance, criação de conteúdo audiovisual e resultados reais para empresas que querem crescer online.
             </p>
             
             <div className="flex space-x-4 pt-4">
@@ -55,6 +56,15 @@ const Footer = () => {
                 className="w-10 h-10 rounded-full border border-[#333] flex items-center justify-center hover:border-frezza-red hover:bg-frezza-red/10 transition-colors"
               >
                 <Linkedin size={18} />
+              </a>
+              <a 
+                href="https://wa.me/5515991273423" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                aria-label="WhatsApp"
+                className="w-10 h-10 rounded-full border border-[#333] flex items-center justify-center hover:border-green-600 hover:bg-green-600/10 transition-colors"
+              >
+                <MessageSquare size={18} className="text-green-500" />
               </a>
             </div>
           </div>
@@ -131,8 +141,14 @@ const Footer = () => {
               </li>
               <li className="flex items-center">
                 <Phone size={18} className="mr-3 text-frezza-red" />
-                <a href="tel:+5500000000000" className="text-gray-400 hover:text-frezza-red transition-colors">
-                  (00) 00000-0000
+                <a href="tel:+5515991273423" className="text-gray-400 hover:text-frezza-red transition-colors">
+                  (15) 99127-3423
+                </a>
+              </li>
+              <li className="flex items-center">
+                <MessageSquare size={18} className="mr-3 text-green-500" />
+                <a href="https://wa.me/5515991273423" className="text-gray-400 hover:text-green-500 transition-colors">
+                  WhatsApp
                 </a>
               </li>
             </ul>
