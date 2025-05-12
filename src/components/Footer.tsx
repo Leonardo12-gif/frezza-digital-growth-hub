@@ -1,30 +1,15 @@
-
 import { Facebook, Instagram, Linkedin, Mail, Phone, MessageSquare } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
-
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  
-  const services = [
-    "Gravação de Vídeo",
-    "Edição de Vídeo",
-    "Modelo para Publicidade",
-    "Tráfego Pago",
-    "Tráfego Orgânico"
-  ];
-  
-  return (
-    <footer className="bg-[#0a0a0a] text-white pt-24 pb-8 border-t border-[#222]">
+  const services = ["Gravação de Vídeo", "Edição de Vídeo", "Modelo para Publicidade", "Tráfego Pago", "Tráfego Orgânico"];
+  return <footer className="bg-[#0a0a0a] text-white pt-24 pb-8 border-t border-[#222]">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Logo and Description */}
           <div className="space-y-6">
             <div className="mb-4">
-              <img 
-                src="/lovable-uploads/be2896ed-d56c-4196-b094-88aa9e255918.png" 
-                alt="Frezza Marketing Logo" 
-                className="h-14 w-auto"
-              />
+              <img src="/lovable-uploads/be2896ed-d56c-4196-b094-88aa9e255918.png" alt="Frezza Marketing Logo" className="h-14 w-auto" />
             </div>
             
             <p className="text-gray-400 leading-relaxed">
@@ -32,40 +17,14 @@ const Footer = () => {
             </p>
             
             <div className="flex space-x-4 pt-4">
-              <a 
-                href="https://www.facebook.com/profile.php?id=61575768677479" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                aria-label="Facebook"
-                className="w-10 h-10 rounded-full border border-[#333] flex items-center justify-center hover:border-frezza-red hover:bg-frezza-red/10 transition-colors"
-              >
+              <a href="https://www.facebook.com/profile.php?id=61575768677479" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="w-10 h-10 rounded-full border border-[#333] flex items-center justify-center hover:border-frezza-red hover:bg-frezza-red/10 transition-colors">
                 <Facebook size={18} />
               </a>
-              <a 
-                href="https://www.instagram.com/fa.marketingoficial/" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                aria-label="Instagram"
-                className="w-10 h-10 rounded-full border border-[#333] flex items-center justify-center hover:border-frezza-red hover:bg-frezza-red/10 transition-colors"
-              >
+              <a href="https://www.instagram.com/fa.marketingoficial/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="w-10 h-10 rounded-full border border-[#333] flex items-center justify-center hover:border-frezza-red hover:bg-frezza-red/10 transition-colors">
                 <Instagram size={18} />
               </a>
-              <a 
-                href="https://linkedin.com" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                aria-label="LinkedIn"
-                className="w-10 h-10 rounded-full border border-[#333] flex items-center justify-center hover:border-frezza-red hover:bg-frezza-red/10 transition-colors"
-              >
-                <Linkedin size={18} />
-              </a>
-              <a 
-                href="https://wa.me/5515991273423" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                aria-label="WhatsApp"
-                className="w-10 h-10 rounded-full border border-[#333] flex items-center justify-center hover:border-green-600 hover:bg-green-600/10 transition-colors"
-              >
+              
+              <a href="https://wa.me/5515991273423" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="w-10 h-10 rounded-full border border-[#333] flex items-center justify-center hover:border-green-600 hover:bg-green-600/10 transition-colors">
                 <MessageSquare size={18} className="text-green-500" />
               </a>
             </div>
@@ -118,13 +77,11 @@ const Footer = () => {
               <span className="absolute bottom-0 left-0 w-12 h-0.5 bg-frezza-red"></span>
             </h3>
             <ul className="space-y-4">
-              {services.map((service) => (
-                <li key={service}>
+              {services.map(service => <li key={service}>
                   <a href="#services" className="text-gray-400 hover:text-frezza-red transition-colors">
                     {service}
                   </a>
-                </li>
-              ))}
+                </li>)}
             </ul>
           </div>
           
@@ -174,8 +131,6 @@ const Footer = () => {
           </div>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;

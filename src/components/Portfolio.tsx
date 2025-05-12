@@ -2,87 +2,73 @@ import { useState, useRef, useEffect } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent } from "@/components/ui/card";
 import { ChartBarIncreasing, Instagram, Handshake } from "lucide-react";
-
 const Portfolio = () => {
   const [activeCategory, setActiveCategory] = useState("all");
   const sectionRef = useRef<HTMLElement>(null);
-
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      entries => {
-        if (entries[0].isIntersecting) {
-          sectionRef.current?.classList.add('animate-fadeIn');
-        }
-      },
-      { threshold: 0.1 }
-    );
-
+    const observer = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) {
+        sectionRef.current?.classList.add('animate-fadeIn');
+      }
+    }, {
+      threshold: 0.1
+    });
     if (sectionRef.current) {
       observer.observe(sectionRef.current);
     }
-
     return () => {
       if (sectionRef.current) {
         observer.unobserve(sectionRef.current);
       }
     };
   }, []);
-  
-  // Portfolio items com imagens recentes e resultados reais
-  const portfolioItems = [
-    {
-      id: 1,
-      title: "Campanha Facebook Ads",
-      category: "trafego-pago",
-      image: "/lovable-uploads/c4eb13d1-fc22-4910-ae21-8a1d313a5cdf.png",
-      type: "image",
-      icon: <ChartBarIncreasing className="text-frezza-red" />
-    },
-    {
-      id: 2,
-      title: "Resultados Meta Ads",
-      category: "trafego-pago",
-      image: "/lovable-uploads/278dd15d-f45b-4b17-8605-25f0b2136e74.png",
-      type: "image",
-      icon: <ChartBarIncreasing className="text-frezza-red" />
-    },
-    {
-      id: 3,
-      title: "Parceria de Negócios",
-      category: "all",
-      image: "https://cdn.coverr.co/videos/coverr-business-partners-shaking-hands-4584/1080p.jpg",
-      type: "video",
-      videoUrl: "https://cdn.coverr.co/videos/coverr-business-partners-shaking-hands-4584/1080p.mp4",
-      icon: <Handshake className="text-frezza-red" />
-    },
-    {
-      id: 4,
-      title: "Crescimento Instagram",
-      category: "trafego-organico",
-      image: "/lovable-uploads/d3e81528-3eb9-42cc-95e2-887e984c27d8.png",
-      type: "image",
-      icon: <Instagram className="text-frezza-red" />
-    },
-    {
-      id: 5,
-      title: "Campanha Google Ads",
-      category: "trafego-pago",
-      image: "/lovable-uploads/a23a4d4a-4e51-40bc-9249-36b3785fec6e.png",
-      type: "image",
-      icon: <ChartBarIncreasing className="text-frezza-red" />
-    },
-    {
-      id: 6,
-      title: "Análise de ROI",
-      category: "trafego-pago",
-      image: "https://images.unsplash.com/photo-1617888284994-cc3b561a3ae5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1169&q=80",
-      type: "image",
-      icon: <ChartBarIncreasing className="text-frezza-red" />
-    }
-  ];
 
-  return (
-    <section id="portfolio" ref={sectionRef} className="section-padding bg-black opacity-0">
+  // Portfolio items com imagens recentes e resultados reais
+  const portfolioItems = [{
+    id: 1,
+    title: "Campanha Facebook Ads",
+    category: "trafego-pago",
+    image: "/lovable-uploads/c4eb13d1-fc22-4910-ae21-8a1d313a5cdf.png",
+    type: "image",
+    icon: <ChartBarIncreasing className="text-frezza-red" />
+  }, {
+    id: 2,
+    title: "Resultados Meta Ads",
+    category: "trafego-pago",
+    image: "/lovable-uploads/278dd15d-f45b-4b17-8605-25f0b2136e74.png",
+    type: "image",
+    icon: <ChartBarIncreasing className="text-frezza-red" />
+  }, {
+    id: 3,
+    title: "Parceria de Negócios",
+    category: "all",
+    image: "https://cdn.coverr.co/videos/coverr-business-partners-shaking-hands-4584/1080p.jpg",
+    type: "video",
+    videoUrl: "https://cdn.coverr.co/videos/coverr-business-partners-shaking-hands-4584/1080p.mp4",
+    icon: <Handshake className="text-frezza-red" />
+  }, {
+    id: 4,
+    title: "Crescimento Instagram",
+    category: "trafego-organico",
+    image: "/lovable-uploads/d3e81528-3eb9-42cc-95e2-887e984c27d8.png",
+    type: "image",
+    icon: <Instagram className="text-frezza-red" />
+  }, {
+    id: 5,
+    title: "Campanha Google Ads",
+    category: "trafego-pago",
+    image: "/lovable-uploads/a23a4d4a-4e51-40bc-9249-36b3785fec6e.png",
+    type: "image",
+    icon: <ChartBarIncreasing className="text-frezza-red" />
+  }, {
+    id: 6,
+    title: "Análise de ROI",
+    category: "trafego-pago",
+    image: "https://images.unsplash.com/photo-1617888284994-cc3b561a3ae5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1169&q=80",
+    type: "image",
+    icon: <ChartBarIncreasing className="text-frezza-red" />
+  }];
+  return <section id="portfolio" ref={sectionRef} className="section-padding bg-black opacity-0">
       {/* Background Elements */}
       <div className="absolute inset-x-0 pointer-events-none">
         <div className="absolute top-10 left-10 w-96 h-96 rounded-full bg-frezza-red opacity-5 blur-3xl"></div>
@@ -98,64 +84,31 @@ const Portfolio = () => {
         <Tabs defaultValue="all" className="w-full mt-16">
           <div className="flex justify-center mb-12">
             <TabsList className="bg-[#111] border border-[#222]">
-              <TabsTrigger 
-                value="all" 
-                onClick={() => setActiveCategory("all")}
-                className="data-[state=active]:bg-frezza-red data-[state=active]:text-white px-8 py-3"
-              >
+              <TabsTrigger value="all" onClick={() => setActiveCategory("all")} className="data-[state=active]:bg-frezza-red data-[state=active]:text-white px-8 py-3">
                 Todos
               </TabsTrigger>
-              <TabsTrigger 
-                value="trafego-pago" 
-                onClick={() => setActiveCategory("trafego-pago")}
-                className="data-[state=active]:bg-frezza-red data-[state=active]:text-white px-8 py-3"
-              >
+              <TabsTrigger value="trafego-pago" onClick={() => setActiveCategory("trafego-pago")} className="data-[state=active]:bg-frezza-red data-[state=active]:text-white px-8 py-3">
                 Tráfego Pago
               </TabsTrigger>
-              <TabsTrigger 
-                value="trafego-organico" 
-                onClick={() => setActiveCategory("trafego-organico")}
-                className="data-[state=active]:bg-frezza-red data-[state=active]:text-white px-8 py-3"
-              >
+              <TabsTrigger value="trafego-organico" onClick={() => setActiveCategory("trafego-organico")} className="data-[state=active]:bg-frezza-red data-[state=active]:text-white px-8 py-3">
                 Tráfego Orgânico
               </TabsTrigger>
             </TabsList>
           </div>
           
-          <TabsContent value="all" className="mt-0">
+          <TabsContent value="all" className="mt-0 bg-zinc-950">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {portfolioItems.map((item, index) => (
-                <Card 
-                  key={item.id} 
-                  className="overflow-hidden border-none shadow-xl hover:shadow-frezza-red/10 transition-all duration-500 bg-transparent"
-                >
+              {portfolioItems.map((item, index) => <Card key={item.id} className="overflow-hidden border-none shadow-xl hover:shadow-frezza-red/10 transition-all duration-500 bg-transparent">
                   <CardContent className="p-0 relative group">
-                    {item.type === "video" ? (
-                      <video 
-                        autoPlay 
-                        muted 
-                        loop 
-                        playsInline
-                        className="w-full h-80 object-cover"
-                        poster={item.image}
-                      >
+                    {item.type === "video" ? <video autoPlay muted loop playsInline className="w-full h-80 object-cover" poster={item.image}>
                         <source src={item.videoUrl} type="video/mp4" />
-                      </video>
-                    ) : (
-                      <img 
-                        src={item.image} 
-                        alt={item.title} 
-                        className="w-full h-80 object-cover"
-                      />
-                    )}
-                    {item.type === "video" && (
-                      <div className="absolute inset-0 flex items-center justify-center">
+                      </video> : <img src={item.image} alt={item.title} className="w-full h-80 object-cover" />}
+                    {item.type === "video" && <div className="absolute inset-0 flex items-center justify-center">
                         <div className="w-16 h-16 bg-frezza-red bg-opacity-75 rounded-full flex items-center justify-center">
                           <div className="w-0 h-0 border-t-8 border-b-8 border-l-12 border-transparent border-l-white ml-1"></div>
                         </div>
-                      </div>
-                    )}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-end">
+                      </div>}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-end rounded-none">
                       <div className="text-white p-8 transform translate-y-8 group-hover:translate-y-0 transition-all duration-500">
                         <div className="flex items-center mb-3">
                           {item.icon}
@@ -165,47 +118,22 @@ const Portfolio = () => {
                       </div>
                     </div>
                   </CardContent>
-                </Card>
-              ))}
+                </Card>)}
             </div>
           </TabsContent>
           
-          {["trafego-pago", "trafego-organico"].map((category) => (
-            <TabsContent key={category} value={category} className="mt-0">
+          {["trafego-pago", "trafego-organico"].map(category => <TabsContent key={category} value={category} className="mt-0">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {portfolioItems
-                  .filter(item => item.category === category)
-                  .map((item) => (
-                    <Card 
-                      key={item.id} 
-                      className="overflow-hidden border-none shadow-xl hover:shadow-frezza-red/10 transition-all duration-500 bg-transparent"
-                    >
+                {portfolioItems.filter(item => item.category === category).map(item => <Card key={item.id} className="overflow-hidden border-none shadow-xl hover:shadow-frezza-red/10 transition-all duration-500 bg-transparent">
                       <CardContent className="p-0 relative group">
-                        {item.type === "video" ? (
-                          <video 
-                            autoPlay 
-                            muted 
-                            loop 
-                            playsInline
-                            className="w-full h-80 object-cover"
-                            poster={item.image}
-                          >
+                        {item.type === "video" ? <video autoPlay muted loop playsInline className="w-full h-80 object-cover" poster={item.image}>
                             <source src={item.videoUrl} type="video/mp4" />
-                          </video>
-                        ) : (
-                          <img 
-                            src={item.image} 
-                            alt={item.title} 
-                            className="w-full h-80 object-cover"
-                          />
-                        )}
-                        {item.type === "video" && (
-                          <div className="absolute inset-0 flex items-center justify-center">
+                          </video> : <img src={item.image} alt={item.title} className="w-full h-80 object-cover" />}
+                        {item.type === "video" && <div className="absolute inset-0 flex items-center justify-center">
                             <div className="w-16 h-16 bg-frezza-red bg-opacity-75 rounded-full flex items-center justify-center">
                               <div className="w-0 h-0 border-t-8 border-b-8 border-l-12 border-transparent border-l-white ml-1"></div>
                             </div>
-                          </div>
-                        )}
+                          </div>}
                         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-end">
                           <div className="text-white p-8 transform translate-y-8 group-hover:translate-y-0 transition-all duration-500">
                             <div className="flex items-center mb-3">
@@ -216,15 +144,11 @@ const Portfolio = () => {
                           </div>
                         </div>
                       </CardContent>
-                    </Card>
-                  ))}
+                    </Card>)}
               </div>
-            </TabsContent>
-          ))}
+            </TabsContent>)}
         </Tabs>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Portfolio;
