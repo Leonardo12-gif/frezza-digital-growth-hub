@@ -9,6 +9,7 @@ import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import ParticlesBackground from "@/components/ParticlesBackground";
+import ContactInfo from "@/components/ContactInfo";
 
 const Index = () => {
   return (
@@ -28,6 +29,7 @@ const Index = () => {
         <Hero />
         <Services />
         <Portfolio />
+        <ContactInfo />
         <Testimonials />
         <About />
         <ContactForm />

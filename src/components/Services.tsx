@@ -35,7 +35,7 @@ const Services = () => {
       icon: Video,
       color: "bg-frezza-red/10",
       iconColor: "text-frezza-red",
-      image: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&q=80&w=600&h=400"
+      image: "/lovable-uploads/b234918b-d672-4dd4-8299-0603173a16f2.png"
     },
     {
       title: "Edição de Vídeo",
@@ -43,7 +43,7 @@ const Services = () => {
       icon: Film,
       color: "bg-frezza-red/10",
       iconColor: "text-frezza-red",
-      image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&q=80&w=600&h=400"
+      image: "/lovable-uploads/ed6f2a17-3f61-4200-9ab9-62e97c34467e.png"
     },
     {
       title: "Modelo para Publicidade",
@@ -51,7 +51,7 @@ const Services = () => {
       icon: Users,
       color: "bg-frezza-red/10",
       iconColor: "text-frezza-red",
-      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=600&h=400"
+      image: "/lovable-uploads/13d9f5fc-872b-42e4-84ea-80665a78e30e.png"
     },
     {
       title: "Tráfego Pago",
@@ -59,7 +59,7 @@ const Services = () => {
       icon: TrendingUp,
       color: "bg-frezza-red/10",
       iconColor: "text-frezza-red",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=600&h=400"
+      image: "/lovable-uploads/e881b66b-1dc1-4d41-9e13-5b3cb6eb74e2.png"
     },
     {
       title: "Tráfego Orgânico",
@@ -67,7 +67,7 @@ const Services = () => {
       icon: Leaf,
       color: "bg-frezza-red/10",
       iconColor: "text-frezza-red",
-      image: "https://images.unsplash.com/photo-1432888622747-4eb9a8f2c1a4?auto=format&fit=crop&q=80&w=600&h=400"
+      image: "/lovable-uploads/3dcd54f4-121d-4d5b-8a01-064e9b6c7b0b.png"
     }
   ];
 
@@ -104,6 +104,11 @@ const Services = () => {
                   <CardDescription className="text-gray-400 text-lg">
                     {service.description}
                   </CardDescription>
+                  {service.title === "Modelo para Publicidade" && (
+                    <div className="mt-4 p-2 bg-[#1a1a1a] rounded-md">
+                      <p className="text-sm text-gray-300">Disponível nas versões masculina e feminina</p>
+                    </div>
+                  )}
                 </CardContent>
               </Card>
             </div>
