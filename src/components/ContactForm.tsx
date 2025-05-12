@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { sendEmail } from "@/utils/emailService";
 
 const ContactForm = () => {
   const { toast } = useToast();
@@ -49,26 +50,26 @@ const ContactForm = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // This is a placeholder for EmailJS integration
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      // Success toast
-      toast({
-        title: "Mensagem enviada com sucesso!",
-        description: "Entraremos em contato em breve.",
+      // Usar o serviço EmailJS real
+      const result = await sendEmail({
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        message: formData.message
       });
       
-      // Reset form
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        message: ""
-      });
+      if (result) {
+        // Reset form on success
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          message: ""
+        });
+      }
     } catch (error) {
-      // Error toast
+      console.error("Error sending email:", error);
       toast({
         title: "Erro ao enviar mensagem",
         description: "Por favor, tente novamente mais tarde.",
@@ -117,8 +118,8 @@ const ContactForm = () => {
                   </div>
                   <div>
                     <h4 className="font-medium text-white">Telefone</h4>
-                    <a href="tel:+5500000000000" className="text-gray-400 hover:text-frezza-red transition-colors">
-                      (00) 00000-0000
+                    <a href="tel:+5515991273423" className="text-gray-400 hover:text-frezza-red transition-colors">
+                      (15) 99127-3423
                     </a>
                   </div>
                 </div>
@@ -147,7 +148,7 @@ const ContactForm = () => {
                   asChild
                 >
                   <a 
-                    href="https://wa.me/5500000000000" 
+                    href="https://wa.me/5515991273423" 
                     target="_blank" 
                     rel="noopener noreferrer"
                   >

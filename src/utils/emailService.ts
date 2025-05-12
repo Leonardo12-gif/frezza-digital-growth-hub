@@ -1,8 +1,5 @@
 
-// EmailJS configuration utility
-// This is a pre-configuration file. You will need to add your actual
-// EmailJS credentials and template IDs later.
-
+import emailjs from "@emailjs/browser";
 import { toast } from "@/components/ui/use-toast";
 
 interface EmailParams {
@@ -15,26 +12,18 @@ interface EmailParams {
 
 export const sendEmail = async (params: EmailParams): Promise<boolean> => {
   try {
-    // This is a placeholder function that will be replaced with actual EmailJS implementation
-    // once you provide the service ID, template ID and public key
-    
-    console.log("Email would be sent with these parameters:", params);
-    
-    // Placeholder for EmailJS implementation:
-    /*
+    // Implementação real do EmailJS com as credenciais fornecidas
     await emailjs.send(
-      "YOUR_SERVICE_ID", // Replace with your service ID
-      "YOUR_TEMPLATE_ID", // Replace with your template ID
+      "service_2ho8h0y", // Service ID
+      "template_wy2efrr", // Template ID
       {
-        from_name: params.name,
-        reply_to: params.email,
-        phone_number: params.phone || "Not provided",
-        message: params.message,
-        subject: params.subject || "Contact Form Submission",
+        name: params.name,
+        email: params.email,
+        message: params.message
+        // O e-mail de destino já está configurado diretamente no template
       },
-      "YOUR_PUBLIC_KEY" // Replace with your public key
+      "kx1QYE5rS7DnxZqvy" // Public Key
     );
-    */
     
     toast({
       title: "Mensagem enviada!",
@@ -55,13 +44,3 @@ export const sendEmail = async (params: EmailParams): Promise<boolean> => {
     return false;
   }
 };
-
-// Instructions for completing EmailJS setup:
-// 1. Sign up for EmailJS (https://www.emailjs.com/)
-// 2. Create an email service
-// 3. Create an email template
-// 4. Get your Service ID, Template ID, and Public Key
-// 5. Replace the placeholder values in the sendEmail function
-// 6. Install EmailJS package with: npm install @emailjs/browser
-// 7. Import emailjs at the top of this file: import emailjs from '@emailjs/browser';
-// 8. Uncomment the emailjs.send function and replace the placeholder values

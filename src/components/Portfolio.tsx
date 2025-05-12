@@ -1,4 +1,3 @@
-
 import { useState, useRef, useEffect } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent } from "@/components/ui/card";
@@ -29,23 +28,23 @@ const Portfolio = () => {
     };
   }, []);
   
-  // Portfolio items with more relevant content
+  // Portfolio items com imagens recentes e resultados reais
   const portfolioItems = [
     {
       id: 1,
       title: "Campanha Facebook Ads",
       category: "trafego-pago",
-      image: "https://images.unsplash.com/photo-1607799279861-4dd421887fb3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80",
+      image: "/lovable-uploads/c4eb13d1-fc22-4910-ae21-8a1d313a5cdf.png",
       type: "image",
       icon: <ChartBarIncreasing className="text-frezza-red" />
     },
     {
       id: 2,
-      title: "Estratégia SEO E-commerce",
-      category: "trafego-organico",
-      image: "https://images.unsplash.com/photo-1533750516278-4555388a4a06?ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80",
+      title: "Resultados Meta Ads",
+      category: "trafego-pago",
+      image: "/lovable-uploads/278dd15d-f45b-4b17-8605-25f0b2136e74.png",
       type: "image",
-      icon: <Instagram className="text-frezza-red" />
+      icon: <ChartBarIncreasing className="text-frezza-red" />
     },
     {
       id: 3,
@@ -60,7 +59,7 @@ const Portfolio = () => {
       id: 4,
       title: "Crescimento Instagram",
       category: "trafego-organico",
-      image: "https://images.unsplash.com/photo-1563845104524-b6b320b5c3f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80",
+      image: "/lovable-uploads/d3e81528-3eb9-42cc-95e2-887e984c27d8.png",
       type: "image",
       icon: <Instagram className="text-frezza-red" />
     },
@@ -68,7 +67,7 @@ const Portfolio = () => {
       id: 5,
       title: "Campanha Google Ads",
       category: "trafego-pago",
-      image: "https://images.unsplash.com/photo-1590845947616-1b2217279d02?ixlib=rb-1.2.1&auto=format&fit=crop&w=1169&q=80",
+      image: "/lovable-uploads/a23a4d4a-4e51-40bc-9249-36b3785fec6e.png",
       type: "image",
       icon: <ChartBarIncreasing className="text-frezza-red" />
     },
