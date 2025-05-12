@@ -8,7 +8,9 @@ const Footer = () => {
   const services = [
     "Gravação de Vídeo",
     "Edição de Vídeo",
-    "Modelo para Publicidade"
+    "Modelo para Publicidade",
+    "Tráfego Pago",
+    "Tráfego Orgânico"
   ];
   
   return (
@@ -31,7 +33,7 @@ const Footer = () => {
             
             <div className="flex space-x-4 pt-4">
               <a 
-                href="https://facebook.com" 
+                href="https://www.facebook.com/profile.php?id=61575768677479" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 aria-label="Facebook"
@@ -40,7 +42,7 @@ const Footer = () => {
                 <Facebook size={18} />
               </a>
               <a 
-                href="https://instagram.com" 
+                href="https://www.instagram.com/fa.marketingoficial/" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 aria-label="Instagram"

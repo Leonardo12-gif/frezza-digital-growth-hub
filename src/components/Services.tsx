@@ -1,6 +1,6 @@
 
 import { useEffect, useRef } from "react";
-import { Video, Film, Users } from "lucide-react";
+import { Video, Film, Users, TrendingUp, Leaf } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
@@ -52,6 +52,22 @@ const Services = () => {
       color: "bg-frezza-red/10",
       iconColor: "text-frezza-red",
       image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=600&h=400"
+    },
+    {
+      title: "Tráfego Pago",
+      description: "Estratégias de anúncios pagos em plataformas digitais para aumentar a visibilidade da sua marca e gerar resultados imediatos.",
+      icon: TrendingUp,
+      color: "bg-frezza-red/10",
+      iconColor: "text-frezza-red",
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=600&h=400"
+    },
+    {
+      title: "Tráfego Orgânico",
+      description: "Estratégias de crescimento sustentável nas redes sociais e buscadores para construir autoridade e presença digital a longo prazo.",
+      icon: Leaf,
+      color: "bg-frezza-red/10",
+      iconColor: "text-frezza-red",
+      image: "https://images.unsplash.com/photo-1432888622747-4eb9a8f2c1a4?auto=format&fit=crop&q=80&w=600&h=400"
     }
   ];
 

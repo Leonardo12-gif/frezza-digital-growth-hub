@@ -25,7 +25,7 @@ const WhatsAppButton = () => {
             rel="noopener noreferrer"
             aria-label="Chat on WhatsApp"
           >
-            <MessageSquare size={28} />
+            <MessageSquare size={28} className="text-white" />
           </a>
         </Button>
       </div>
