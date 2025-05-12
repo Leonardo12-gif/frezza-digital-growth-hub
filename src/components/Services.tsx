@@ -2,6 +2,7 @@
 import { useEffect, useRef } from "react";
 import { CircleDollarSign, TrendingUp } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 const Services = () => {
   const sectionRef = useRef<HTMLElement>(null);
