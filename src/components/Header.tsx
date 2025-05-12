@@ -25,24 +25,25 @@ const Header = () => {
   const navLinks = [
     { name: "Início", href: "#home" },
     { name: "Serviços", href: "#services" },
+    { name: "Portfolio", href: "#portfolio" },
+    { name: "Depoimentos", href: "#testimonials" },
     { name: "Sobre", href: "#about" },
-    { name: "Portfólio", href: "#portfolio" },
     { name: "Contato", href: "#contact" },
   ];
 
   return (
     <header 
-      className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolled ? "bg-white shadow-md py-2" : "bg-transparent py-4"
+      className={`fixed w-full z-50 transition-all duration-500 ${
+        isScrolled ? "bg-black/80 backdrop-blur-md shadow-lg py-3" : "bg-transparent py-6"
       }`}
     >
       <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
         <a href="#home" className="flex items-center">
-          <div className="h-16 w-auto">
+          <div className="h-12 w-auto">
             <img 
-              src="/lovable-uploads/4b80931e-5adb-42b6-951f-e0afe443a9ca.png" 
+              src="/lovable-uploads/be2896ed-d56c-4196-b094-88aa9e255918.png" 
               alt="Frezza Marketing Logo" 
-              className="h-16 w-auto"
+              className="h-12 w-auto"
             />
           </div>
         </a>
@@ -53,7 +54,7 @@ const Header = () => {
             <a
               key={link.name}
               href={link.href}
-              className="text-gray-700 hover:text-frezza-red transition-colors font-medium"
+              className="text-gray-300 hover:text-frezza-red transition-colors font-medium tracking-wide"
             >
               {link.name}
             </a>
@@ -63,7 +64,7 @@ const Header = () => {
         {/* CTA Button - Desktop */}
         <div className="hidden md:block">
           <Button 
-            className="bg-frezza-red hover:bg-frezza-dark text-white" 
+            className="bg-frezza-red hover:bg-frezza-red/80 text-white border border-frezza-red/20" 
             asChild
           >
             <a href="#contact">Fale Conosco</a>
@@ -72,7 +73,7 @@ const Header = () => {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-gray-700"
+          className="md:hidden text-white"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
           {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -81,20 +82,20 @@ const Header = () => {
 
       {/* Mobile Navigation */}
       {mobileMenuOpen && (
-        <nav className="md:hidden bg-white py-4 px-6 shadow-lg animate-fadeIn">
-          <div className="flex flex-col space-y-4">
+        <nav className="md:hidden bg-black/95 py-6 px-6 backdrop-blur-lg border-t border-white/10 animate-slideUp">
+          <div className="flex flex-col space-y-6">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="text-gray-700 hover:text-frezza-red py-2 transition-colors font-medium"
+                className="text-gray-200 hover:text-frezza-red py-2 transition-colors font-medium text-lg"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {link.name}
               </a>
             ))}
             <Button 
-              className="bg-frezza-red hover:bg-frezza-dark text-white w-full mt-4" 
+              className="bg-frezza-red hover:bg-frezza-red/80 text-white w-full mt-4 border border-frezza-red/20" 
               asChild
             >
               <a href="#contact" onClick={() => setMobileMenuOpen(false)}>Fale Conosco</a>

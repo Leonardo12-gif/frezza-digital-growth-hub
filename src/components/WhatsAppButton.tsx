@@ -13,7 +13,7 @@ const WhatsAppButton = () => {
         }`}
       >
         <Button
-          className="bg-green-500 hover:bg-green-600 text-white h-14 w-14 rounded-full shadow-lg flex items-center justify-center"
+          className="bg-green-600 hover:bg-green-700 text-white h-16 w-16 rounded-full shadow-lg flex items-center justify-center shadow-green-900/20"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
           asChild
@@ -45,8 +45,8 @@ const WhatsAppButton = () => {
         </Button>
       </div>
       {isHovered && (
-        <div className="absolute bottom-4 right-16 bg-white px-4 py-2 rounded-lg shadow-md transform animate-fadeIn">
-          <span className="whitespace-nowrap text-sm font-medium">Fale conosco</span>
+        <div className="absolute bottom-6 right-20 bg-black px-5 py-2 rounded-lg shadow-lg transform animate-fadeIn border border-green-600/20">
+          <span className="whitespace-nowrap text-sm font-medium text-white">Fale conosco</span>
         </div>
       )}
     </div>

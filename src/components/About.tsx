@@ -1,59 +1,118 @@
 
+import { useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 
 const About = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      entries => {
+        if (entries[0].isIntersecting) {
+          sectionRef.current?.classList.add('animate-fadeIn');
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <section id="about" className="section-padding">
+    <section id="about" ref={sectionRef} className="section-padding bg-black opacity-0">
       <div className="container mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="order-2 lg:order-1">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Sobre a Frezza Marketing</h2>
-            
-            <div className="space-y-4 text-gray-700 text-lg">
-              <p>
-                Na Frezza Marketing, somos movidos por performance, criatividade e resultado. 
-                Atuamos como uma agência completa, especializada em 
-                <span className="font-semibold text-frezza"> tráfego pago</span>, 
-                <span className="font-semibold text-frezza"> tráfego orgânico</span>,
-                <span className="font-semibold text-frezza"> criação de vídeos publicitários</span> e 
-                fornecimento de <span className="font-semibold text-frezza">modelos para campanhas visuais</span>.
-              </p>
-              
-              <p>
-                Nossa missão é <span className="font-semibold">impulsionar marcas para o próximo nível</span>, 
-                com estratégias personalizadas que conectam empresas ao público certo, na hora certa. 
-                Com uma equipe criativa, técnica e comprometida, entregamos muito mais que anúncios: 
-                entregamos presença digital, conversão e crescimento sustentável.
-              </p>
-              
-              <p>
-                Trabalhamos lado a lado com nossos clientes para construir não apenas campanhas, 
-                mas <span className="font-semibold">relacionamentos de confiança e resultados consistentes</span>.
-              </p>
-            </div>
-            
-            <div className="mt-8">
-              <Button 
-                className="bg-frezza hover:bg-frezza-dark text-white"
-                asChild
-              >
-                <a href="#contact">Entre em Contato</a>
-              </Button>
-            </div>
-          </div>
+        <div className="max-w-6xl mx-auto">
+          <h2 className="section-title text-gradient">Sobre a Frezza Marketing</h2>
           
-          <div className="order-1 lg:order-2">
-            <div className="relative">
-              {/* Replace with actual about image */}
-              <img 
-                src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80" 
-                alt="Equipe Frezza Marketing" 
-                className="rounded-lg shadow-xl w-full h-auto"
-              />
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center mt-16">
+            <div className="lg:col-span-5 order-2 lg:order-1">
+              <div className="space-y-6 text-gray-300 text-lg">
+                <p>
+                  Na Frezza Marketing, somos movidos por 
+                  <span className="text-white font-semibold"> performance</span>, 
+                  <span className="text-white font-semibold"> criatividade</span> e 
+                  <span className="text-white font-semibold"> resultados</span>. 
+                  Atuamos como uma agência completa, especializada em 
+                  <span className="text-frezza-red font-semibold"> tráfego pago</span> e 
+                  <span className="text-frezza-red font-semibold"> tráfego orgânico</span>.
+                </p>
+                
+                <p>
+                  Nossa missão é <span className="text-white font-semibold">impulsionar marcas para o próximo nível</span>, 
+                  com estratégias personalizadas que conectam empresas ao público certo, na hora certa. 
+                  Com uma equipe criativa, técnica e comprometida, entregamos muito mais que anúncios: 
+                  entregamos presença digital, conversão e crescimento sustentável.
+                </p>
+                
+                <p>
+                  Trabalhamos lado a lado com nossos clientes para construir não apenas campanhas, 
+                  mas <span className="text-white font-semibold">relacionamentos de confiança e resultados consistentes</span>.
+                </p>
+              </div>
               
-              {/* Decorative elements */}
-              <div className="absolute -bottom-6 -right-6 bg-frezza w-32 h-32 rounded-lg -z-10"></div>
-              <div className="absolute -top-6 -left-6 bg-frezza-accent w-20 h-20 rounded-lg -z-10"></div>
+              <div className="mt-10">
+                <Button 
+                  className="bg-frezza-red hover:bg-frezza-red/80 text-white border border-frezza-red/20 px-8 py-6 text-lg"
+                  asChild
+                >
+                  <a href="#contact">Entre em Contato</a>
+                </Button>
+              </div>
+            </div>
+            
+            <div className="lg:col-span-7 order-1 lg:order-2">
+              <div className="relative">
+                {/* Decorative elements */}
+                <div className="absolute top-0 left-0 w-full h-full bg-frezza-red/5 -rotate-3 rounded-lg"></div>
+                <div className="absolute top-0 left-0 w-full h-full border border-frezza-red/20 rotate-3 rounded-lg"></div>
+                
+                {/* Main image */}
+                <div className="relative rounded-lg overflow-hidden border border-[#333] shadow-2xl">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70 z-10"></div>
+                  <img 
+                    src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80" 
+                    alt="Equipe Frezza Marketing" 
+                    className="w-full h-auto"
+                  />
+                  
+                  {/* Overlay content */}
+                  <div className="absolute bottom-0 left-0 right-0 p-8 z-20">
+                    <div className="flex items-center space-x-4">
+                      <div className="w-1 h-12 bg-frezza-red"></div>
+                      <div>
+                        <h3 className="text-2xl font-bold text-white">Nossa Missão</h3>
+                        <p className="text-gray-300 mt-2">Transformar cliques em crescimento real para o seu negócio</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Stats card */}
+                <div className="absolute -bottom-10 -right-10 bg-[#111] border border-[#333] p-6 rounded-lg shadow-lg">
+                  <div className="flex space-x-8">
+                    <div className="text-center">
+                      <div className="text-3xl font-bold text-frezza-red">250+</div>
+                      <div className="text-sm text-gray-400 mt-1">Clientes</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-3xl font-bold text-frezza-red">8+</div>
+                      <div className="text-sm text-gray-400 mt-1">Anos</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-3xl font-bold text-frezza-red">3.5K+</div>
+                      <div className="text-sm text-gray-400 mt-1">Projetos</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
