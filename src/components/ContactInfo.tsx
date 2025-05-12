@@ -1,33 +1,25 @@
-
 import { useEffect, useRef } from "react";
 import { Phone, Mail, MapPin } from "lucide-react";
-
 const ContactInfo = () => {
   const sectionRef = useRef<HTMLElement>(null);
-
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      entries => {
-        if (entries[0].isIntersecting) {
-          sectionRef.current?.classList.add('animate-fadeIn');
-        }
-      },
-      { threshold: 0.1 }
-    );
-
+    const observer = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) {
+        sectionRef.current?.classList.add('animate-fadeIn');
+      }
+    }, {
+      threshold: 0.1
+    });
     if (sectionRef.current) {
       observer.observe(sectionRef.current);
     }
-
     return () => {
       if (sectionRef.current) {
         observer.unobserve(sectionRef.current);
       }
     };
   }, []);
-
-  return (
-    <section ref={sectionRef} className="py-16 bg-[#0c0c0c] opacity-0">
+  return <section ref={sectionRef} className="py-16 bg-[#0c0c0c] opacity-0">
       <div className="container mx-auto px-4">
         <div className="flex flex-wrap justify-center gap-8">
           <div className="flex items-center bg-[#111] hover:bg-[#151515] transition-colors duration-300 p-6 rounded-lg border border-[#222] shadow-lg max-w-xs w-full">
@@ -46,7 +38,7 @@ const ContactInfo = () => {
             </div>
             <div>
               <h3 className="text-white text-lg font-bold mb-1">Email</h3>
-              <p className="text-gray-400">contato@frezzamarketing.com</p>
+              <p className="text-gray-400">frezza.trafego@gmail.com</p>
             </div>
           </div>
           
@@ -81,8 +73,6 @@ const ContactInfo = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default ContactInfo;

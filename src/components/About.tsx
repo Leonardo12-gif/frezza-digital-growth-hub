@@ -1,33 +1,25 @@
-
 import { useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-
 const About = () => {
   const sectionRef = useRef<HTMLElement>(null);
-
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      entries => {
-        if (entries[0].isIntersecting) {
-          sectionRef.current?.classList.add('animate-fadeIn');
-        }
-      },
-      { threshold: 0.1 }
-    );
-
+    const observer = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) {
+        sectionRef.current?.classList.add('animate-fadeIn');
+      }
+    }, {
+      threshold: 0.1
+    });
     if (sectionRef.current) {
       observer.observe(sectionRef.current);
     }
-
     return () => {
       if (sectionRef.current) {
         observer.unobserve(sectionRef.current);
       }
     };
   }, []);
-
-  return (
-    <section id="about" ref={sectionRef} className="section-padding bg-black opacity-0">
+  return <section id="about" ref={sectionRef} className="section-padding bg-black opacity-0">
       <div className="container mx-auto">
         <div className="max-w-6xl mx-auto">
           <h2 className="section-title text-gradient">Sobre a Frezza Marketing</h2>
@@ -59,10 +51,7 @@ const About = () => {
               </div>
               
               <div className="mt-10">
-                <Button 
-                  className="bg-frezza-red hover:bg-frezza-red/80 text-white border border-frezza-red/20 px-8 py-6 text-lg"
-                  asChild
-                >
+                <Button className="bg-frezza-red hover:bg-frezza-red/80 text-white border border-frezza-red/20 px-8 py-6 text-lg" asChild>
                   <a href="#contact">Entre em Contato</a>
                 </Button>
               </div>
@@ -77,11 +66,7 @@ const About = () => {
                 {/* Main image */}
                 <div className="relative rounded-lg overflow-hidden border border-[#333] shadow-2xl">
                   <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70 z-10"></div>
-                  <img 
-                    src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80" 
-                    alt="Equipe Frezza Marketing" 
-                    className="w-full h-auto"
-                  />
+                  <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80" alt="Equipe Frezza Marketing" className="w-full h-auto" />
                   
                   {/* Overlay content */}
                   <div className="absolute bottom-0 left-0 right-0 p-8 z-20">
@@ -96,29 +81,12 @@ const About = () => {
                 </div>
                 
                 {/* Stats card */}
-                <div className="absolute -bottom-10 -right-10 bg-[#111] border border-[#333] p-6 rounded-lg shadow-lg">
-                  <div className="flex space-x-8">
-                    <div className="text-center">
-                      <div className="text-3xl font-bold text-frezza-red">250+</div>
-                      <div className="text-sm text-gray-400 mt-1">Clientes</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-3xl font-bold text-frezza-red">8+</div>
-                      <div className="text-sm text-gray-400 mt-1">Anos</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-3xl font-bold text-frezza-red">3.5K+</div>
-                      <div className="text-sm text-gray-400 mt-1">Projetos</div>
-                    </div>
-                  </div>
-                </div>
+                
               </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default About;
