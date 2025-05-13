@@ -1,3 +1,4 @@
+
 import { useState, useRef, useEffect } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent } from "@/components/ui/card";
@@ -159,9 +160,9 @@ const Portfolio = () => {
         <div className="flex flex-col items-center justify-center mb-12 mt-8 relative">
           <div className="absolute -inset-1 bg-gradient-to-r from-frezza-red via-frezza-red/70 to-frezza-red rounded-lg blur-lg opacity-75 animate-pulse"></div>
           <a href="https://www.canva.com/design/DAGnNVfR_5M/-yolqU0vIpgnDVtABM1DGw/view?utm_content=DAGnNVfR_5M&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h096fb20bc1" target="_blank" rel="noopener noreferrer" className="relative z-10">
-            <Button variant="outline" size="lg" className="border-frezza-red bg-black hover:bg-frezza-red/10 text-frezza-red hover:text-white transition-all duration-300 text-lg font-bold gap-3 px-8 py-6">
+            <Button variant="outline" size="lg" className="border-frezza-red bg-black hover:bg-frezza-red/10 text-frezza-red hover:text-white transition-all duration-300 text-lg font-bold gap-3 px-8 py-6 animate-bounce hover:animate-none transform hover:translate-y-[-3px] hover:translate-x-[3px]">
               Confira nosso portfólio completo
-              <ArrowRight className="w-5 h-5" />
+              <ArrowRight className="w-5 h-5 animate-pulse" />
             </Button>
           </a>
           <p className="mt-3 text-frezza-red font-medium animate-pulse">
