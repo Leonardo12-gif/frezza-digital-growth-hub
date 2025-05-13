@@ -1,8 +1,8 @@
-name: Build and Deploy Vite App to GitHub Pages
+name: Deploy Vite App to GitHub Pages
 
 on:
   push:
-    branches: ["principal"]  # OU "main" se sua branch principal tiver esse nome
+    branches: ["main"]  # Altere para "principal" se essa for sua branch principal
   workflow_dispatch:
 
 permissions:
@@ -10,14 +10,9 @@ permissions:
   pages: write
   id-token: write
 
-concurrency:
-  group: "pages"
-  cancel-in-progress: true
-
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout do código
         uses: actions/checkout@v4
@@ -30,24 +25,11 @@ jobs:
       - name: Instalar dependências
         run: npm install
 
-      - name: Rodar build do Vite
+      - name: Build do projeto
         run: npm run build
 
-      - name: Configurar GitHub Pages
-        uses: actions/configure-pages@v5
-
-      - name: Enviar pasta dist/
-        uses: actions/upload-pages-artifact@v3
+      - name: Deploy para o GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          path: dist
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy para GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
