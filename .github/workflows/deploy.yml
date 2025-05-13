@@ -2,7 +2,7 @@ name: Deploy Vite to GitHub Pages
 
 on:
   push:
-    branches: ["principal"]  # ou "main" se sua branch principal for chamada "main"
+    branches: ["principal"]  # Altere para "main" se sua branch principal for main
   workflow_dispatch:
 
 permissions:
@@ -17,7 +17,6 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout do código
         uses: actions/checkout@v4
@@ -30,16 +29,16 @@ jobs:
       - name: Instalar dependências
         run: npm install
 
-      - name: Rodar build do Vite
+      - name: Build do Vite
         run: npm run build
 
       - name: Configurar GitHub Pages
         uses: actions/configure-pages@v5
 
-      - name: Upload da pasta dist
+      - name: Upload da pasta dist/
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist
+          path: dist
 
   deploy:
     needs: build
@@ -48,6 +47,4 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Deploy para GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name:
