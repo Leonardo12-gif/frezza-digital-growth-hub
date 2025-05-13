@@ -2,6 +2,7 @@
 import { useState, useRef, useEffect } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { 
   ChartBarIncreasing, 
   Instagram, 
@@ -9,7 +10,8 @@ import {
   Video, 
   Scissors, 
   Camera, 
-  BarChart 
+  BarChart, 
+  ArrowRight
 } from "lucide-react";
 import { 
   Carousel,
@@ -210,7 +212,26 @@ const Portfolio = () => {
           Conheça alguns dos nossos trabalhos e cases de sucesso
         </p>
         
-        <Tabs defaultValue="all" className="w-full mt-16">
+        {/* Botão de destaque para o portfólio completo */}
+        <div className="flex flex-col items-center justify-center mb-12 mt-8 relative">
+          <div className="absolute -inset-1 bg-gradient-to-r from-frezza-red via-frezza-red/70 to-frezza-red rounded-lg blur-lg opacity-75 animate-pulse"></div>
+          <a 
+            href="https://www.canva.com/design/DAGnNVfR_5M/-yolqU0vIpgnDVtABM1DGw/view?utm_content=DAGnNVfR_5M&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h096fb20bc1"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="relative z-10"
+          >
+            <Button variant="outline" size="lg" className="border-frezza-red bg-black hover:bg-frezza-red/10 text-frezza-red hover:text-white transition-all duration-300 text-lg font-bold gap-3 px-8 py-6">
+              Confira nosso portfólio completo
+              <ArrowRight className="w-5 h-5" />
+            </Button>
+          </a>
+          <p className="mt-3 text-frezza-red font-medium animate-pulse">
+            Veja todos os nossos trabalhos e resultados
+          </p>
+        </div>
+        
+        <Tabs defaultValue="all" className="w-full mt-8">
           <div className="flex justify-center mb-12 overflow-x-auto pb-4">
             <TabsList className="bg-[#111] border border-[#222] flex-nowrap">
               <TabsTrigger value="all" onClick={() => setActiveCategory("all")} className="data-[state=active]:bg-frezza-red data-[state=active]:text-white px-8 py-3">
