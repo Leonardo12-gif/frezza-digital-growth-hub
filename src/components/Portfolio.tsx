@@ -44,13 +44,13 @@ const Portfolio = () => {
     };
   }, []);
 
-  // Portfolio items com materiais do Canva
+  // Portfólio otimizado com imagens hospedadas localmente
   const portfolioItems = [
     {
       id: 1,
       title: "Campanha para Loja de Suplementos",
       category: "trafego-pago",
-      image: "https://yderodrwgnxrvlsgjxns.supabase.co/storage/v1/object/public/lovable/portfolio/suplementos-ad.png",
+      image: "/lovable-uploads/portfolio/suplementos-ad.webp",
       type: "image",
       icon: <ChartBarIncreasing className="text-frezza-red" />
     },
@@ -58,7 +58,7 @@ const Portfolio = () => {
       id: 2,
       title: "Gestão de Anúncios",
       category: "trafego-pago",
-      image: "https://yderodrwgnxrvlsgjxns.supabase.co/storage/v1/object/public/lovable/portfolio/anuncios.png",
+      image: "/lovable-uploads/portfolio/anuncios.webp",
       type: "image",
       icon: <ChartBarIncreasing className="text-frezza-red" />
     },
@@ -66,7 +66,7 @@ const Portfolio = () => {
       id: 3,
       title: "Resultados Campanhas Digitais",
       category: "trafego-pago",
-      image: "https://yderodrwgnxrvlsgjxns.supabase.co/storage/v1/object/public/lovable/portfolio/meta-results.png",
+      image: "/lovable-uploads/portfolio/meta-results.webp",
       type: "image",
       icon: <BarChart className="text-frezza-red" />
     },
@@ -74,8 +74,8 @@ const Portfolio = () => {
       id: 4,
       title: "Campanha para Academia",
       category: "trafego-pago",
-      videoUrl: "https://yderodrwgnxrvlsgjxns.supabase.co/storage/v1/object/public/lovable/portfolio/academia-video.mp4",
-      image: "https://yderodrwgnxrvlsgjxns.supabase.co/storage/v1/object/public/lovable/portfolio/academia-thumbnail.png",
+      videoUrl: "/lovable-uploads/portfolio/academia-video.mp4",
+      image: "/lovable-uploads/portfolio/academia-thumbnail.webp",
       type: "video",
       icon: <Video className="text-frezza-red" />
     },
@@ -83,8 +83,8 @@ const Portfolio = () => {
       id: 5,
       title: "Edição de Vídeo Profissional",
       category: "producao-de-conteudo",
-      videoUrl: "https://yderodrwgnxrvlsgjxns.supabase.co/storage/v1/object/public/lovable/portfolio/edicao-video.mp4",
-      image: "https://yderodrwgnxrvlsgjxns.supabase.co/storage/v1/object/public/lovable/portfolio/edicao-thumbnail.png",
+      videoUrl: "/lovable-uploads/portfolio/edicao-video.mp4",
+      image: "/lovable-uploads/portfolio/edicao-thumbnail.webp",
       type: "video",
       icon: <Scissors className="text-frezza-red" />
     },
@@ -92,7 +92,7 @@ const Portfolio = () => {
       id: 6,
       title: "Estratégia de Instagram",
       category: "trafego-organico",
-      image: "https://yderodrwgnxrvlsgjxns.supabase.co/storage/v1/object/public/lovable/portfolio/instagram-growth.png",
+      image: "/lovable-uploads/portfolio/instagram-growth.webp",
       type: "image",
       icon: <Instagram className="text-frezza-red" />
     },
@@ -100,8 +100,8 @@ const Portfolio = () => {
       id: 7,
       title: "Produção de Conteúdo",
       category: "producao-de-conteudo",
-      videoUrl: "https://yderodrwgnxrvlsgjxns.supabase.co/storage/v1/object/public/lovable/portfolio/producao-conteudo.mp4",
-      image: "https://yderodrwgnxrvlsgjxns.supabase.co/storage/v1/object/public/lovable/portfolio/producao-thumbnail.png",
+      videoUrl: "/lovable-uploads/portfolio/producao-conteudo.mp4",
+      image: "/lovable-uploads/portfolio/producao-thumbnail.webp",
       type: "video",
       icon: <Camera className="text-frezza-red" />
     },
@@ -109,7 +109,7 @@ const Portfolio = () => {
       id: 8,
       title: "Parceria Estratégica",
       category: "all",
-      image: "https://yderodrwgnxrvlsgjxns.supabase.co/storage/v1/object/public/lovable/portfolio/parceria.png",
+      image: "/lovable-uploads/portfolio/parceria.webp",
       type: "image",
       icon: <Handshake className="text-frezza-red" />
     },
@@ -117,35 +117,52 @@ const Portfolio = () => {
       id: 9,
       title: "Gestão de Tráfego Orgânico",
       category: "trafego-organico",
-      image: "https://yderodrwgnxrvlsgjxns.supabase.co/storage/v1/object/public/lovable/portfolio/organico-estrategia.png",
+      image: "/lovable-uploads/portfolio/organico-estrategia.webp",
       type: "image",
       icon: <Instagram className="text-frezza-red" />
     }
   ];
 
+  const VideoPlayer = ({ item }: { item: any }) => {
+    const videoRef = useRef<HTMLVideoElement>(null);
+    
+    return (
+      <div className="w-full h-80 relative">
+        <AspectRatio ratio={16/9} className="overflow-hidden h-80">
+          <video 
+            ref={videoRef}
+            className="w-full h-full object-cover" 
+            poster={item.image} 
+            controls
+            muted
+            playsInline
+            preload="metadata"
+          >
+            <source src={item.videoUrl} type="video/mp4" />
+            Seu navegador não suporta vídeos.
+          </video>
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-80 group-hover:opacity-0 transition-opacity">
+            <div className="w-16 h-16 bg-frezza-red rounded-full flex items-center justify-center">
+              <div className="w-0 h-0 border-t-8 border-b-8 border-l-12 border-transparent border-l-white ml-1"></div>
+            </div>
+          </div>
+        </AspectRatio>
+      </div>
+    )
+  };
+
   const renderPortfolioItem = (item: any) => (
     <Card key={item.id} className="overflow-hidden border-none shadow-xl hover:shadow-frezza-red/10 transition-all duration-500 bg-transparent">
       <CardContent className="p-0 relative group h-full">
         {item.type === "video" ? (
-          <div className="w-full h-80 relative">
-            <AspectRatio ratio={16/9} className="overflow-hidden h-80">
-              <video 
-                className="w-full h-full object-cover" 
-                poster={item.image} 
-                controls
-                muted
-              >
-                <source src={item.videoUrl} type="video/mp4" />
-              </video>
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-80 group-hover:opacity-0 transition-opacity">
-                <div className="w-16 h-16 bg-frezza-red rounded-full flex items-center justify-center">
-                  <div className="w-0 h-0 border-t-8 border-b-8 border-l-12 border-transparent border-l-white ml-1"></div>
-                </div>
-              </div>
-            </AspectRatio>
-          </div>
+          <VideoPlayer item={item} />
         ) : (
-          <img src={item.image} alt={item.title} className="w-full h-80 object-cover" />
+          <img 
+            src={item.image} 
+            alt={item.title} 
+            className="w-full h-80 object-cover"
+            loading="lazy" 
+          />
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-end rounded-none">
           <div className="text-white p-8 transform translate-y-8 group-hover:translate-y-0 transition-all duration-500">
@@ -161,6 +178,23 @@ const Portfolio = () => {
       </CardContent>
     </Card>
   );
+
+  const CarouselVideoPlayer = ({ item }: { item: any }) => {
+    return (
+      <AspectRatio ratio={16/9} className="bg-black rounded-lg overflow-hidden">
+        <video 
+          controls
+          playsInline
+          preload="metadata"
+          className="w-full h-full object-contain"
+          poster={item.image}
+        >
+          <source src={item.videoUrl} type="video/mp4" />
+          Seu navegador não suporta vídeos.
+        </video>
+      </AspectRatio>
+    );
+  };
 
   return (
     <section id="portfolio" ref={sectionRef} className="section-padding bg-black opacity-0">
@@ -214,33 +248,20 @@ const Portfolio = () => {
         <div className="mt-20 text-center">
           <h3 className="text-2xl font-bold text-white mb-8">Destaques em Vídeo</h3>
           
-          <Carousel className="w-full max-w-4xl mx-auto">
-            <CarouselContent>
-              {portfolioItems
-                .filter(item => item.type === "video")
-                .map(item => (
-                  <CarouselItem key={item.id} className="md:basis-4/5 lg:basis-3/4">
-                    <div className="p-1">
-                      <AspectRatio ratio={16/9} className="bg-black rounded-lg overflow-hidden">
-                        <video 
-                          controls 
-                          className="w-full h-full object-contain"
-                          poster={item.image}
-                        >
-                          <source src={item.videoUrl} type="video/mp4" />
-                        </video>
-                      </AspectRatio>
-                      <div className="text-center mt-4">
-                        <h4 className="text-lg font-medium text-white">{item.title}</h4>
-                        <p className="text-gray-400 capitalize">{item.category.replace(/-/g, ' ')}</p>
-                      </div>
-                    </div>
-                  </CarouselItem>
-                ))}
-            </CarouselContent>
-            <CarouselPrevious className="left-2 md:left-4 bg-frezza-red text-white border-none" />
-            <CarouselNext className="right-2 md:right-4 bg-frezza-red text-white border-none" />
-          </Carousel>
+          {/* Substituímos o componente Carousel por uma simples grid para evitar problemas de carregamento */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {portfolioItems
+              .filter(item => item.type === "video")
+              .map(item => (
+                <div key={item.id} className="p-1">
+                  <CarouselVideoPlayer item={item} />
+                  <div className="text-center mt-4">
+                    <h4 className="text-lg font-medium text-white">{item.title}</h4>
+                    <p className="text-gray-400 capitalize">{item.category.replace(/-/g, ' ')}</p>
+                  </div>
+                </div>
+              ))}
+          </div>
         </div>
       </div>
     </section>
