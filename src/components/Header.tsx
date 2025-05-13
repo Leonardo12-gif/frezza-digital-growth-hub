@@ -22,6 +22,9 @@ const Header = () => {
     };
   }, []);
 
+  // Define base path
+  const basePath = import.meta.env.BASE_URL || "/";
+  
   const navLinks = [
     { name: "Início", href: "#home" },
     { name: "Serviços", href: "#services" },
@@ -40,7 +43,7 @@ const Header = () => {
         <a href="#home" className="flex items-center">
           <div className="h-12 w-auto">
             <img 
-              src="/lovable-uploads/be2896ed-d56c-4196-b094-88aa9e255918.png" 
+              src={`${basePath}lovable-uploads/be2896ed-d56c-4196-b094-88aa9e255918.png`}
               alt="Frezza Marketing Logo" 
               className="h-12 w-auto"
             />
