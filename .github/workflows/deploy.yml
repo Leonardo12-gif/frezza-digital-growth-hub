@@ -1,9 +1,8 @@
-# Workflow para build e deploy de um projeto Vite no GitHub Pages
 name: Deploy Vite site to GitHub Pages
 
 on:
   push:
-    branches: ["main"]  # Altere se sua branch for "principal"
+    branches: ["principal"]
 
   workflow_dispatch:
 
