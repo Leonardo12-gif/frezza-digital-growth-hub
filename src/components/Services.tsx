@@ -32,8 +32,8 @@ const Services = () => {
 
   const services = [
     {
-      title: "Gravação de Vídeo",
-      description: "Produção audiovisual profissional com equipamentos de última geração para criar conteúdo de alta qualidade para sua marca.",
+      title: "Gravação de Vídeo (Opcinal DRONE)",
+      description: "Produção audiovisual (captação aéria opcional) profissional com equipamentos de última geração para criar conteúdo de alta qualidade para sua marca.",
       icon: Video,
       color: "bg-frezza-red/10",
       iconColor: "text-frezza-red",
