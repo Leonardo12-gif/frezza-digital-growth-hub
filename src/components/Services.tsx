@@ -86,7 +86,8 @@ title: "Criação de Site Profissional",
   color: "bg-frezza-red/10",
   iconColor: "text-frezza-red",
   image: "/lovable-uploads/criacao-de-site-profissional.png"
-  ];
+  }
+];
 
   const handleWhatsAppClick = (service: string) => {
     const message = `Olá, gostaria de um orçamento para o serviço de ${service}.`;
