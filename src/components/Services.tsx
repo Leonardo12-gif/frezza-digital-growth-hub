@@ -128,7 +128,7 @@ const Services = () => {
                   <div className="mt-auto">
                     <Button 
                       onClick={() => handleWhatsAppClick(service.title)}
-                      className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-2 transition-all duration-300"
+                      className="w-full bg-frezza-red hover:bg-black hover:text-frezza-red text-white font-semibold py-2 border border-frezza-red transition-all duration-300 transform hover:-translate-y-1"
                     >
                       QUERO UM ORÇAMENTO
                     </Button>

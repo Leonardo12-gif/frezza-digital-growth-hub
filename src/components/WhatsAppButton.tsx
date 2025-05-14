@@ -6,12 +6,19 @@ import { MessageSquare } from "lucide-react";
 const WhatsAppButton = () => {
   const [isHovered, setIsHovered] = useState(false);
   
+  // Mobile touch handler that mimics hover effect
+  const handleTouch = () => {
+    setIsHovered(true);
+    setTimeout(() => setIsHovered(false), 2000); // Reset after 2 seconds
+  };
+  
   return (
     <div className="fixed bottom-8 right-8 z-50">
       <div 
         className={`absolute bottom-0 right-0 transform transition-all duration-300 ${
           isHovered ? "scale-110 -translate-y-2" : "scale-100"
         }`}
+        onTouchStart={handleTouch}
       >
         <Button
           className="bg-green-600 hover:bg-green-700 text-white h-16 w-16 rounded-full shadow-lg flex items-center justify-center shadow-green-900/20"
