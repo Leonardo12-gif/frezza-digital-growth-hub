@@ -37,7 +37,7 @@ const Services = () => {
       icon: Video,
       color: "bg-frezza-red/10",
       iconColor: "text-frezza-red",
-      image: `${basePath}/lovable-uploads/b234918b-d672-4dd4-8299-0603173a16f2.png`
+      image: `/lovable-uploads/b234918b-d672-4dd4-8299-0603173a16f2.png`
     },
     {
       title: "Edição de Vídeo",
@@ -45,7 +45,7 @@ const Services = () => {
       icon: Film,
       color: "bg-frezza-red/10",
       iconColor: "text-frezza-red",
-      image: `${basePath}/lovable-uploads/ed6f2a17-3f61-4200-9ab9-62e97c34467e.png`
+      image: `/lovable-uploads/ed6f2a17-3f61-4200-9ab9-62e97c34467e.png`
     },
     {
       title: "Modelo para Publicidade",
@@ -53,7 +53,7 @@ const Services = () => {
       icon: Users,
       color: "bg-frezza-red/10",
       iconColor: "text-frezza-red",
-      image: `${basePath}/lovable-uploads/13d9f5fc-872b-42e4-84ea-80665a78e30e.png`
+      image: `/lovable-uploads/13d9f5fc-872b-42e4-84ea-80665a78e30e.png`
     },
     {
       title: "Tráfego Pago",
@@ -61,7 +61,7 @@ const Services = () => {
       icon: TrendingUp,
       color: "bg-frezza-red/10",
       iconColor: "text-frezza-red",
-      image: `${basePath}/lovable-uploads/e881b66b-1dc1-4d41-9e13-5b3cb6eb74e2.png`
+      image: `/lovable-uploads/e881b66b-1dc1-4d41-9e13-5b3cb6eb74e2.png`
     },
     {
       title: "Tráfego Orgânico",
@@ -69,7 +69,7 @@ const Services = () => {
       icon: Leaf,
       color: "bg-frezza-red/10",
       iconColor: "text-frezza-red",
-      image: `${basePath}/lovable-uploads/3dcd54f4-121d-4d5b-8a01-064e9b6c7b0b.png`
+      image: `/lovable-uploads/3dcd54f4-121d-4d5b-8a01-064e9b6c7b0b.png`
     },
     {
       title: "Social Media",
@@ -77,7 +77,7 @@ const Services = () => {
       icon: Share2,
       color: "bg-frezza-red/10",
       iconColor: "text-frezza-red",
-      image: `${basePath}/lovable-uploads/7e00b413-82e9-4902-9ab2-f9f2cb975040.png`
+      image: `/lovable-uploads/7e00b413-82e9-4902-9ab2-f9f2cb975040.png`
     }
   ];
 
