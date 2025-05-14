@@ -163,3 +163,4 @@ return (
     </div>
   </section>
 );
+export default Services;
