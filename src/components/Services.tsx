@@ -161,6 +161,9 @@ return (
         </Button>
       </div>
     </div>
-  </section>
-);
+</section>
+  );
+};
+
 export default Services;
+
