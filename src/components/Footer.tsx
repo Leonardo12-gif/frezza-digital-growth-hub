@@ -1,15 +1,21 @@
-import { Facebook, Instagram, Linkedin, Mail, Phone, MessageSquare } from "lucide-react";
+
+import { Facebook, Instagram, MessageSquare, Mail, Phone } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   const services = ["Gravação de Vídeo", "Edição de Vídeo", "Modelo para Publicidade", "Tráfego Pago", "Tráfego Orgânico"];
-  return <footer className="bg-[#0a0a0a] text-white pt-24 pb-8 border-t border-[#222]">
+  // Get base URL from environment
+  const basePath = import.meta.env.BASE_URL || "/";
+  
+  return (
+    <footer className="bg-[#0a0a0a] text-white pt-24 pb-8 border-t border-[#222]">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Logo and Description */}
           <div className="space-y-6">
             <div className="mb-4">
-              <img src="/lovable-uploads/be2896ed-d56c-4196-b094-88aa9e255918.png" alt="Frezza Marketing Logo" className="h-14 w-auto" />
+              <img src={`${basePath}/lovable-uploads/be2896ed-d56c-4196-b094-88aa9e255918.png`} alt="Frezza Marketing Logo" className="h-14 w-auto" />
             </div>
             
             <p className="text-gray-400 leading-relaxed">
@@ -131,6 +137,8 @@ const Footer = () => {
           </div>
         </div>
       </div>
-    </footer>;
+    </footer>
+  );
 };
+
 export default Footer;
