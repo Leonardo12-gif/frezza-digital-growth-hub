@@ -109,13 +109,13 @@ title: "Criação de Site Profissional",
               <Card 
                 className="border-[#222] bg-[#111] shadow-xl hover:shadow-frezza-red/10 hover:border-frezza-red/40 transition-all duration-500 h-full flex flex-col overflow-hidden"
               >
-                <div className="w-full h-48 overflow-hidden">
-                  <img 
-                    src={service.image} 
-                    alt={`${service.title} - Frezza Marketing`}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                </div>
+            <div className="w-full h-48 overflow-hidden">
+  <img 
+    src={service.image} 
+    alt={`${service.title} - Frezza Marketing`}
+    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 border-b border-neutral-700"
+  />
+</div>
                 <CardHeader className={`${service.color} flex items-center justify-center py-6`}>
                   <div className="w-16 h-16 rounded-full bg-black/50 backdrop-blur-md flex items-center justify-center shadow-lg group-hover:scale-110 transition-all duration-500">
                     <service.icon className={`w-8 h-8 ${service.iconColor}`} />
