@@ -95,59 +95,71 @@ title: "Criação de Site Profissional",
     window.open(`https://wa.me/5515991273423?text=${encodedMessage}`, '_blank');
   };
 
-  return (
-    <section id="services" ref={sectionRef} className="section-padding bg-[#0a0a0a] opacity-0">
-      <div className="container mx-auto">
-        <h2 className="section-title text-gradient">Nossos Serviços</h2>
-        <p className="section-subtitle">
-          Soluções completas para elevar sua presença digital e impacto visual
-        </p>
-        
+return (
+  <section id="services" ref={sectionRef} className="section-padding bg-[#0a0a0a] opacity-0">
+    <div className="container mx-auto">
+      <h2 className="section-title text-gradient">Nossos Serviços</h2>
+      <p className="section-subtitle">
+        Soluções completas para elevar sua presença digital e impacto visual
+      </p>
+
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
-  {services.map((service, index) => (
-    <div key={service.title} className="group">
-      <Card className="border-[#222] bg-[#111] shadow-xl hover:shadow-frezza-red/10 hover:border-frezza-red/40 transition-all duration-500 h-full flex flex-col overflow-hidden">
-        
-        <div className="w-full h-48 overflow-hidden">
-          <img 
-            src={service.image} 
-            alt={`${service.title} - Frezza Marketing`}
-            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 border-b border-neutral-700 shadow-md"
-            style={{ boxShadow: '0 0 10px rgba(255, 255, 255, 0.05)' }}
-          />
-        </div>
+        {services.map((service, index) => (
+          <div key={service.title} className="group">
+            <Card className="border-[#222] bg-[#111] shadow-xl hover:shadow-frezza-red/10 hover:border-frezza-red/40 transition-all duration-500 h-full flex flex-col overflow-hidden">
+              
+              <div className="w-full h-48 overflow-hidden">
+                <img 
+                  src={service.image} 
+                  alt={`${service.title} - Frezza Marketing`}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 border-b border-neutral-700 shadow-md"
+                  style={{ boxShadow: '0 0 10px rgba(255, 255, 255, 0.05)' }}
+                />
+              </div>
 
-        <CardHeader className={`${service.color} flex items-center justify-center py-6`}>
-          <div className="w-16 h-16 rounded-full bg-black/50 backdrop-blur-md flex items-center justify-center shadow-lg group-hover:scale-110 transition-all duration-500">
-            <service.icon className={`w-8 h-8 ${service.iconColor}`} />
+              <CardHeader className={`${service.color} flex items-center justify-center py-6`}>
+                <div className="w-16 h-16 rounded-full bg-black/50 backdrop-blur-md flex items-center justify-center shadow-lg group-hover:scale-110 transition-all duration-500">
+                  <service.icon className={`w-8 h-8 ${service.iconColor}`} />
+                </div>
+              </CardHeader>
+
+              <CardContent className="pt-6 text-center flex-1 flex flex-col">
+                <CardTitle className="text-2xl mb-4 text-white group-hover:text-frezza-red transition-colors duration-300">
+                  {service.title}
+                </CardTitle>
+
+                <CardDescription className="text-gray-400 text-lg mb-6">
+                  {service.description}
+                </CardDescription>
+
+                {service.title === "Modelo para Publicidade" && (
+                  <div className="mt-auto mb-4 p-2 bg-[#1a1a1a] rounded-md">
+                    <p className="text-sm text-gray-300">Disponível nas versões masculina e feminina</p>
+                  </div>
+                )}
+
+                <div className="mt-auto">
+                  <Button 
+                    onClick={() => handleWhatsAppClick(service.title)}
+                    className="w-full bg-frezza-red hover:bg-black hover:text-frezza-red text-white font-semibold py-2 border border-frezza-red transition-all duration-300 transform hover:-translate-y-1"
+                  >
+                    QUERO UM ORÇAMENTO
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
           </div>
-        </CardHeader>
+        ))}
+      </div>
 
-        <CardContent className="pt-6 text-center flex-1 flex flex-col">
-          <CardTitle className="text-2xl mb-4 text-white group-hover:text-frezza-red transition-colors duration-300">
-            {service.title}
-          </CardTitle>
-
-          <CardDescription className="text-gray-400 text-lg mb-6">
-            {service.description}
-          </CardDescription>
-
-          {service.title === "Modelo para Publicidade" && (
-            <div className="mt-auto mb-4 p-2 bg-[#1a1a1a] rounded-md">
-              <p className="text-sm text-gray-300">Disponível nas versões masculina e feminina</p>
-            </div>
-          )}
-
-          <div className="mt-auto">
-            <Button 
-              onClick={() => handleWhatsAppClick(service.title)}
-              className="w-full bg-frezza-red hover:bg-black hover:text-frezza-red text-white font-semibold py-2 border border-frezza-red transition-all duration-300 transform hover:-translate-y-1"
-            >
-              QUERO UM ORÇAMENTO
-            </Button>
-          </div>
-        </CardContent>
-      </Card>
+      <div className="mt-24 text-center">
+        <Button 
+          className="bg-frezza-red hover:bg-frezza-red/80 text-white px-8 py-6 text-lg border border-frezza-red/20"
+          asChild
+        >
+          <a href="#contact">Entre em Contato</a>
+        </Button>
+      </div>
     </div>
-  ))}
-</div>
+  </section>
+);
