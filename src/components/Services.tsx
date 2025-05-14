@@ -1,6 +1,6 @@
 
 import { useEffect, useRef } from "react";
-import { Video, Film, Users, TrendingUp, Leaf } from "lucide-react";
+import { Video, Film, Users, TrendingUp, Leaf, Share2 } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
@@ -70,8 +70,22 @@ const Services = () => {
       color: "bg-frezza-red/10",
       iconColor: "text-frezza-red",
       image: `${basePath}/lovable-uploads/3dcd54f4-121d-4d5b-8a01-064e9b6c7b0b.png`
+    },
+    {
+      title: "Social Media",
+      description: "Gestão completa das suas redes sociais com criação de conteúdo, planejamento estratégico e análise de resultados para aumentar seu engajamento.",
+      icon: Share2,
+      color: "bg-frezza-red/10",
+      iconColor: "text-frezza-red",
+      image: `${basePath}/lovable-uploads/7e00b413-82e9-4902-9ab2-f9f2cb975040.png`
     }
   ];
+
+  const handleWhatsAppClick = (service: string) => {
+    const message = `Olá, gostaria de um orçamento para o serviço de ${service}.`;
+    const encodedMessage = encodeURIComponent(message);
+    window.open(`https://wa.me/5515991273423?text=${encodedMessage}`, '_blank');
+  };
 
   return (
     <section id="services" ref={sectionRef} className="section-padding bg-[#0a0a0a] opacity-0">
@@ -85,7 +99,7 @@ const Services = () => {
           {services.map((service, index) => (
             <div key={service.title} className="group">
               <Card 
-                className="border-[#222] bg-[#111] shadow-xl hover:shadow-frezza-red/10 hover:border-frezza-red/40 transition-all duration-500 h-full overflow-hidden"
+                className="border-[#222] bg-[#111] shadow-xl hover:shadow-frezza-red/10 hover:border-frezza-red/40 transition-all duration-500 h-full flex flex-col overflow-hidden"
               >
                 <div className="w-full h-48 overflow-hidden">
                   <img 
@@ -99,18 +113,26 @@ const Services = () => {
                     <service.icon className={`w-8 h-8 ${service.iconColor}`} />
                   </div>
                 </CardHeader>
-                <CardContent className="pt-6 text-center">
+                <CardContent className="pt-6 text-center flex-1 flex flex-col">
                   <CardTitle className="text-2xl mb-4 text-white group-hover:text-frezza-red transition-colors duration-300">
                     {service.title}
                   </CardTitle>
-                  <CardDescription className="text-gray-400 text-lg">
+                  <CardDescription className="text-gray-400 text-lg mb-6">
                     {service.description}
                   </CardDescription>
                   {service.title === "Modelo para Publicidade" && (
-                    <div className="mt-4 p-2 bg-[#1a1a1a] rounded-md">
+                    <div className="mt-auto mb-4 p-2 bg-[#1a1a1a] rounded-md">
                       <p className="text-sm text-gray-300">Disponível nas versões masculina e feminina</p>
                     </div>
                   )}
+                  <div className="mt-auto">
+                    <Button 
+                      onClick={() => handleWhatsAppClick(service.title)}
+                      className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-2 transition-all duration-300"
+                    >
+                      QUERO UM ORÇAMENTO
+                    </Button>
+                  </div>
                 </CardContent>
               </Card>
             </div>
