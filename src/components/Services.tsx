@@ -80,7 +80,7 @@ const Services = () => {
       image: `/lovable-uploads/7e00b413-82e9-4902-9ab2-f9f2cb975040.png`
     },
   {
-title: "Criação de Site Profissional LINDO",
+title: "Criação de Site Profissional",
   description: "Desenvolvimento de sites modernos, responsivos e otimizados para conversão, com identidade visual personalizada para sua marca.",
   icon: TrendingUp, 
   color: "bg-frezza-red/10",
