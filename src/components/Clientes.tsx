@@ -71,6 +71,11 @@ const Clientes = () => (
                 </div>
               </div>
             </div>
+            {/* AVISO DISCRETO abaixo da imagem do Instagram */}
+            <span className="block text-xs text-gray-400 mt-1 mb-1 text-center select-none" aria-hidden="true">
+              clique para acessar o perfil
+            </span>
+
             {/* Nome */}
             <div className="flex items-center justify-center mb-2 w-full">
               <span
