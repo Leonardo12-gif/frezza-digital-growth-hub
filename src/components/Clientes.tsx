@@ -1,4 +1,3 @@
-
 import { Instagram } from "lucide-react";
 
 // Dados dos clientes
@@ -53,24 +52,22 @@ const Clientes = () => (
           >
             {/* Avatar com borda degradê Instagram */}
             <div className="relative flex items-center justify-center mb-3">
-              {/* Círculo degradê externo */}
+              {/* Círculo degradê externo (sem borda branca interna) */}
               <div
                 className="rounded-full p-1"
                 style={{
-                  background: 'conic-gradient(from 210deg at 50% 50%, #405DE6 0deg, #5851DB 40deg, #833AB4 90deg, #C13584 140deg, #E1306C 190deg, #FD1D1D 240deg, #F56040 290deg, #FCAF45 340deg, #405DE6 360deg)'
+                  background:
+                    'conic-gradient(from 210deg at 50% 50%, #405DE6 0deg, #5851DB 40deg, #833AB4 90deg, #C13584 140deg, #E1306C 190deg, #FD1D1D 240deg, #F56040 290deg, #FCAF45 340deg, #405DE6 360deg)'
                 }}
               >
-                {/* Borda branca interna para separar o degradê da imagem */}
-                <div className="rounded-full bg-white p-1 flex items-center justify-center">
-                  <div className="w-20 h-20 rounded-full overflow-hidden bg-white flex items-center justify-center shrink-0 border-4 border-transparent">
-                    <img
-                      src={img}
-                      alt={nome}
-                      className="object-cover w-full h-full"
-                      draggable={false}
-                      loading="lazy"
-                    />
-                  </div>
+                <div className="w-20 h-20 rounded-full overflow-hidden flex items-center justify-center shrink-0 border-0">
+                  <img
+                    src={img}
+                    alt={nome}
+                    className="object-cover w-full h-full rounded-full"
+                    draggable={false}
+                    loading="lazy"
+                  />
                 </div>
               </div>
             </div>
@@ -93,7 +90,7 @@ const Clientes = () => (
                 {nome}
               </span>
             </div>
-            {/* User Instagram: permite quebra de linha, sempre centralizado e sem cortar */}
+            {/* User Instagram */}
             <a
               href={url}
               target="_blank"
@@ -155,4 +152,3 @@ const Clientes = () => (
 );
 
 export default Clientes;
-
