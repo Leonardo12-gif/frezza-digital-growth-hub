@@ -33,8 +33,8 @@ const About = () => {
                   <span className="text-white font-semibold"> criatividade</span> e 
                   <span className="text-white font-semibold"> resultados</span>. 
                   Atuamos como uma agência completa, especializada em 
-                  <span className="text-frezza-red font-semibold"> tráfego pago</span> e 
-                  <span className="text-frezza-red font-semibold"> tráfego orgânico</span>.
+                  <span className="text-frezza-red font-semibold">  Marketing Digital</span> e 
+                  <span className="text-frezza-red font-semibold">Crescimento da sua marca</span>.
                 </p>
                 
                 <p>
