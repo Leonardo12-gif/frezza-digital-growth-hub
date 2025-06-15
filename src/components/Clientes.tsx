@@ -47,14 +47,13 @@ const Clientes = () => (
         {clientes.map(({ nome, user, url, desc, img }) => (
           <div
             key={user}
-            className="flex flex-col items-center justify-between bg-[#330000] rounded-2xl shadow-md shadow-[#ea384c22] px-7 pt-8 pb-6 relative h-full min-h-[360px]
-              transition-transform hover:-translate-y-1 duration-200"
+            className="flex flex-col bg-[#330000] rounded-2xl shadow-md shadow-[#ea384c22] px-7 pt-8 pb-6 min-h-[390px] h-full justify-between items-center transition-transform hover:-translate-y-1 duration-200"
             style={{
               boxShadow: "0 6px 30px 0 #23070733, 0 0px 1.5px 0 #ea384c22",
             }}
           >
             {/* Avatar */}
-            <div className="w-20 h-20 mb-3 rounded-full border-4 border-frezza-red/70 overflow-hidden bg-white flex items-center justify-center">
+            <div className="w-20 h-20 mb-3 rounded-full border-4 border-frezza-red/70 overflow-hidden bg-white flex items-center justify-center shrink-0">
               <img
                 src={img}
                 alt={nome}
@@ -64,8 +63,8 @@ const Clientes = () => (
               />
             </div>
             {/* Nome com fundo suavizado */}
-            <div className="flex items-center justify-center mb-2">
-              <span className="px-4 py-1 rounded-lg bg-[#451818] text-white text-lg md:text-xl font-bold font-['Montserrat'] shadow-sm">
+            <div className="flex items-center justify-center mb-2 w-full">
+              <span className="px-4 py-1 rounded-lg bg-[#451818] text-white text-lg md:text-xl font-bold font-['Montserrat'] shadow-sm w-full text-center">
                 {nome}
               </span>
             </div>
@@ -88,13 +87,12 @@ const Clientes = () => (
                 {user}
               </span>
             </a>
-            {/* Descrição */}
-            <div className="text-white text-[15px] text-center mb-3 leading-snug max-w-xs mx-auto">{desc}</div>
-            {/* Sinalização extra no Instagram */}
+            {/* Descrição - define min-h para alinhar todos os cards */}
+            <div className="text-white text-[15px] text-center mb-3 leading-snug max-w-xs mx-auto min-h-[48px] flex items-center justify-center">
+              {desc}
+            </div>
+            {/* Ícone Instagram na base */}
             <div className="flex-1 flex flex-col items-center justify-end w-full">
-              <span className="text-xs text-neutral-400 mb-2 mt-auto opacity-80">
-                Clique para visitar o Instagram
-              </span>
               <a
                 href={url}
                 target="_blank"
@@ -115,4 +113,3 @@ const Clientes = () => (
 );
 
 export default Clientes;
-
