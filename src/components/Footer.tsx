@@ -1,12 +1,23 @@
-
 import { Facebook, Instagram, MessageSquare, Mail, Phone } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  const services = ["Gravação de Vídeo", "Edição de Vídeo", "Modelo para Publicidade", "Tráfego Pago", "Tráfego Orgânico"];
+  const services = [
+    "Gravação de Vídeo",
+    "Edição de Vídeo",
+    "Modelo para Publicidade",
+    "Tráfego Pago",
+    "Tráfego Orgânico"
+  ];
+  
   // Get base URL from environment
   const basePath = import.meta.env.BASE_URL || "/";
+  
+  // Utiliza o basePath corretamente, evitando "//" no caminho da imagem
+  // Remove barra final caso tenha, apenas para concatenar o path do arquivo corretamente
+  const getFullPath = (relativePath: string) =>
+    `${basePath.replace(/\/$/, "")}${relativePath.startsWith("/") ? relativePath : "/" + relativePath}`;
   
   return (
     <footer className="bg-[#0a0a0a] text-white pt-24 pb-8 border-t border-[#222]">
@@ -15,7 +26,12 @@ const Footer = () => {
           {/* Logo and Description */}
           <div className="space-y-6">
             <div className="mb-4">
-              <img src={`${basePath}/lovable-uploads/be2896ed-d56c-4196-b094-88aa9e255918.png`} alt="Frezza Marketing Logo" className="h-14 w-auto" />
+              {/* Corrigir o caminho do logo para funcionar em hospedagem tipo GitHub Pages */}
+              <img
+                src={getFullPath("/lovable-uploads/be2896ed-d56c-4196-b094-88aa9e255918.png")}
+                alt="Frezza Marketing Logo"
+                className="h-14 w-auto"
+              />
             </div>
             
             <p className="text-gray-400 leading-relaxed">
