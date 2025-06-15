@@ -1,3 +1,4 @@
+
 import { Instagram } from "lucide-react";
 
 // Dados dos clientes
@@ -50,11 +51,18 @@ const Clientes = () => (
               boxShadow: "0 6px 30px 0 #23070733, 0 0px 1.5px 0 #ea384c22",
             }}
           >
-            {/* Avatar com borda degradê Instagram */}
-            <div className="relative flex items-center justify-center mb-3">
-              {/* Círculo degradê externo (sem borda branca interna) */}
+            {/* Avatar com borda degradê Instagram - agora clicável */}
+            <a
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Abrir Instagram de ${nome}`}
+              tabIndex={0}
+              className="relative flex items-center justify-center mb-3 group outline-none focus-visible:ring-2 focus-visible:ring-frezza-red/80 rounded-full"
+              style={{ outline: "none" }}
+            >
               <div
-                className="rounded-full p-1"
+                className="rounded-full p-1 transition-all duration-150 group-hover:scale-105"
                 style={{
                   background:
                     'conic-gradient(from 210deg at 50% 50%, #405DE6 0deg, #5851DB 40deg, #833AB4 90deg, #C13584 140deg, #E1306C 190deg, #FD1D1D 240deg, #F56040 290deg, #FCAF45 340deg, #405DE6 360deg)'
@@ -70,7 +78,7 @@ const Clientes = () => (
                   />
                 </div>
               </div>
-            </div>
+            </a>
             {/* AVISO DISCRETO abaixo da imagem do Instagram */}
             <span className="block text-xs text-gray-400 mt-1 mb-1 text-center select-none" aria-hidden="true">
               clique para acessar o perfil
@@ -157,3 +165,4 @@ const Clientes = () => (
 );
 
 export default Clientes;
+
