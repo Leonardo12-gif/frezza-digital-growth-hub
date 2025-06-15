@@ -42,7 +42,6 @@ const Clientes = () => (
       <p className="text-center text-frezza-red text-base md:text-lg mb-12 select-none font-medium">
         ⚠️ Clique no <span className="inline-block px-1 rounded font-mono text-white bg-[#351718]">@</span> para acessar o perfil diretamente!
       </p>
-
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
         {clientes.map(({ nome, user, url, desc, img }) => (
           <div
@@ -62,7 +61,7 @@ const Clientes = () => (
                 loading="lazy"
               />
             </div>
-            {/* Nome com fundo suavizado e proteção contra overflow */}
+            {/* Nome */}
             <div className="flex items-center justify-center mb-2 w-full">
               <span
                 className="
@@ -81,7 +80,7 @@ const Clientes = () => (
                 {nome}
               </span>
             </div>
-            {/* User Instagram: garante que não estoura o quadrado */}
+            {/* User Instagram: permite quebra de linha, sempre centralizado e sem cortar */}
             <a
               href={url}
               target="_blank"
@@ -102,13 +101,15 @@ const Clientes = () => (
                   inline-flex items-center gap-1
                   w-full
                   justify-center
-                  max-w-[170px] sm:max-w-[13rem] md:max-w-[11.5rem] lg:max-w-[10.5rem]
-                  truncate
-                  break-all
+                  break-all break-words whitespace-pre-line
+                  text-center
                   "
                 style={{
-                  fontSize: user.length > 22 ? "0.97rem" : undefined,
-                  wordBreak: "break-all"
+                  fontSize: user.length > 22 ? "1rem" : undefined,
+                  wordBreak: "break-word",
+                  hyphens: "auto",
+                  lineHeight: "1.2",
+                  minHeight: "2.3em", // para alinhamento visual caso quebre linha
                 }}
                 title={user}
               >
