@@ -5,7 +5,7 @@ const clientes = [
   {
     nome: "Jhonne Tatuagens",
     user: "@jhonnetatuagens",
-    url: "https://instagram.com/jhonnetatuagens",
+    url: "https://www.instagram.com/jhonnetattuagens/",
     desc: "Estúdio de tatuagem com +60 mil seguidores.",
     img: "/lovable-uploads/e08283f5-4be1-4ae5-9241-475b80369b30.png"
   },
@@ -19,7 +19,7 @@ const clientes = [
   {
     nome: "Alphatruck",
     user: "@alphatruck",
-    url: "https://instagram.com/alphatruck",
+    url: "https://www.instagram.com/alphatruckofc/",
     desc: "Oficina mecânica para caminhões pesados.",
     img: "/lovable-uploads/6c16c0b7-e20b-4db3-9bb0-5cbb958765b7.png"
   },
@@ -33,9 +33,8 @@ const clientes = [
 ];
 
 const Clientes = () => (
-  <section className="section-padding bg-black">
+  <section className="py-20 px-2 bg-black">
     <div className="container mx-auto max-w-5xl">
-
       <h2 className="text-4xl md:text-5xl font-extrabold text-white text-center mb-2 font-['Montserrat']">
         Clientes que nós trabalhamos.
       </h2>
@@ -47,10 +46,10 @@ const Clientes = () => (
         {clientes.map(({ nome, user, url, desc, img }) => (
           <div
             key={user}
-            className="flex flex-col items-center bg-[#330000] rounded-xl shadow-md shadow-[#ea384c22] px-6 pt-8 pb-5 relative h-full"
+            className="flex flex-col items-center justify-between bg-[#441a1a] rounded-2xl shadow-md shadow-[#ea384c22] px-7 pt-8 pb-6 relative h-full min-h-[360px]
+              transition-transform hover:-translate-y-1 duration-200"
             style={{
               boxShadow: "0 6px 30px 0 #23070733, 0 0px 1.5px 0 #ea384c22",
-              minHeight: 340,
             }}
           >
             {/* Avatar */}
@@ -63,30 +62,52 @@ const Clientes = () => (
                 loading="lazy"
               />
             </div>
-            {/* Nome */}
-            <div className="font-bold text-lg md:text-xl text-white text-center mb-1 font-['Montserrat']">{nome}</div>
-            {/* Instagram arroba */}
+            {/* Nome com fundo suavizado */}
+            <div className="flex items-center justify-center mb-2">
+              <span className="px-4 py-1 rounded-lg bg-[#331a1a] text-white text-lg md:text-xl font-bold font-['Montserrat'] shadow-sm">
+                {nome}
+              </span>
+            </div>
+            {/* User Instagram com destaque */}
             <a
               href={url}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-semibold text-white text-base md:text-lg mb-2 hover:text-frezza-red transition duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-frezza-red/80"
+              className="
+                font-semibold text-yellow-300 text-base md:text-lg mb-2
+                hover:text-frezza-red transition duration-200
+                focus:outline-none focus-visible:ring-2 focus-visible:ring-frezza-red/80
+                px-2 py-0.5 rounded cursor-pointer
+                group
+                "
               aria-label={`Ir para o Instagram de ${nome}`}
               tabIndex={0}
               style={{ outline: "none" }}
             >
-              {user}
+              <span className="inline-flex items-center gap-1">
+                {user}
+                <span className="
+                  hidden group-hover:inline align-middle ml-1 text-[13px] font-normal text-frezza-red duration-150
+                ">
+                  (Visitar Instagram)
+                </span>
+              </span>
             </a>
             {/* Descrição */}
-            <div className="text-white text-[15px] text-center mb-3 leading-snug">{desc}</div>
-            {/* Insta Icon */}
-            <div className="flex-1 flex items-end justify-center w-full">
+            <div className="text-white text-[15px] text-center mb-3 leading-snug max-w-xs mx-auto">{desc}</div>
+            {/* Sinalização extra no Instagram */}
+            <div className="flex-1 flex flex-col items-center justify-end w-full">
+              <span className="text-xs text-neutral-400 mb-2 mt-auto opacity-80">
+                Clique para visitar o Instagram
+              </span>
               <a
                 href={url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center w-8 h-8 rounded-full duration-200 bg-[#1a1a1a] hover:bg-frezza-red/80 transition-all shadow-sm border border-[#2e1010] hover:border-frezza-red mt-2"
+                className="flex items-center justify-center w-8 h-8 rounded-full duration-200 
+                  bg-[#1a1a1a] hover:bg-frezza-red/80 transition-all shadow-sm border border-[#2e1010] hover:border-frezza-red"
                 aria-label={`Abrir Instagram de ${nome}`}
+                tabIndex={0}
               >
                 <Instagram className="text-white group-hover:text-frezza-red transition-colors" size={20} />
               </a>
@@ -99,4 +120,3 @@ const Clientes = () => (
 );
 
 export default Clientes;
-
