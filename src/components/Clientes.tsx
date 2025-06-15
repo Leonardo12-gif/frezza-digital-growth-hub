@@ -1,6 +1,7 @@
 
 import { Instagram } from "lucide-react";
 
+// Dados dos clientes
 const clientes = [
   {
     nome: "Jhonne Tatuagens",
@@ -38,22 +39,22 @@ const Clientes = () => (
       <h2 className="text-4xl md:text-5xl font-extrabold text-white text-center mb-2 font-['Montserrat']">
         Clientes que nós trabalhamos.
       </h2>
-      <p className="text-center text-yellow-400 text-base md:text-lg mb-12 select-none font-medium">
-        ⚠️ Clique no <span className="inline-block px-1 rounded font-mono text-black bg-yellow-300">@</span> para acessar o perfil diretamente!
+      <p className="text-center text-frezza-red text-base md:text-lg mb-12 select-none font-medium">
+        ⚠️ Clique no <span className="inline-block px-1 rounded font-mono text-white bg-[#351718]">@</span> para acessar o perfil diretamente!
       </p>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
         {clientes.map(({ nome, user, url, desc, img }) => (
           <div
             key={user}
-            className="flex flex-col items-center justify-between bg-[#441a1a] rounded-2xl shadow-md shadow-[#ea384c22] px-7 pt-8 pb-6 relative h-full min-h-[360px]
+            className="flex flex-col items-center justify-between bg-[#330000] rounded-2xl shadow-md shadow-[#ea384c22] px-7 pt-8 pb-6 relative h-full min-h-[360px]
               transition-transform hover:-translate-y-1 duration-200"
             style={{
               boxShadow: "0 6px 30px 0 #23070733, 0 0px 1.5px 0 #ea384c22",
             }}
           >
             {/* Avatar */}
-            <div className="w-20 h-20 mb-3 rounded-full border-4 border-frezza-red overflow-hidden bg-white flex items-center justify-center">
+            <div className="w-20 h-20 mb-3 rounded-full border-4 border-frezza-red/70 overflow-hidden bg-white flex items-center justify-center">
               <img
                 src={img}
                 alt={nome}
@@ -64,33 +65,27 @@ const Clientes = () => (
             </div>
             {/* Nome com fundo suavizado */}
             <div className="flex items-center justify-center mb-2">
-              <span className="px-4 py-1 rounded-lg bg-[#331a1a] text-white text-lg md:text-xl font-bold font-['Montserrat'] shadow-sm">
+              <span className="px-4 py-1 rounded-lg bg-[#451818] text-white text-lg md:text-xl font-bold font-['Montserrat'] shadow-sm">
                 {nome}
               </span>
             </div>
-            {/* User Instagram com destaque */}
+            {/* User Instagram em branco, hover cinza-200 */}
             <a
               href={url}
               target="_blank"
               rel="noopener noreferrer"
               className="
-                font-semibold text-yellow-300 text-base md:text-lg mb-2
-                hover:text-frezza-red transition duration-200
+                font-semibold text-white text-base md:text-lg mb-2
+                hover:text-gray-200 transition duration-200
                 focus:outline-none focus-visible:ring-2 focus-visible:ring-frezza-red/80
                 px-2 py-0.5 rounded cursor-pointer
-                group
-                "
+              "
               aria-label={`Ir para o Instagram de ${nome}`}
               tabIndex={0}
               style={{ outline: "none" }}
             >
               <span className="inline-flex items-center gap-1">
                 {user}
-                <span className="
-                  hidden group-hover:inline align-middle ml-1 text-[13px] font-normal text-frezza-red duration-150
-                ">
-                  (Visitar Instagram)
-                </span>
               </span>
             </a>
             {/* Descrição */}
@@ -109,7 +104,7 @@ const Clientes = () => (
                 aria-label={`Abrir Instagram de ${nome}`}
                 tabIndex={0}
               >
-                <Instagram className="text-white group-hover:text-frezza-red transition-colors" size={20} />
+                <Instagram className="text-white transition-colors" size={20} />
               </a>
             </div>
           </div>
@@ -120,3 +115,4 @@ const Clientes = () => (
 );
 
 export default Clientes;
+
