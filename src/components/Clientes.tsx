@@ -75,13 +75,13 @@ const Clientes = () => (
                 style={{
                   wordBreak: "break-word",
                   hyphens: "auto",
-                  fontSize: nome.length > 22 ? "1rem" : undefined, // Reduz levemente para nomes muito longos
+                  fontSize: nome.length > 22 ? "1rem" : undefined,
                 }}
               >
                 {nome}
               </span>
             </div>
-            {/* User Instagram */}
+            {/* User Instagram: garante que não estoura o quadrado */}
             <a
               href={url}
               target="_blank"
@@ -91,12 +91,27 @@ const Clientes = () => (
                 hover:text-gray-200 transition duration-200
                 focus:outline-none focus-visible:ring-2 focus-visible:ring-frezza-red/80
                 px-2 py-0.5 rounded cursor-pointer
+                w-full text-center
               "
               aria-label={`Ir para o Instagram de ${nome}`}
               tabIndex={0}
               style={{ outline: "none" }}
             >
-              <span className="inline-flex items-center gap-1 truncate max-w-full">
+              <span
+                className="
+                  inline-flex items-center gap-1
+                  w-full
+                  justify-center
+                  max-w-[170px] sm:max-w-[13rem] md:max-w-[11.5rem] lg:max-w-[10.5rem]
+                  truncate
+                  break-all
+                  "
+                style={{
+                  fontSize: user.length > 22 ? "0.97rem" : undefined,
+                  wordBreak: "break-all"
+                }}
+                title={user}
+              >
                 {user}
               </span>
             </a>
@@ -126,4 +141,3 @@ const Clientes = () => (
 );
 
 export default Clientes;
-
