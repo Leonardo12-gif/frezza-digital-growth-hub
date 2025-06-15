@@ -1,4 +1,3 @@
-
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Services from "@/components/Services";
@@ -9,6 +8,7 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import ParticlesBackground from "@/components/ParticlesBackground";
 import ContactInfo from "@/components/ContactInfo";
+import Clientes from "@/components/Clientes";
 
 const Index = () => {
   return (
@@ -28,6 +28,7 @@ const Index = () => {
         <Hero />
         <Services />
         <Portfolio />
+        <Clientes />
         <ContactInfo />
         <About />
         <ContactForm />
