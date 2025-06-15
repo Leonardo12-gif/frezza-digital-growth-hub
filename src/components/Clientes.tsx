@@ -62,13 +62,26 @@ const Clientes = () => (
                 loading="lazy"
               />
             </div>
-            {/* Nome com fundo suavizado */}
+            {/* Nome com fundo suavizado e proteção contra overflow */}
             <div className="flex items-center justify-center mb-2 w-full">
-              <span className="px-4 py-1 rounded-lg bg-[#451818] text-white text-lg md:text-xl font-bold font-['Montserrat'] shadow-sm w-full text-center">
+              <span
+                className="
+                  px-4 py-1 rounded-lg bg-[#451818] text-white text-lg md:text-xl font-bold font-['Montserrat'] shadow-sm
+                  w-full text-center break-words break-all max-w-full
+                  overflow-hidden
+                  whitespace-pre-line
+                  leading-tight
+                  "
+                style={{
+                  wordBreak: "break-word",
+                  hyphens: "auto",
+                  fontSize: nome.length > 22 ? "1rem" : undefined, // Reduz levemente para nomes muito longos
+                }}
+              >
                 {nome}
               </span>
             </div>
-            {/* User Instagram em branco, hover cinza-200 */}
+            {/* User Instagram */}
             <a
               href={url}
               target="_blank"
@@ -83,11 +96,11 @@ const Clientes = () => (
               tabIndex={0}
               style={{ outline: "none" }}
             >
-              <span className="inline-flex items-center gap-1">
+              <span className="inline-flex items-center gap-1 truncate max-w-full">
                 {user}
               </span>
             </a>
-            {/* Descrição - define min-h para alinhar todos os cards */}
+            {/* Descrição */}
             <div className="text-white text-[15px] text-center mb-3 leading-snug max-w-xs mx-auto min-h-[48px] flex items-center justify-center">
               {desc}
             </div>
@@ -113,3 +126,4 @@ const Clientes = () => (
 );
 
 export default Clientes;
+
