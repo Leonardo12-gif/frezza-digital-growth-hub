@@ -1,6 +1,7 @@
 
+
 import { useEffect, useRef } from "react";
-import { Video, Film, Users, TrendingUp, Leaf, Share2 } from "lucide-react";
+import { Video, Film, Users, TrendingUp, Leaf, Share2, Bot } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
@@ -33,7 +34,7 @@ const Services = () => {
   const services = [
     {
       title: "Gravação de Vídeo (Opcinal DRONE)",
-      description: "Produção audiovisual (captação aéria opcional) profissional com equipamentos de última geração para criar conteúdo de alta qualidade para sua marca.",
+      description: "Produção audiovisual (captação aérea opcional) profissional com equipamentos de última geração para criar conteúdo de alta qualidade para sua marca.",
       icon: Video,
       color: "bg-frezza-red/10",
       iconColor: "text-frezza-red",
@@ -79,15 +80,23 @@ const Services = () => {
       iconColor: "text-frezza-red",
       image: `/lovable-uploads/7e00b413-82e9-4902-9ab2-f9f2cb975040.png`
     },
-  {
-title: "Criação de Site Profissional",
-  description: "Desenvolvimento de sites modernos, responsivos e otimizados para conversão, com identidade visual personalizada para sua marca.",
-  icon: TrendingUp, 
-  color: "bg-frezza-red/10",
-  iconColor: "text-frezza-red",
-  image: "/lovable-uploads/criacao-de-site-profissional.png"
-  }
-];
+    {
+      title: "Criação de Site Profissional",
+      description: "Desenvolvimento de sites modernos, responsivos e otimizados para conversão, com identidade visual personalizada para sua marca.",
+      icon: TrendingUp, 
+      color: "bg-frezza-red/10",
+      iconColor: "text-frezza-red",
+      image: "/lovable-uploads/criacao-de-site-profissional.png"
+    },
+    {
+      title: "Automação e Atendimento Digital",
+      description: "Criação de fluxos com bots inteligentes para WhatsApp, Instagram e e-mail.",
+      icon: Bot,
+      color: "bg-frezza-red/10",
+      iconColor: "text-frezza-red",
+      image: "/lovable-uploads/6ea2347e-c731-4455-8faa-1b5af6e6331c.png"
+    }
+  ];
 
   const handleWhatsAppClick = (service: string) => {
     const message = `Olá, gostaria de um orçamento para o serviço de ${service}.`;
