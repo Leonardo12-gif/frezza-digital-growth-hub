@@ -1,5 +1,6 @@
 
 import { Instagram } from "lucide-react";
+import { InfiniteSlider } from "@/components/ui/infinite-slider";
 
 // Dados dos clientes
 const clientes = [
@@ -42,11 +43,11 @@ const Clientes = () => (
       <p className="text-center text-frezza-red text-base md:text-lg mb-12 select-none font-medium">
         ⚠️ Clique no <span className="inline-block px-1 rounded font-mono text-white bg-[#351718]">@</span> para acessar o perfil diretamente!
       </p>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+      <InfiniteSlider gap={32} duration={30} durationOnHover={50} className="w-full">
         {clientes.map(({ nome, user, url, desc, img }) => (
           <div
             key={user}
-            className="flex flex-col bg-[#330000] rounded-2xl shadow-md shadow-[#ea384c22] px-7 pt-8 pb-6 min-h-[390px] h-full justify-between items-center transition-transform hover:-translate-y-1 duration-200"
+            className="flex flex-col bg-[#330000] rounded-2xl shadow-md shadow-[#ea384c22] px-7 pt-8 pb-6 min-h-[390px] h-full justify-between items-center transition-transform hover:-translate-y-1 duration-200 min-w-[280px]"
             style={{
               boxShadow: "0 6px 30px 0 #23070733, 0 0px 1.5px 0 #ea384c22",
             }}
@@ -159,7 +160,7 @@ const Clientes = () => (
             </div>
           </div>
         ))}
-      </div>
+      </InfiniteSlider>
     </div>
   </section>
 );
