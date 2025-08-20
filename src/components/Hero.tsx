@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { BeamsBackground } from "@/components/ui/beams-background";
 
 const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -11,29 +12,16 @@ const Hero = () => {
   }, []);
 
   return (
-    <section 
-      id="home" 
-      className="relative min-h-screen flex items-center pt-28 pb-16"
-    >
-      {/* Background Video */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
-        <video 
-          autoPlay 
-          muted 
-          loop 
-          playsInline
-          className="absolute w-full h-full object-cover opacity-20"
-        >
-          <source src="https://cdn.coverr.co/videos/coverr-a-business-meeting-9800/1080p.mp4" type="video/mp4" />
-        </video>
-        <div className="absolute inset-0 bg-black/60 z-10"></div>
-      </div>
-      
-      {/* Background Elements */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute top-20 left-10 w-48 h-48 rounded-full bg-frezza-red opacity-5 blur-3xl"></div>
-        <div className="absolute bottom-20 right-10 w-64 h-64 rounded-full bg-frezza-red opacity-5 blur-3xl"></div>
-      </div>
+    <BeamsBackground className="relative min-h-screen" intensity="medium">
+      <section 
+        id="home" 
+        className="relative min-h-screen flex items-center pt-28 pb-16"
+      >
+        {/* Background Elements */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute top-20 left-10 w-48 h-48 rounded-full bg-frezza-red opacity-5 blur-3xl"></div>
+          <div className="absolute bottom-20 right-10 w-64 h-64 rounded-full bg-frezza-red opacity-5 blur-3xl"></div>
+        </div>
       
       <div className="container mx-auto relative z-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -128,7 +116,8 @@ const Hero = () => {
           </a>
         </div>
       </div>
-    </section>
+      </section>
+    </BeamsBackground>
   );
 };
 
