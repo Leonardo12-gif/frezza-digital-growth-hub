@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { Video, Film, Users, TrendingUp, Leaf, Share2, Bot } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { BeamsBackground } from "@/components/ui/beams-background";
 
 const Services = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -105,8 +106,9 @@ const Services = () => {
   };
 
 return (
-  <section id="services" ref={sectionRef} className="section-padding bg-[#0a0a0a] opacity-0">
-    <div className="container mx-auto">
+  <BeamsBackground className="relative" intensity="subtle">
+    <section id="services" ref={sectionRef} className="section-padding opacity-0">
+      <div className="container mx-auto relative z-10">
       <h2 className="section-title text-gradient">Nossos Serviços</h2>
       <p className="section-subtitle">
         Soluções completas para elevar sua presença digital e impacto visual
@@ -169,8 +171,9 @@ return (
           <a href="#contact">Entre em Contato</a>
         </Button>
       </div>
-    </div>
-</section>
+      </div>
+    </section>
+  </BeamsBackground>
   );
 };
 
