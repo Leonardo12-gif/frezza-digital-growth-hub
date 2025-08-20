@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import { Video, Film, Users, TrendingUp, Leaf, Share2, Bot } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { BeamsBackground } from "@/components/ui/beams-background";
+import { BackgroundPaths } from "@/components/ui/background-paths";
 
 const Services = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -106,7 +106,7 @@ const Services = () => {
   };
 
 return (
-  <BeamsBackground className="relative" intensity="subtle">
+  <BackgroundPaths className="relative">
     <section id="services" ref={sectionRef} className="section-padding opacity-0">
       <div className="container mx-auto relative z-10">
       <h2 className="section-title text-gradient">Nossos Serviços</h2>
@@ -173,7 +173,7 @@ return (
       </div>
       </div>
     </section>
-  </BeamsBackground>
+  </BackgroundPaths>
   );
 };
 
