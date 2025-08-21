@@ -20,7 +20,7 @@ const WhatsAppButton = () => {
         onTouchStart={handleTouch}
       >
         <Button
-          className="bg-green-600 hover:bg-green-700 text-white h-16 w-16 rounded-full shadow-lg flex items-center justify-center shadow-green-900/20"
+          className="bg-green-600 hover:bg-green-700 text-white h-20 w-20 rounded-full shadow-lg flex items-center justify-center shadow-green-900/20"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
           asChild
@@ -34,16 +34,16 @@ const WhatsAppButton = () => {
             <img 
               src="/lovable-uploads/700ccf25-b57c-4bb6-bc6c-e9316fe138aa.png" 
               alt="WhatsApp" 
-              className="w-8 h-8"
+              className="w-10 h-10 filter brightness-0 invert"
             />
           </a>
         </Button>
       </div>
-      {isHovered && (
-        <div className="absolute bottom-6 right-20 bg-black px-5 py-2 rounded-lg shadow-lg transform animate-fadeIn border border-green-600/20">
-          <span className="whitespace-nowrap text-sm font-medium text-white">Fale conosco</span>
-        </div>
-      )}
+        {isHovered && (
+          <div className="absolute bottom-8 right-24 bg-black px-5 py-2 rounded-lg shadow-lg transform animate-fadeIn border border-green-600/20">
+            <span className="whitespace-nowrap text-sm font-medium text-white">Fale conosco</span>
+          </div>
+        )}
     </div>
   );
 };

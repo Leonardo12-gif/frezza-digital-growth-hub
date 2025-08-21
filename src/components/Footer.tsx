@@ -45,9 +45,12 @@ const Footer = () => {
               <a href="https://www.instagram.com/fa.marketingoficial/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="w-10 h-10 rounded-full border border-[#333] flex items-center justify-center hover:border-frezza-red hover:bg-frezza-red/10 transition-colors">
                 <Instagram size={18} />
               </a>
-              
               <a href="https://wa.me/5515991273423" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="w-10 h-10 rounded-full border border-[#333] flex items-center justify-center hover:border-green-600 hover:bg-green-600/10 transition-colors">
-                <MessageSquare size={18} className="text-green-500" />
+                <img 
+                  src="/lovable-uploads/700ccf25-b57c-4bb6-bc6c-e9316fe138aa.png" 
+                  alt="WhatsApp" 
+                  className="w-5 h-5 filter brightness-0 invert"
+                />
               </a>
             </div>
           </div>
