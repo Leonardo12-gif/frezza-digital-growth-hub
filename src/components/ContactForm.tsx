@@ -96,7 +96,7 @@ const ContactForm = () => {
             {/* Decorative elements */}
             <div className="absolute -z-10 -top-10 -left-10 w-2/3 h-2/3 border border-frezza-red/20 rounded-lg"></div>
             
-            <div className="bg-[#111] p-12 rounded-lg border border-[#222] shadow-lg">
+            <div className="bg-[#111] p-12 rounded-lg border border-[#222] shadow-lg input-laser-border">
               <h3 className="text-2xl font-bold mb-6 text-white">Informações de Contato</h3>
               
               <div className="space-y-8 mt-10">
@@ -159,7 +159,7 @@ const ContactForm = () => {
             </div>
           </div>
           
-          <div className="bg-[#111] p-12 rounded-lg border border-[#222] shadow-lg relative">
+          <div className="bg-[#111] p-12 rounded-lg border border-[#222] shadow-lg relative input-laser-border">
             {/* Decorative elements */}
             <div className="absolute -z-10 -bottom-10 -right-10 w-1/2 h-1/2 border border-frezza-red/20 rounded-lg"></div>
             
