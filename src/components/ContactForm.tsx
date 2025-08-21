@@ -177,7 +177,7 @@ const ContactForm = () => {
                   onChange={handleChange}
                   placeholder="Seu nome"
                   required
-                  className="bg-[#161616] border-[#333] focus:border-frezza-red focus:ring-frezza-red/10 text-white placeholder:text-gray-500"
+                  className="bg-[#161616] border-[#333] focus:border-frezza-red focus:ring-frezza-red/10 text-white placeholder:text-gray-500 relative hover:border-transparent transition-all duration-300 hover:shadow-[0_0_0_2px_transparent] hover:bg-gradient-to-r hover:from-[#161616] hover:to-[#161616] hover:shadow-[inset_0_0_0_2px_transparent] group input-laser-border"
                 />
               </div>
               
@@ -194,7 +194,7 @@ const ContactForm = () => {
                     onChange={handleChange}
                     placeholder="seu@email.com"
                     required
-                    className="bg-[#161616] border-[#333] focus:border-frezza-red focus:ring-frezza-red/10 text-white placeholder:text-gray-500"
+                    className="bg-[#161616] border-[#333] focus:border-frezza-red focus:ring-frezza-red/10 text-white placeholder:text-gray-500 relative hover:border-transparent transition-all duration-300 hover:shadow-[0_0_0_2px_transparent] hover:bg-gradient-to-r hover:from-[#161616] hover:to-[#161616] hover:shadow-[inset_0_0_0_2px_transparent] group input-laser-border"
                   />
                 </div>
                 
@@ -208,7 +208,7 @@ const ContactForm = () => {
                     value={formData.phone}
                     onChange={handleChange}
                     placeholder="(00) 00000-0000"
-                    className="bg-[#161616] border-[#333] focus:border-frezza-red focus:ring-frezza-red/10 text-white placeholder:text-gray-500"
+                    className="bg-[#161616] border-[#333] focus:border-frezza-red focus:ring-frezza-red/10 text-white placeholder:text-gray-500 relative hover:border-transparent transition-all duration-300 hover:shadow-[0_0_0_2px_transparent] hover:bg-gradient-to-r hover:from-[#161616] hover:to-[#161616] hover:shadow-[inset_0_0_0_2px_transparent] group input-laser-border"
                   />
                 </div>
               </div>
@@ -224,7 +224,7 @@ const ContactForm = () => {
                   onChange={handleChange}
                   placeholder="Como podemos ajudar?"
                   required
-                  className="min-h-[150px] bg-[#161616] border-[#333] focus:border-frezza-red focus:ring-frezza-red/10 text-white placeholder:text-gray-500"
+                  className="min-h-[150px] bg-[#161616] border-[#333] focus:border-frezza-red focus:ring-frezza-red/10 text-white placeholder:text-gray-500 relative hover:border-transparent transition-all duration-300 hover:shadow-[0_0_0_2px_transparent] hover:bg-gradient-to-r hover:from-[#161616] hover:to-[#161616] hover:shadow-[inset_0_0_0_2px_transparent] group input-laser-border"
                 />
               </div>
               
