@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 
 function FloatingPaths({ position }: { position: number }) {
-    const paths = Array.from({ length: 36 }, (_, i) => ({
+    const paths = Array.from({ length: 24 }, (_, i) => ({ // Reduced from 36 to 24 for better mobile performance
         id: i,
         d: `M-${380 - i * 5 * position} -${189 + i * 6}C-${
             380 - i * 5 * position
@@ -22,6 +22,7 @@ function FloatingPaths({ position }: { position: number }) {
                 className="w-full h-full text-frezza-red"
                 viewBox="0 0 696 316"
                 fill="none"
+                preserveAspectRatio="xMidYMid slice" // Better mobile scaling
             >
                 <title>Background Paths</title>
                 {paths.map((path) => (

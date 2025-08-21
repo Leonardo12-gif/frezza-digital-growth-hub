@@ -28,7 +28,7 @@ const Footer = () => {
             <div className="mb-4">
               {/* Corrigir o caminho do logo para funcionar em hospedagem tipo GitHub Pages */}
               <img
-                src={getFullPath("/lovable-uploads/be2896ed-d56c-4196-b094-88aa9e255918.png")}
+                src={getFullPath("/lovable-uploads/ebe49235-58da-4d8b-bc7e-d356459a8c4f.png")}
                 alt="Frezza Marketing Logo"
                 className="h-14 w-auto"
               />

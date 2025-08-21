@@ -1,7 +1,6 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { MessageSquare } from "lucide-react";
 
 const WhatsAppButton = () => {
   const [isHovered, setIsHovered] = useState(false);
@@ -32,7 +31,11 @@ const WhatsAppButton = () => {
             rel="noopener noreferrer"
             aria-label="Chat on WhatsApp"
           >
-            <MessageSquare className="w-8 h-8 text-white" />
+            <img 
+              src="/lovable-uploads/700ccf25-b57c-4bb6-bc6c-e9316fe138aa.png" 
+              alt="WhatsApp" 
+              className="w-8 h-8"
+            />
           </a>
         </Button>
       </div>
