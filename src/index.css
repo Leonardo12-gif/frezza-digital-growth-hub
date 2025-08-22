@@ -139,7 +139,8 @@
     transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .input-laser-border:hover::before {
+  .input-laser-border:hover::before,
+  .input-laser-border:focus-within::before {
     opacity: 1;
     transform: translateX(100%);
   }
@@ -162,7 +163,8 @@
     transition: opacity 0.3s ease;
   }
 
-  .input-laser-border:hover::after {
+  .input-laser-border:hover::after,
+  .input-laser-border:focus-within::after {
     opacity: 1;
   }
 }

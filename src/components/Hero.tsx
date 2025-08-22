@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import { BeamsBackground } from "@/components/ui/beams-background";
+import { WavyBackground } from "@/components/ui/wavy-background";
 
 const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -12,7 +12,14 @@ const Hero = () => {
   }, []);
 
   return (
-    <BeamsBackground className="relative min-h-screen" intensity="medium">
+    <WavyBackground 
+      className="relative min-h-screen" 
+      colors={["#ff0000", "#cc0000", "#b30000"]}
+      backgroundFill="black"
+      waveWidth={60}
+      waveOpacity={0.6}
+      speed="fast"
+    >
       <section 
         id="home" 
         className="relative min-h-screen flex items-center pt-28 pb-16"
@@ -117,7 +124,7 @@ const Hero = () => {
         </div>
       </div>
       </section>
-    </BeamsBackground>
+    </WavyBackground>
   );
 };
 
