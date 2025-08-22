@@ -159,13 +159,13 @@ const ContactForm = () => {
             </div>
           </div>
           
-          <div className="bg-[#111] p-12 rounded-lg border border-[#222] shadow-lg relative z-20 input-laser-border">
+          <div className="bg-[#111] p-12 rounded-lg border border-[#222] shadow-lg relative input-laser-border">
             {/* Decorative elements */}
             <div className="absolute -z-10 -bottom-10 -right-10 w-1/2 h-1/2 border border-frezza-red/20 rounded-lg"></div>
             
             <h3 className="text-2xl font-bold mb-8 text-white">Envie sua mensagem</h3>
             
-            <form onSubmit={handleSubmit} className="space-y-8">
+            <form onSubmit={handleSubmit} className="space-y-8 relative z-10">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
                   Nome *
@@ -177,7 +177,7 @@ const ContactForm = () => {
                   onChange={handleChange}
                   placeholder="Seu nome"
                   required
-                  className="bg-[#161616] border-[#333] focus:border-frezza-red focus:ring-frezza-red/10 text-white placeholder:text-gray-500 relative hover:border-transparent transition-all duration-300 hover:shadow-[0_0_0_2px_transparent] hover:bg-gradient-to-r hover:from-[#161616] hover:to-[#161616] hover:shadow-[inset_0_0_0_2px_transparent] group input-laser-border"
+                  className="bg-[#161616] border-[#333] focus:border-frezza-red focus:ring-frezza-red/10 text-white placeholder:text-gray-500 relative z-10"
                 />
               </div>
               
@@ -194,7 +194,7 @@ const ContactForm = () => {
                     onChange={handleChange}
                     placeholder="seu@email.com"
                     required
-                    className="bg-[#161616] border-[#333] focus:border-frezza-red focus:ring-frezza-red/10 text-white placeholder:text-gray-500 relative hover:border-transparent transition-all duration-300 hover:shadow-[0_0_0_2px_transparent] hover:bg-gradient-to-r hover:from-[#161616] hover:to-[#161616] hover:shadow-[inset_0_0_0_2px_transparent] group input-laser-border"
+                    className="bg-[#161616] border-[#333] focus:border-frezza-red focus:ring-frezza-red/10 text-white placeholder:text-gray-500 relative z-10"
                   />
                 </div>
                 
@@ -208,7 +208,7 @@ const ContactForm = () => {
                     value={formData.phone}
                     onChange={handleChange}
                     placeholder="(00) 00000-0000"
-                    className="bg-[#161616] border-[#333] focus:border-frezza-red focus:ring-frezza-red/10 text-white placeholder:text-gray-500 relative hover:border-transparent transition-all duration-300 hover:shadow-[0_0_0_2px_transparent] hover:bg-gradient-to-r hover:from-[#161616] hover:to-[#161616] hover:shadow-[inset_0_0_0_2px_transparent] group input-laser-border"
+                    className="bg-[#161616] border-[#333] focus:border-frezza-red focus:ring-frezza-red/10 text-white placeholder:text-gray-500 relative z-10"
                   />
                 </div>
               </div>
@@ -224,13 +224,13 @@ const ContactForm = () => {
                   onChange={handleChange}
                   placeholder="Como podemos ajudar?"
                   required
-                  className="min-h-[150px] bg-[#161616] border-[#333] focus:border-frezza-red focus:ring-frezza-red/10 text-white placeholder:text-gray-500 relative hover:border-transparent transition-all duration-300 hover:shadow-[0_0_0_2px_transparent] hover:bg-gradient-to-r hover:from-[#161616] hover:to-[#161616] hover:shadow-[inset_0_0_0_2px_transparent] group input-laser-border"
+                  className="min-h-[150px] bg-[#161616] border-[#333] focus:border-frezza-red focus:ring-frezza-red/10 text-white placeholder:text-gray-500 relative z-10"
                 />
               </div>
               
               <Button 
                 type="submit" 
-                className="bg-frezza-red hover:bg-frezza-red/80 text-white border border-frezza-red/20 w-full py-6 group"
+                className="bg-frezza-red hover:bg-frezza-red/80 text-white border border-frezza-red/20 w-full py-6 group relative z-10"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? (
