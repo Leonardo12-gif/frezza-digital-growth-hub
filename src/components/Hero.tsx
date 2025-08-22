@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import { WavyBackground } from "@/components/ui/wavy-background";
+import { Vortex } from "@/components/ui/vortex";
 
 const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -12,13 +12,12 @@ const Hero = () => {
   }, []);
 
   return (
-    <WavyBackground 
-      className="relative min-h-screen" 
-      colors={["#ff0000", "#cc0000", "#b30000"]}
-      backgroundFill="black"
-      waveWidth={60}
-      waveOpacity={0.6}
-      speed="fast"
+    <Vortex 
+      backgroundColor="black"
+      baseHue={0}
+      rangeY={800}
+      particleCount={400}
+      className="relative min-h-screen"
     >
       <section 
         id="home" 
@@ -124,7 +123,7 @@ const Hero = () => {
         </div>
       </div>
       </section>
-    </WavyBackground>
+    </Vortex>
   );
 };
 
