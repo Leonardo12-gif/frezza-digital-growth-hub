@@ -106,7 +106,7 @@ const Hero = () => {
                   {/* Video container */}
                   <div className="relative w-full h-full overflow-hidden rounded-3xl bg-black">
                     <video 
-                      src="/9mb.mp4"
+                      src="/hero-video.mp4"
                       poster="/placeholder.svg"
                       autoPlay
                       muted
