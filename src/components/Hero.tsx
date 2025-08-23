@@ -104,10 +104,10 @@ const Hero = () => {
                   <div className="absolute inset-0 rounded-2xl shadow-2xl shadow-frezza-red/30 animate-float"></div>
                   
                   {/* Video container */}
-                  <div className="relative w-full h-full overflow-hidden rounded-2xl bg-black">
+                  <div className="relative w-full h-full overflow-hidden rounded-3xl bg-black">
                     <video 
-                      src="/videos/hero-video.mp4"
-                      poster={heroPoster}
+                      src="/9mb.mp4"
+                      poster="/placeholder.svg"
                       autoPlay
                       muted
                       loop
@@ -120,7 +120,7 @@ const Hero = () => {
                     />
                     {/* Fallback image if video doesn't load */}
                     <img 
-                      src={heroPoster}
+                      src="/placeholder.svg"
                       alt="Marketing digital analytics dashboard"
                       className="absolute inset-0 w-full h-full object-cover"
                       style={{ zIndex: -1 }}
