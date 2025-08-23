@@ -93,25 +93,27 @@ const Hero = () => {
               
               {/* Hero video */}
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-[45%] aspect-[9/16] overflow-hidden rounded-2xl border-2 border-frezza-red/40 bg-frezza-red/5 glass-card animate-float shadow-2xl shadow-frezza-red/20">
-                  <div className="relative w-full h-full group">
-                    {/* Animated overlay effects */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-frezza-red/10 to-transparent z-10 opacity-60"></div>
-                    <div className="absolute inset-0 ring-1 ring-frezza-red/30 rounded-2xl animate-pulse"></div>
-                    
-                    {/* Video placeholder with poster */}
-                    <img 
-                      src={heroPoster}
-                      alt="Marketing digital analytics dashboard"
-                      className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-500"
+                <div className="relative w-[45%] aspect-[9/16]">
+                  {/* Animated border effects around the video */}
+                  <div className="absolute inset-0 rounded-2xl border-2 border-frezza-red/40 animate-pulse"></div>
+                  <div className="absolute -inset-1 rounded-2xl border border-frezza-red/20 animate-spin-slow" style={{ animationDuration: '15s' }}></div>
+                  <div className="absolute -inset-2 rounded-2xl border border-white/10 animate-spin-slow" style={{ animationDuration: '20s', animationDirection: 'reverse' }}></div>
+                  
+                  {/* Glowing effect around border */}
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-frezza-red/20 via-transparent to-frezza-red/20 animate-pulse"></div>
+                  <div className="absolute inset-0 rounded-2xl shadow-2xl shadow-frezza-red/30 animate-float"></div>
+                  
+                  {/* Video container */}
+                  <div className="relative w-full h-full overflow-hidden rounded-2xl bg-black">
+                    <video 
+                      src="/videos/hero-video.mp4"
+                      poster={heroPoster}
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      className="w-full h-full object-cover"
                     />
-                    
-                    {/* Play button overlay */}
-                    <div className="absolute inset-0 flex items-center justify-center z-20">
-                      <div className="w-16 h-16 bg-frezza-red/80 rounded-full flex items-center justify-center backdrop-blur-sm animate-pulse hover:bg-frezza-red transition-colors cursor-pointer">
-                        <div className="w-0 h-0 border-l-[12px] border-l-white border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent ml-1"></div>
-                      </div>
-                    </div>
                   </div>
                 </div>
               </div>
