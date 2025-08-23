@@ -113,6 +113,17 @@ const Hero = () => {
                       loop
                       playsInline
                       className="w-full h-full object-cover"
+                      onError={(e) => {
+                        console.log("Video failed to load, using poster image");
+                        e.currentTarget.style.display = 'none';
+                      }}
+                    />
+                    {/* Fallback image if video doesn't load */}
+                    <img 
+                      src={heroPoster}
+                      alt="Marketing digital analytics dashboard"
+                      className="absolute inset-0 w-full h-full object-cover"
+                      style={{ zIndex: -1 }}
                     />
                   </div>
                 </div>
