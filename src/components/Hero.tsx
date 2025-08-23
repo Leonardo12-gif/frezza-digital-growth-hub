@@ -90,13 +90,17 @@ const Hero = () => {
                 <div className="w-[55%] h-[55%] border border-white/20 rounded-full animate-spin-slow opacity-70" style={{ animationDuration: '20s' }}></div>
               </div>
               
-              {/* Hero image */}
+              {/* Hero video */}
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-[65%] h-[65%] overflow-hidden rounded-full border-2 border-frezza-red/40 bg-frezza-red/5 glass-card animate-float">
-                  <img 
-                    src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1074&q=80" 
-                    alt="Marketing digital e análise de dados" 
-                    className="w-full h-full object-cover scale-125 opacity-80"
+                <div className="w-[45%] aspect-[9/16] overflow-hidden rounded-2xl border-2 border-frezza-red/40 bg-frezza-red/5 glass-card animate-float">
+                  <video 
+                    src="/lovable-uploads/100eceb7-350d-4d84-a3ee-35cc6138a35f.png"
+                    poster="/lovable-uploads/100eceb7-350d-4d84-a3ee-35cc6138a35f.png"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    className="w-full h-full object-cover opacity-80"
                   />
                 </div>
               </div>
