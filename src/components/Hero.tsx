@@ -93,37 +93,25 @@ const Hero = () => {
               
               {/* Hero video */}
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="relative w-[45%] aspect-[9/16]">
-                  {/* Animated border effects around the video */}
-                  <div className="absolute inset-0 rounded-2xl border-2 border-frezza-red/40 animate-pulse"></div>
-                  <div className="absolute -inset-1 rounded-2xl border border-frezza-red/20 animate-spin-slow" style={{ animationDuration: '15s' }}></div>
-                  <div className="absolute -inset-2 rounded-2xl border border-white/10 animate-spin-slow" style={{ animationDuration: '20s', animationDirection: 'reverse' }}></div>
+                <div className="relative">
+                  {/* Animated border effects around the video container */}
+                  <div className="absolute -inset-1 rounded-3xl border border-frezza-red/20 animate-spin-slow" style={{ animationDuration: '15s' }}></div>
+                  <div className="absolute -inset-2 rounded-3xl border border-white/10 animate-spin-slow" style={{ animationDuration: '20s', animationDirection: 'reverse' }}></div>
                   
                   {/* Glowing effect around border */}
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-frezza-red/20 via-transparent to-frezza-red/20 animate-pulse"></div>
-                  <div className="absolute inset-0 rounded-2xl shadow-2xl shadow-frezza-red/30 animate-float"></div>
+                  <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-frezza-red/20 via-transparent to-frezza-red/20 animate-pulse"></div>
+                  <div className="absolute -inset-1 rounded-3xl shadow-2xl shadow-frezza-red/30 animate-float"></div>
                   
-                  {/* Video container */}
-                  <div className="relative w-full h-full overflow-hidden rounded-3xl bg-black">
+                  {/* Video container with exact structure requested */}
+                  <div className="relative w-full max-w-[400px] aspect-[9/16] rounded-3xl overflow-hidden border border-white/10 ring-1 ring-white/10">
                     <video 
-                      src="/hero-video.mp4"
-                      poster="/placeholder.svg"
-                      autoPlay
-                      muted
-                      loop
-                      playsInline
-                      className="w-full h-full object-cover"
-                      onError={(e) => {
-                        console.log("Video failed to load, using poster image");
-                        e.currentTarget.style.display = 'none';
-                      }}
-                    />
-                    {/* Fallback image if video doesn't load */}
-                    <img 
-                      src="/placeholder.svg"
-                      alt="Marketing digital analytics dashboard"
-                      className="absolute inset-0 w-full h-full object-cover"
-                      style={{ zIndex: -1 }}
+                      src="/hero-video.mp4" 
+                      autoPlay 
+                      muted 
+                      loop 
+                      playsInline 
+                      poster="/placeholder.svg" 
+                      className="w-full h-full object-cover" 
                     />
                   </div>
                 </div>
