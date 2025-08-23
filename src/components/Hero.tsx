@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { Vortex } from "@/components/ui/vortex";
+import heroPoster from "@/assets/hero-video-poster.jpg";
 
 const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -92,16 +93,26 @@ const Hero = () => {
               
               {/* Hero video */}
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-[45%] aspect-[9/16] overflow-hidden rounded-2xl border-2 border-frezza-red/40 bg-frezza-red/5 glass-card animate-float">
-                  <video 
-                    src="/lovable-uploads/100eceb7-350d-4d84-a3ee-35cc6138a35f.png"
-                    poster="/lovable-uploads/100eceb7-350d-4d84-a3ee-35cc6138a35f.png"
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    className="w-full h-full object-cover opacity-80"
-                  />
+                <div className="w-[45%] aspect-[9/16] overflow-hidden rounded-2xl border-2 border-frezza-red/40 bg-frezza-red/5 glass-card animate-float shadow-2xl shadow-frezza-red/20">
+                  <div className="relative w-full h-full group">
+                    {/* Animated overlay effects */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-frezza-red/10 to-transparent z-10 opacity-60"></div>
+                    <div className="absolute inset-0 ring-1 ring-frezza-red/30 rounded-2xl animate-pulse"></div>
+                    
+                    {/* Video placeholder with poster */}
+                    <img 
+                      src={heroPoster}
+                      alt="Marketing digital analytics dashboard"
+                      className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-500"
+                    />
+                    
+                    {/* Play button overlay */}
+                    <div className="absolute inset-0 flex items-center justify-center z-20">
+                      <div className="w-16 h-16 bg-frezza-red/80 rounded-full flex items-center justify-center backdrop-blur-sm animate-pulse hover:bg-frezza-red transition-colors cursor-pointer">
+                        <div className="w-0 h-0 border-l-[12px] border-l-white border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent ml-1"></div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
               
