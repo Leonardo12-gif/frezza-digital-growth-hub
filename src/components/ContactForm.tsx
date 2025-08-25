@@ -6,6 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
 import { sendEmail } from "@/utils/emailService";
+import { WavyBackground } from "@/components/ui/wavy-background";
 
 const ContactForm = () => {
   const { toast } = useToast();
@@ -81,11 +82,18 @@ const ContactForm = () => {
   };
 
   return (
-    <section id="contact" ref={sectionRef} className="section-padding bg-[#0a0a0a] opacity-0">
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute bottom-1/3 left-1/4 w-96 h-96 rounded-full bg-frezza-red opacity-5 blur-3xl"></div>
-      </div>
-      <div className="container mx-auto relative z-10">
+    <section id="contact" ref={sectionRef} className="opacity-0">
+      <WavyBackground
+        className="min-h-screen w-full"
+        containerClassName="section-padding min-h-screen"
+        colors={["#dc2626", "#ef4444", "#f87171", "#fca5a5", "#fecaca"]}
+        waveWidth={60}
+        backgroundFill="#0a0a0a"
+        blur={15}
+        speed="slow"
+        waveOpacity={0.4}
+      >
+        <div className="container mx-auto relative z-10">
         <h2 className="section-title text-gradient">Entre em Contato</h2>
         <p className="section-subtitle">
           Vamos conversar sobre como podemos impulsionar seu negócio
@@ -245,7 +253,8 @@ const ContactForm = () => {
             </form>
           </div>
         </div>
-      </div>
+        </div>
+      </WavyBackground>
     </section>
   );
 };
