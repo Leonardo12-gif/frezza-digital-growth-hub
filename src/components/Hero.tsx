@@ -79,54 +79,44 @@ const Hero = () => {
                 : "opacity-0 translate-x-20"
             }`}
           >
-            {/* Decorative elements */}
-            <div className="w-full aspect-square relative">
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-[70%] h-[70%] border-2 border-frezza-red/30 rounded-full animate-spin-slow opacity-60" style={{ animationDuration: '30s' }}></div>
-              </div>
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-[85%] h-[85%] border border-white/10 rounded-full animate-spin-slow opacity-60" style={{ animationDuration: '25s', animationDirection: 'reverse' }}></div>
-              </div>
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-[55%] h-[55%] border border-white/20 rounded-full animate-spin-slow opacity-70" style={{ animationDuration: '20s' }}></div>
-              </div>
-              
-              {/* Hero video */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="relative">
-                  {/* Animated border effects around the video container */}
-                  <div className="absolute -inset-1 rounded-3xl border border-frezza-red/20 animate-spin-slow" style={{ animationDuration: '15s' }}></div>
-                  <div className="absolute -inset-2 rounded-3xl border border-white/10 animate-spin-slow" style={{ animationDuration: '20s', animationDirection: 'reverse' }}></div>
-                  
-                  {/* Glowing effect around border */}
-                  <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-frezza-red/20 via-transparent to-frezza-red/20 animate-pulse"></div>
-                  <div className="absolute -inset-1 rounded-3xl shadow-2xl shadow-frezza-red/30 animate-float"></div>
-                  
-                  {/* Video container with exact structure requested */}
-                  <div className="relative w-full max-w-[400px] aspect-[9/16] rounded-3xl overflow-hidden border border-white/10 ring-1 ring-white/10">
-                    <video 
-                      src="/hero-video.mp4" 
-                      autoPlay 
-                      muted 
-                      loop 
-                      playsInline 
-                      poster="/placeholder.svg" 
-                      className="w-full h-full object-cover" 
-                    />
-                  </div>
+            {/* Hero video - Responsivo */}
+            <div className="relative w-full flex items-center justify-center">
+              <div className="relative">
+                {/* Animated border effects around the video container */}
+                <div className="absolute -inset-1 rounded-3xl border border-frezza-red/20 animate-spin-slow" style={{ animationDuration: '15s' }}></div>
+                <div className="absolute -inset-2 rounded-3xl border border-white/10 animate-spin-slow" style={{ animationDuration: '20s', animationDirection: 'reverse' }}></div>
+                
+                {/* Glowing effect around border */}
+                <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-frezza-red/20 via-transparent to-frezza-red/20 animate-pulse"></div>
+                <div className="absolute -inset-1 rounded-3xl shadow-2xl shadow-frezza-red/30 animate-float"></div>
+                
+                {/* Video container responsivo */}
+                <div className="relative w-full max-w-[300px] md:max-w-[400px] rounded-3xl overflow-hidden border border-white/10 ring-1 ring-white/10" 
+                     style={{ 
+                       aspectRatio: '9/16',
+                       height: 'min(80vh, 600px)'
+                     }}>
+                  <video 
+                    src="/hero-video.mp4" 
+                    controls
+                    loop 
+                    playsInline 
+                    poster="/placeholder.svg" 
+                    className="w-full h-full object-cover" 
+                  />
                 </div>
               </div>
-              
-              {/* Stats cards */}
-              <div className="absolute top-10 -left-10 glass-card p-4 rounded-lg animate-float" style={{ animationDelay: '0.5s' }}>
-                <div className="text-xl font-bold text-frezza-red">+300%</div>
-                <div className="text-sm text-gray-300">Aumento de ROI</div>
-              </div>
-              
-              <div className="absolute bottom-5 right-0 glass-card p-4 rounded-lg animate-float" style={{ animationDelay: '1s' }}>
-                <div className="text-xl font-bold text-frezza-red">+10K</div>
-                <div className="text-sm text-gray-300">Campanhas</div>
-              </div>
+            </div>
+            
+            {/* Stats cards - Ajustadas para mobile */}
+            <div className="absolute top-4 -left-4 md:top-10 md:-left-10 glass-card p-3 md:p-4 rounded-lg animate-float text-xs md:text-sm" style={{ animationDelay: '0.5s' }}>
+              <div className="text-lg md:text-xl font-bold text-frezza-red">+300%</div>
+              <div className="text-gray-300">Aumento de ROI</div>
+            </div>
+            
+            <div className="absolute bottom-4 right-0 md:bottom-5 md:right-0 glass-card p-3 md:p-4 rounded-lg animate-float text-xs md:text-sm" style={{ animationDelay: '1s' }}>
+              <div className="text-lg md:text-xl font-bold text-frezza-red">+10K</div>
+              <div className="text-gray-300">Campanhas</div>
             </div>
           </div>
         </div>
