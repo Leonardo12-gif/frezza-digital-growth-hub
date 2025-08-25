@@ -1,5 +1,7 @@
 import { useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
 const About = () => {
   const sectionRef = useRef<HTMLElement>(null);
   useEffect(() => {
@@ -19,8 +21,82 @@ const About = () => {
       }
     };
   }, []);
-  return <section id="about" ref={sectionRef} className="section-padding bg-black opacity-0">
-      <div className="container mx-auto">
+  return <section id="about" ref={sectionRef} className="section-padding relative bg-[#030303] opacity-0 overflow-hidden">
+      {/* Geometric Background with Red Palette */}
+      <div className="absolute inset-0 bg-gradient-to-br from-red-500/[0.05] via-transparent to-rose-500/[0.05] blur-3xl" />
+      
+      <div className="absolute inset-0 overflow-hidden">
+        <motion.div
+          initial={{ opacity: 0, y: -150, rotate: -3 }}
+          animate={{ opacity: 1, y: 0, rotate: 12 }}
+          transition={{ duration: 2.4, delay: 0.3, ease: [0.23, 0.86, 0.39, 0.96] }}
+          className="absolute left-[-10%] md:left-[-5%] top-[15%] md:top-[20%]"
+        >
+          <motion.div
+            animate={{ y: [0, 15, 0] }}
+            transition={{ duration: 12, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+            style={{ width: 600, height: 140 }}
+            className="relative"
+          >
+            <div className={cn(
+              "absolute inset-0 rounded-full",
+              "bg-gradient-to-r from-red-500/[0.15] to-transparent",
+              "backdrop-blur-[2px] border-2 border-red-500/[0.25]",
+              "shadow-[0_8px_32px_0_rgba(239,68,68,0.2)]",
+              "after:absolute after:inset-0 after:rounded-full",
+              "after:bg-[radial-gradient(circle_at_50%_50%,rgba(239,68,68,0.3),transparent_70%)]"
+            )} />
+          </motion.div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: -150, rotate: 0 }}
+          animate={{ opacity: 1, y: 0, rotate: -15 }}
+          transition={{ duration: 2.4, delay: 0.5, ease: [0.23, 0.86, 0.39, 0.96] }}
+          className="absolute right-[-5%] md:right-[0%] top-[70%] md:top-[75%]"
+        >
+          <motion.div
+            animate={{ y: [0, 15, 0] }}
+            transition={{ duration: 12, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+            style={{ width: 500, height: 120 }}
+            className="relative"
+          >
+            <div className={cn(
+              "absolute inset-0 rounded-full",
+              "bg-gradient-to-r from-rose-500/[0.15] to-transparent",
+              "backdrop-blur-[2px] border-2 border-rose-500/[0.25]",
+              "shadow-[0_8px_32px_0_rgba(244,63,94,0.2)]",
+              "after:absolute after:inset-0 after:rounded-full",
+              "after:bg-[radial-gradient(circle_at_50%_50%,rgba(244,63,94,0.3),transparent_70%)]"
+            )} />
+          </motion.div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: -150, rotate: 7 }}
+          animate={{ opacity: 1, y: 0, rotate: -8 }}
+          transition={{ duration: 2.4, delay: 0.4, ease: [0.23, 0.86, 0.39, 0.96] }}
+          className="absolute left-[5%] md:left-[10%] bottom-[5%] md:bottom-[10%]"
+        >
+          <motion.div
+            animate={{ y: [0, 15, 0] }}
+            transition={{ duration: 12, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+            style={{ width: 300, height: 80 }}
+            className="relative"
+          >
+            <div className={cn(
+              "absolute inset-0 rounded-full",
+              "bg-gradient-to-r from-red-600/[0.15] to-transparent",
+              "backdrop-blur-[2px] border-2 border-red-600/[0.25]",
+              "shadow-[0_8px_32px_0_rgba(220,38,38,0.2)]",
+              "after:absolute after:inset-0 after:rounded-full",
+              "after:bg-[radial-gradient(circle_at_50%_50%,rgba(220,38,38,0.3),transparent_70%)]"
+            )} />
+          </motion.div>
+        </motion.div>
+      </div>
+
+      <div className="container mx-auto relative z-10">
         <div className="max-w-6xl mx-auto">
           <h2 className="section-title text-gradient">Sobre a Frezza Marketing</h2>
           
