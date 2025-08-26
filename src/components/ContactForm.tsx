@@ -82,10 +82,10 @@ const ContactForm = () => {
   };
 
   return (
-    <section id="contact" ref={sectionRef} className="opacity-0">
+    <section id="contact" ref={sectionRef} className="opacity-0 relative">
       <WavyBackground
-        className="min-h-screen w-full"
-        containerClassName="section-padding min-h-screen"
+        className="w-full"
+        containerClassName="section-padding py-20 md:py-32"
         colors={["#dc2626", "#ef4444", "#f87171", "#fca5a5", "#fecaca"]}
         waveWidth={60}
         backgroundFill="#0a0a0a"
