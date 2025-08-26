@@ -18,11 +18,12 @@ const Hero = () => {
       baseHue={0}
       rangeY={800}
       particleCount={400}
-      className="relative min-h-screen"
+      className="relative w-full min-h-screen min-h-[100svh]"
+      containerClassName="w-full min-h-screen min-h-[100svh]"
     >
       <section 
         id="home" 
-        className="relative min-h-screen flex items-center pt-28 pb-16"
+        className="relative w-full min-h-screen min-h-[100svh] flex items-center pt-28 pb-16 z-10"
       >
         {/* Background Elements */}
         <div className="absolute inset-0 z-0">
