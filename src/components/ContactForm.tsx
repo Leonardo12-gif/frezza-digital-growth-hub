@@ -6,7 +6,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
 import { sendEmail } from "@/utils/emailService";
-import { WavyBackground } from "@/components/ui/wavy-background";
 
 const ContactForm = () => {
   const { toast } = useToast();
@@ -82,18 +81,16 @@ const ContactForm = () => {
   };
 
   return (
-    <section id="contact" ref={sectionRef} className="opacity-0 relative">
-      <WavyBackground
-        className="w-full"
-        containerClassName="section-padding py-20 md:py-32"
-        colors={["#dc2626", "#ef4444", "#f87171", "#fca5a5", "#fecaca"]}
-        waveWidth={60}
-        backgroundFill="#0a0a0a"
-        blur={15}
-        speed="slow"
-        waveOpacity={0.4}
-      >
-        <div className="container mx-auto relative z-10">
+    <section id="contact" ref={sectionRef} className="opacity-0 relative py-20 md:py-32 bg-gradient-to-br from-[#0a0a0a] via-[#111] to-[#0a0a0a] overflow-hidden">
+      {/* Animated red particles background */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-10 left-10 w-32 h-32 bg-frezza-red/10 rounded-full blur-xl animate-pulse"></div>
+        <div className="absolute top-1/2 right-20 w-24 h-24 bg-frezza-red/15 rounded-full blur-lg animate-bounce"></div>
+        <div className="absolute bottom-20 left-1/3 w-40 h-40 bg-frezza-red/5 rounded-full blur-2xl animate-pulse delay-1000"></div>
+        <div className="absolute bottom-10 right-10 w-20 h-20 bg-frezza-red/20 rounded-full blur-md animate-ping"></div>
+      </div>
+      
+      <div className="container mx-auto relative z-10 section-padding">
         <h2 className="section-title text-gradient">Entre em Contato</h2>
         <p className="section-subtitle">
           Vamos conversar sobre como podemos impulsionar seu negócio
@@ -253,8 +250,7 @@ const ContactForm = () => {
             </form>
           </div>
         </div>
-        </div>
-      </WavyBackground>
+      </div>
     </section>
   );
 };
