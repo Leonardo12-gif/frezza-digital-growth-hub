@@ -146,6 +146,12 @@ const Footer = () => {
             &copy; {currentYear} Frezza Marketing. Todos os direitos reservados.
           </p>
           
+          <div className="flex flex-col items-center">
+            <p className="text-gray-500 text-sm mb-2 md:mb-0">
+              Site criado por: <a href="https://www.instagram.com/l.frezza/" target="_blank" rel="noopener noreferrer" className="text-frezza-red hover:text-frezza-red/80 transition-colors font-medium">Leonardo Frezza</a>
+            </p>
+          </div>
+          
           <div className="flex space-x-6 mt-4 md:mt-0 text-sm text-gray-500">
             <a href="#" className="hover:text-frezza-red transition-colors">
               Termos de Uso
