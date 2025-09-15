@@ -55,7 +55,7 @@ const Services = () => {
       icon: Video,
       color: "bg-frezza-red/10",
       iconColor: "text-frezza-red",
-      image: `/lovable-uploads/personal-media-banner.png`
+      image: `/lovable-uploads/personal-media-banner-new.png`
     },
     {
       title: "Modelo para Publicidade",
