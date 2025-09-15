@@ -36,7 +36,7 @@ const clientes = [
     user: "@fabiano.jugger",
     url: "https://www.instagram.com/fabiano.jugger",
     desc: "Atleta de fisiculturismo, campeão de Mr Olympia.",
-    img: "/lovable-uploads/fabiano-jugger.jpg"
+    img: "/lovable-uploads/fabiano-jugger-new.jpg"
   }
 ];
 
@@ -49,13 +49,13 @@ const Clientes = () => (
       <p className="text-center text-frezza-red text-base md:text-lg mb-12 select-none font-medium">
         ⚠️ Clique no <span className="inline-block px-1 rounded font-mono text-white bg-[#351718]">@</span> para acessar o perfil diretamente!
       </p>
-      <InfiniteSlider gap={32} duration={30} durationOnHover={50} className="w-full">
+      <InfiniteSlider gap={32} duration={15} durationOnHover={0} className="w-full">
         {clientes.map(({ nome, user, url, desc, img }) => (
           <div
             key={user}
-            className="flex flex-col bg-[#330000] rounded-2xl shadow-md shadow-[#ea384c22] px-7 pt-8 pb-6 min-h-[390px] h-full justify-between items-center transition-transform hover:-translate-y-1 duration-200 min-w-[280px]"
+            className="flex flex-col bg-gradient-to-br from-gray-800 via-gray-900 to-black rounded-2xl shadow-md shadow-black/50 px-7 pt-8 pb-6 min-h-[390px] h-full justify-between items-center transition-transform hover:-translate-y-1 duration-200 min-w-[280px] border border-gray-700/50"
             style={{
-              boxShadow: "0 6px 30px 0 #23070733, 0 0px 1.5px 0 #ea384c22",
+              boxShadow: "0 6px 30px 0 rgba(0,0,0,0.5), 0 0px 1.5px 0 rgba(255,255,255,0.1)",
             }}
           >
             {/* Avatar com borda degradê Instagram - agora clicável */}
@@ -95,7 +95,7 @@ const Clientes = () => (
             <div className="flex items-center justify-center mb-2 w-full">
               <span
                 className="
-                  px-4 py-1 rounded-lg bg-[#451818] text-white text-lg md:text-xl font-bold font-['Montserrat'] shadow-sm
+                  px-4 py-1 rounded-lg bg-gradient-to-r from-gray-700 to-gray-600 text-white text-lg md:text-xl font-bold font-['Montserrat'] shadow-sm
                   w-full text-center break-words break-all max-w-full
                   overflow-hidden
                   whitespace-pre-line
@@ -157,7 +157,7 @@ const Clientes = () => (
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center w-8 h-8 rounded-full duration-200 
-                  bg-[#1a1a1a] hover:bg-frezza-red/80 transition-all shadow-sm border border-[#2e1010] hover:border-frezza-red"
+                  bg-gradient-to-r from-gray-700 to-gray-600 hover:from-frezza-red hover:to-red-600 transition-all shadow-sm border border-gray-600 hover:border-frezza-red"
                 aria-label={`Abrir Instagram de ${nome}`}
                 tabIndex={0}
               >
