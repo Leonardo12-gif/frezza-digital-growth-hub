@@ -50,6 +50,14 @@ const Services = () => {
       image: `/lovable-uploads/ed6f2a17-3f61-4200-9ab9-62e97c34467e.png`
     },
     {
+      title: "Personal Media",
+      description: "É um serviço exclusivo de produção de conteúdo audiovisual para pessoas que desejam valorizar sua imagem, fortalecer a presença digital e se conectar de forma autêntica com o público.",
+      icon: Video,
+      color: "bg-frezza-red/10",
+      iconColor: "text-frezza-red",
+      image: `/lovable-uploads/personal-media-banner.png`
+    },
+    {
       title: "Modelo para Publicidade",
       description: "Modelos profissionais masculinos e femininos para campanhas publicitárias, ensaios fotográficos e gravações comerciais.",
       icon: Users,
