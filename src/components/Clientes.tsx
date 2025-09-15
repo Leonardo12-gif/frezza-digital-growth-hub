@@ -1,4 +1,3 @@
-
 import { Instagram } from "lucide-react";
 import { InfiniteSlider } from "@/components/ui/infinite-slider";
 
@@ -8,7 +7,7 @@ const clientes = [
     nome: "Jhonne Tatuagens",
     user: "@jhonnetatuagens",
     url: "https://www.instagram.com/jhonnetattuagens/",
-    desc: "Estúdio de tatuagem com +60 mil seguidores.",
+    desc: "Estúdio de tatuagem com +60 mil seguidores.",
     img: "/lovable-uploads/e08283f5-4be1-4ae5-9241-475b80369b30.png"
   },
   {
@@ -29,8 +28,15 @@ const clientes = [
     nome: "Gabriela Garcia Academy",
     user: "@gabrielagarcia.academy",
     url: "https://instagram.com/gabrielagarcia.academy",
-    desc: "Clínica estética com +220 mil seguidores.",
+    desc: "Clínica estética com +220 mil seguidores.",
     img: "/lovable-uploads/1d34533a-7917-426b-a4d8-31b5055c92e4.png"
+  },
+  {
+    nome: "Fabiano Jugger",
+    user: "@fabiano.jugger",
+    url: "https://www.instagram.com/fabiano.jugger",
+    desc: "Atleta de fisiculturismo, campeão de Mr Olympia.",
+    img: "/lovable-uploads/fabiano-jugger.jpg"
   }
 ];
 
@@ -166,4 +172,3 @@ const Clientes = () => (
 );
 
 export default Clientes;
-
