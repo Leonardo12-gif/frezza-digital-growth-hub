@@ -58,7 +58,7 @@ const Clientes = () => {
   // Auto-play
   useEffect(() => {
     if (isAutoPlaying) {
-      const interval = setInterval(nextClient, 3000);
+      const interval = setInterval(nextClient, 4000);
       return () => clearInterval(interval);
     }
   }, [isAutoPlaying]);
@@ -77,7 +77,7 @@ const Clientes = () => {
     <div
       className="flex flex-col rounded-2xl shadow-lg px-7 pt-8 pb-6 min-h-[390px] h-full justify-between items-center transition-all duration-500 min-w-[280px] max-w-[300px] mx-4 group relative overflow-hidden"
       style={{
-        boxShadow: "0 6px 30px 0 rgba(0,0,0,0.5), 0 0px 1.5px 0 rgba(255,255,255,0.1)",
+        boxShadow: "0 6px 30px 0 rgba(220,38,38,0.3), 0 0px 1.5px 0 rgba(255,255,255,0.1)",
       }}
       onMouseEnter={() => setIsAutoPlaying(false)}
       onMouseLeave={() => setIsAutoPlaying(true)}
@@ -85,9 +85,10 @@ const Clientes = () => {
       {/* Fundo animado com gradiente vermelho-preto */}
       <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black"></div>
       <div 
-        className="absolute inset-0 bg-gradient-to-br from-frezza-red/20 via-red-900/30 to-black opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+        className="absolute inset-0 bg-gradient-to-br from-red-600/30 via-red-700/50 to-black opacity-0 group-hover:opacity-100 transition-all duration-700 ease-in-out"
         style={{
-          background: "linear-gradient(135deg, rgba(234, 56, 76, 0.3) 0%, rgba(139, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.9) 100%)"
+          background: "linear-gradient(135deg, rgba(220, 38, 38, 0.4) 0%, rgba(185, 28, 28, 0.6) 30%, rgba(153, 27, 27, 0.7) 60%, rgba(0, 0, 0, 0.9) 100%)",
+          animation: "group-hover:animate-pulse"
         }}
       ></div>
       
