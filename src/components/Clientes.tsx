@@ -44,15 +44,45 @@ const clientes = [
 const Clientes = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [isManualControl, setIsManualControl] = useState(false);
 
   // Função para ir para o próximo cliente
   const nextClient = () => {
     setCurrentIndex((prev) => (prev + 1) % clientes.length);
+    setIsManualControl(true);
+    setIsPaused(true);
+    
+    // Retomar animação automática após 5 segundos
+    setTimeout(() => {
+      setIsManualControl(false);
+      setIsPaused(false);
+    }, 5000);
   };
 
   // Função para ir para o cliente anterior
   const prevClient = () => {
     setCurrentIndex((prev) => (prev - 1 + clientes.length) % clientes.length);
+    setIsManualControl(true);
+    setIsPaused(true);
+    
+    // Retomar animação automática após 5 segundos
+    setTimeout(() => {
+      setIsManualControl(false);
+      setIsPaused(false);
+    }, 5000);
+  };
+
+  // Função para controle direto pelos indicadores
+  const goToClient = (index) => {
+    setCurrentIndex(index);
+    setIsManualControl(true);
+    setIsPaused(true);
+    
+    // Retomar animação automática após 5 segundos
+    setTimeout(() => {
+      setIsManualControl(false);
+      setIsPaused(false);
+    }, 5000);
   };
 
   const ClientCard = ({ nome, user, url, desc, img }) => (
@@ -197,9 +227,10 @@ const Clientes = () => {
           {/* Container do slider com animação contínua */}
           <div className="overflow-hidden mx-0 md:mx-16">
             <div 
-              className={`flex items-center ${!isPaused ? 'animate-slide-clientes' : ''}`}
+              className={`flex items-center transition-all duration-500 ${!isPaused && !isManualControl ? 'animate-slide-clientes' : ''}`}
               style={{
                 width: `${clientes.length * 3 * 320}px`,
+                transform: isManualControl ? `translateX(-${currentIndex * 320}px)` : undefined
               }}
               onMouseEnter={() => setIsPaused(true)}
               onMouseLeave={() => setIsPaused(false)}
@@ -217,7 +248,7 @@ const Clientes = () => {
           {clientes.map((_, index) => (
             <button
               key={index}
-              onClick={() => setCurrentIndex(index)}
+              onClick={() => goToClient(index)}
               className={`w-3 h-3 rounded-full transition-all duration-300 ${
                 index === currentIndex % clientes.length
                   ? 'bg-red-600 scale-125' 
@@ -230,7 +261,12 @@ const Clientes = () => {
         {/* Status do auto-play */}
         <div className="text-center mt-4">
           <p className="text-gray-400 text-sm">
-            {isPaused ? 'Animação pausada - tire o mouse para continuar' : 'Animação ativa - passe o mouse para pausar'}
+            {isManualControl 
+              ? 'Controle manual ativo - retomará automaticamente em 5s' 
+              : isPaused 
+                ? 'Animação pausada - tire o mouse para continuar' 
+                : 'Animação ativa - passe o mouse para pausar'
+            }
           </p>
         </div>
       </div>
