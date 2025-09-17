@@ -44,6 +44,7 @@ const clientes = [
 const Clientes = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [isPaused, setIsPaused] = useState(false);
 
   // Função para ir para o próximo cliente
   const nextClient = () => {
@@ -55,13 +56,13 @@ const Clientes = () => {
     setCurrentIndex((prev) => (prev - 1 + clientes.length) % clientes.length);
   };
 
-  // Auto-play
+  // Auto-play contínuo
   useEffect(() => {
-    if (isAutoPlaying) {
-      const interval = setInterval(nextClient, 4000);
+    if (isAutoPlaying && !isPaused) {
+      const interval = setInterval(nextClient, 3000);
       return () => clearInterval(interval);
     }
-  }, [isAutoPlaying]);
+  }, [isAutoPlaying, isPaused]);
 
   // Função para obter clientes visíveis (3 por vez)
   const getVisibleClients = () => {
@@ -79,16 +80,15 @@ const Clientes = () => {
       style={{
         boxShadow: "0 6px 30px 0 rgba(220,38,38,0.3), 0 0px 1.5px 0 rgba(255,255,255,0.1)",
       }}
-      onMouseEnter={() => setIsAutoPlaying(false)}
-      onMouseLeave={() => setIsAutoPlaying(true)}
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
     >
       {/* Fundo animado com gradiente vermelho-preto */}
-      <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-red-800/30 to-black"></div>
       <div 
-        className="absolute inset-0 bg-gradient-to-br from-red-600/30 via-red-700/50 to-black opacity-0 group-hover:opacity-100 transition-all duration-700 ease-in-out"
+        className="absolute inset-0 bg-gradient-to-br from-red-600/50 via-red-700/60 to-red-900/80 opacity-0 group-hover:opacity-100 transition-all duration-700 ease-in-out transform group-hover:scale-105"
         style={{
-          background: "linear-gradient(135deg, rgba(220, 38, 38, 0.4) 0%, rgba(185, 28, 28, 0.6) 30%, rgba(153, 27, 27, 0.7) 60%, rgba(0, 0, 0, 0.9) 100%)",
-          animation: "group-hover:animate-pulse"
+          background: "linear-gradient(135deg, rgba(220, 38, 38, 0.6) 0%, rgba(185, 28, 28, 0.7) 30%, rgba(153, 27, 27, 0.8) 60%, rgba(127, 29, 29, 0.9) 100%)"
         }}
       ></div>
       
