@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Instagram, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -43,7 +43,6 @@ const clientes = [
 
 const Clientes = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [isPaused, setIsPaused] = useState(false);
 
   // Função para ir para o próximo cliente
@@ -56,32 +55,12 @@ const Clientes = () => {
     setCurrentIndex((prev) => (prev - 1 + clientes.length) % clientes.length);
   };
 
-  // Função para obter clientes visíveis (3 por vez)
-  const getVisibleClients = () => {
-    const visible = [];
-    for (let i = 0; i < 3; i++) {
-      const index = (currentIndex + i) % clientes.length;
-      visible.push({ ...clientes[index], index });
-    }
-    return visible;
-  };
-
-  // Auto-play contínuo
-  useEffect(() => {
-    if (isAutoPlaying && !isPaused) {
-      const interval = setInterval(nextClient, 3000);
-      return () => clearInterval(interval);
-    }
-  }, [isAutoPlaying, isPaused]);
-
   const ClientCard = ({ nome, user, url, desc, img }) => (
     <div
-      className="flex flex-col rounded-2xl shadow-lg px-7 pt-8 pb-6 min-h-[390px] h-full justify-between items-center transition-all duration-500 min-w-[280px] max-w-[300px] mx-4 group relative overflow-hidden"
+      className="flex flex-col rounded-2xl shadow-lg px-7 pt-8 pb-6 min-h-[390px] h-full justify-between items-center transition-all duration-500 min-w-[280px] max-w-[300px] mx-4 group relative overflow-hidden flex-shrink-0"
       style={{
         boxShadow: "0 6px 30px 0 rgba(220,38,38,0.3), 0 0px 1.5px 0 rgba(255,255,255,0.1)",
       }}
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
     >
       {/* Fundo base escuro */}
       <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-red-800/30 to-black"></div>
@@ -198,29 +177,36 @@ const Clientes = () => {
         
         {/* Container dos clientes com controles */}
         <div className="relative">
-          {/* Botão anterior */}
+          {/* Botões de controle - visíveis apenas em desktop */}
           <Button
             onClick={prevClient}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-red-600/20 hover:bg-red-600/40 text-white border border-red-600/50 hover:border-red-600 backdrop-blur-sm"
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-red-600/20 hover:bg-red-600/40 text-white border border-red-600/50 hover:border-red-600 backdrop-blur-sm hidden md:flex"
             size="icon"
           >
             <ChevronLeft className="w-6 h-6" />
           </Button>
           
-          {/* Botão próximo */}
           <Button
             onClick={nextClient}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-red-600/20 hover:bg-red-600/40 text-white border border-red-600/50 hover:border-red-600 backdrop-blur-sm"
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-red-600/20 hover:bg-red-600/40 text-white border border-red-600/50 hover:border-red-600 backdrop-blur-sm hidden md:flex"
             size="icon"
           >
             <ChevronRight className="w-6 h-6" />
           </Button>
           
-          {/* Slider dos clientes */}
-          <div className="overflow-hidden mx-16">
-            <div className="flex justify-center items-center">
-              {getVisibleClients().map((cliente, idx) => (
-                <ClientCard key={`${cliente.nome}-${cliente.index}`} {...cliente} />
+          {/* Container do slider com animação contínua */}
+          <div className="overflow-hidden mx-0 md:mx-16">
+            <div 
+              className={`flex items-center ${!isPaused ? 'animate-slide-clientes' : ''}`}
+              style={{
+                width: `${clientes.length * 3 * 320}px`,
+              }}
+              onMouseEnter={() => setIsPaused(true)}
+              onMouseLeave={() => setIsPaused(false)}
+            >
+              {/* Renderizar clientes triplicados para efeito infinito */}
+              {[...clientes, ...clientes, ...clientes].map((cliente, index) => (
+                <ClientCard key={`${cliente.nome}-${index}`} {...cliente} />
               ))}
             </div>
           </div>
@@ -233,7 +219,7 @@ const Clientes = () => {
               key={index}
               onClick={() => setCurrentIndex(index)}
               className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                index === currentIndex 
+                index === currentIndex % clientes.length
                   ? 'bg-red-600 scale-125' 
                   : 'bg-gray-600 hover:bg-gray-500'
               }`}
@@ -244,7 +230,7 @@ const Clientes = () => {
         {/* Status do auto-play */}
         <div className="text-center mt-4">
           <p className="text-gray-400 text-sm">
-            {isPaused ? 'Auto-play pausado (passe o mouse para fora)' : 'Auto-play ativo'}
+            {isPaused ? 'Animação pausada - tire o mouse para continuar' : 'Animação ativa - passe o mouse para pausar'}
           </p>
         </div>
       </div>

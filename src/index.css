@@ -171,4 +171,38 @@
   .input-laser-border:focus-within::after {
     opacity: 1;
   }
+
+  /* Animações para o slider de clientes */
+  @keyframes slideClientes {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-1600px); /* 5 clientes * 320px */
+    }
+  }
+
+  .animate-slide-clientes {
+    animation: slideClientes 20s linear infinite;
+  }
+
+  .animate-slide-clientes:hover {
+    animation-play-state: paused;
+  }
+
+  /* Responsividade mobile para animação */
+  @media (max-width: 768px) {
+    @keyframes slideClientesMobile {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-1400px); /* 5 clientes * 280px */
+      }
+    }
+    
+    .animate-slide-clientes {
+      animation: slideClientesMobile 15s linear infinite;
+    }
+  }
 }
