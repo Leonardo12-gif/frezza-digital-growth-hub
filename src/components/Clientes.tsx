@@ -56,14 +56,6 @@ const Clientes = () => {
     setCurrentIndex((prev) => (prev - 1 + clientes.length) % clientes.length);
   };
 
-  // Auto-play contínuo
-  useEffect(() => {
-    if (isAutoPlaying && !isPaused) {
-      const interval = setInterval(nextClient, 3000);
-      return () => clearInterval(interval);
-    }
-  }, [isAutoPlaying, isPaused]);
-
   // Função para obter clientes visíveis (3 por vez)
   const getVisibleClients = () => {
     const visible = [];
@@ -74,7 +66,15 @@ const Clientes = () => {
     return visible;
   };
 
-  const ClientCard = ({ nome, user, url, desc, img, index: cardIndex }) => (
+  // Auto-play contínuo
+  useEffect(() => {
+    if (isAutoPlaying && !isPaused) {
+      const interval = setInterval(nextClient, 3000);
+      return () => clearInterval(interval);
+    }
+  }, [isAutoPlaying, isPaused]);
+
+  const ClientCard = ({ nome, user, url, desc, img }) => (
     <div
       className="flex flex-col rounded-2xl shadow-lg px-7 pt-8 pb-6 min-h-[390px] h-full justify-between items-center transition-all duration-500 min-w-[280px] max-w-[300px] mx-4 group relative overflow-hidden"
       style={{
@@ -83,8 +83,10 @@ const Clientes = () => {
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      {/* Fundo animado com gradiente vermelho-preto */}
+      {/* Fundo base escuro */}
       <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-red-800/30 to-black"></div>
+      
+      {/* Fundo animado com gradiente vermelho no hover */}
       <div 
         className="absolute inset-0 bg-gradient-to-br from-red-600/50 via-red-700/60 to-red-900/80 opacity-0 group-hover:opacity-100 transition-all duration-700 ease-in-out transform group-hover:scale-105"
         style={{
@@ -94,15 +96,13 @@ const Clientes = () => {
       
       {/* Conteúdo do card */}
       <div className="relative z-10 flex flex-col h-full items-center justify-between w-full">
-        {/* Avatar com borda degradê Instagram - agora clicável */}
+        {/* Avatar com borda degradê Instagram */}
         <a
           href={url}
           target="_blank"
           rel="noopener noreferrer"
           aria-label={`Abrir Instagram de ${nome}`}
-          tabIndex={0}
-          className="relative flex items-center justify-center mb-3 group/avatar outline-none focus-visible:ring-2 focus-visible:ring-frezza-red/80 rounded-full"
-          style={{ outline: "none" }}
+          className="relative flex items-center justify-center mb-3 group/avatar outline-none focus-visible:ring-2 focus-visible:ring-red-500/80 rounded-full"
         >
           <div
             className="rounded-full p-1 transition-all duration-150 group-hover/avatar:scale-105"
@@ -123,21 +123,15 @@ const Clientes = () => {
           </div>
         </a>
         
-        {/* AVISO DISCRETO abaixo da imagem do Instagram */}
-        <span className="block text-xs text-gray-400 mt-1 mb-1 text-center select-none" aria-hidden="true">
+        {/* Aviso discreto */}
+        <span className="block text-xs text-gray-400 mt-1 mb-1 text-center select-none">
           clique para acessar o perfil
         </span>
 
         {/* Nome */}
         <div className="flex items-center justify-center mb-2 w-full">
           <span
-            className="
-              px-4 py-1 rounded-lg bg-gradient-to-r from-frezza-red/20 to-black/50 text-white text-lg md:text-xl font-bold font-['Montserrat'] shadow-sm border border-frezza-red/30
-              w-full text-center break-words break-all max-w-full
-              overflow-hidden
-              whitespace-pre-line
-              leading-tight
-              "
+            className="px-4 py-1 rounded-lg bg-gradient-to-r from-red-600/20 to-black/50 text-white text-lg md:text-xl font-bold font-['Montserrat'] shadow-sm border border-red-600/30 w-full text-center break-words leading-tight"
             style={{
               wordBreak: "break-word",
               hyphens: "auto",
@@ -153,25 +147,11 @@ const Clientes = () => {
           href={url}
           target="_blank"
           rel="noopener noreferrer"
-          className="
-            font-semibold text-white text-base md:text-lg mb-2
-            hover:text-gray-200 transition duration-200
-            focus:outline-none focus-visible:ring-2 focus-visible:ring-frezza-red/80
-            px-2 py-0.5 rounded cursor-pointer
-            w-full text-center
-          "
+          className="font-semibold text-white text-base md:text-lg mb-2 hover:text-gray-200 transition duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500/80 px-2 py-0.5 rounded cursor-pointer w-full text-center"
           aria-label={`Ir para o Instagram de ${nome}`}
-          tabIndex={0}
-          style={{ outline: "none" }}
         >
           <span
-            className="
-              inline-flex items-center gap-1
-              w-full
-              justify-center
-              break-all break-words whitespace-pre-line
-              text-center
-              "
+            className="inline-flex items-center gap-1 w-full justify-center break-all break-words whitespace-pre-line text-center"
             style={{
               fontSize: user.length > 22 ? "1rem" : undefined,
               wordBreak: "break-word",
@@ -196,10 +176,8 @@ const Clientes = () => {
             href={url}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center w-8 h-8 rounded-full duration-200 
-              bg-gradient-to-r from-frezza-red/30 to-black/50 hover:from-frezza-red hover:to-red-600 transition-all shadow-sm border border-frezza-red/40 hover:border-frezza-red"
+            className="flex items-center justify-center w-8 h-8 rounded-full duration-200 bg-gradient-to-r from-red-600/30 to-black/50 hover:from-red-600 hover:to-red-700 transition-all shadow-sm border border-red-600/40 hover:border-red-600"
             aria-label={`Abrir Instagram de ${nome}`}
-            tabIndex={0}
           >
             <Instagram className="text-white transition-colors" size={20} />
           </a>
@@ -214,8 +192,8 @@ const Clientes = () => {
         <h2 className="text-4xl md:text-5xl font-extrabold text-white text-center mb-2 font-['Montserrat']">
           Clientes que nós trabalhamos.
         </h2>
-        <p className="text-center text-frezza-red text-base md:text-lg mb-12 select-none font-medium">
-          ⚠️ Clique no <span className="inline-block px-1 rounded font-mono text-white bg-[#351718]">@</span> para acessar o perfil diretamente!
+        <p className="text-center text-red-500 text-base md:text-lg mb-12 select-none font-medium">
+          ⚠️ Clique no <span className="inline-block px-1 rounded font-mono text-white bg-red-900/50">@</span> para acessar o perfil diretamente!
         </p>
         
         {/* Container dos clientes com controles */}
@@ -223,7 +201,7 @@ const Clientes = () => {
           {/* Botão anterior */}
           <Button
             onClick={prevClient}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-frezza-red/20 hover:bg-frezza-red/40 text-white border border-frezza-red/50 hover:border-frezza-red backdrop-blur-sm"
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-red-600/20 hover:bg-red-600/40 text-white border border-red-600/50 hover:border-red-600 backdrop-blur-sm"
             size="icon"
           >
             <ChevronLeft className="w-6 h-6" />
@@ -232,7 +210,7 @@ const Clientes = () => {
           {/* Botão próximo */}
           <Button
             onClick={nextClient}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-frezza-red/20 hover:bg-frezza-red/40 text-white border border-frezza-red/50 hover:border-frezza-red backdrop-blur-sm"
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-red-600/20 hover:bg-red-600/40 text-white border border-red-600/50 hover:border-red-600 backdrop-blur-sm"
             size="icon"
           >
             <ChevronRight className="w-6 h-6" />
@@ -256,7 +234,7 @@ const Clientes = () => {
               onClick={() => setCurrentIndex(index)}
               className={`w-3 h-3 rounded-full transition-all duration-300 ${
                 index === currentIndex 
-                  ? 'bg-frezza-red scale-125' 
+                  ? 'bg-red-600 scale-125' 
                   : 'bg-gray-600 hover:bg-gray-500'
               }`}
             />
@@ -266,7 +244,7 @@ const Clientes = () => {
         {/* Status do auto-play */}
         <div className="text-center mt-4">
           <p className="text-gray-400 text-sm">
-            {isAutoPlaying ? 'Auto-play ativo' : 'Passe o mouse para retomar o auto-play'}
+            {isPaused ? 'Auto-play pausado (passe o mouse para fora)' : 'Auto-play ativo'}
           </p>
         </div>
       </div>
