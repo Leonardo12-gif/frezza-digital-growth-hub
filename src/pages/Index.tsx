@@ -12,9 +12,12 @@ import Clientes from "@/components/Clientes";
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex flex-col relative bg-black bg-noise overflow-hidden">
-      {/* Background elements */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
+    <div className="min-h-screen flex flex-col relative bg-black md:bg-noise overflow-hidden">
+      {/* Mobile gradient background */}
+      <div className="md:hidden fixed inset-0 bg-gradient-to-br from-red-900/40 via-red-800/20 to-black z-0"></div>
+      
+      {/* Background elements - only on tablet/PC */}
+      <div className="hidden md:block fixed inset-0 overflow-hidden pointer-events-none z-0">
         <ParticlesBackground />
         <div className="absolute top-1/4 left-10 md:left-20 w-64 h-64 rounded-full bg-frezza-red opacity-5 blur-3xl"></div>
         <div className="absolute top-3/4 right-10 md:right-20 w-64 h-64 rounded-full bg-frezza-red opacity-5 blur-3xl"></div>

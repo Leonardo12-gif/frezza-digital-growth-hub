@@ -76,7 +76,7 @@ const Clientes = () => {
 
   const ClientCard = ({ nome, user, url, desc, img }) => (
     <div
-      className="flex flex-col rounded-2xl shadow-lg px-7 pt-8 pb-6 min-h-[390px] h-full justify-between items-center transition-all duration-500 min-w-[280px] max-w-[300px] mx-4 group relative overflow-hidden"
+      className="flex flex-col rounded-2xl shadow-lg px-4 md:px-7 pt-6 md:pt-8 pb-4 md:pb-6 min-h-[320px] md:min-h-[390px] h-full justify-between items-center transition-all duration-500 w-full max-w-[260px] md:min-w-[280px] md:max-w-[300px] mx-2 md:mx-4 group relative overflow-hidden"
       style={{
         boxShadow: "0 6px 30px 0 rgba(220,38,38,0.3), 0 0px 1.5px 0 rgba(255,255,255,0.1)",
       }}
@@ -111,7 +111,7 @@ const Clientes = () => {
                 'conic-gradient(from 210deg at 50% 50%, #405DE6 0deg, #5851DB 40deg, #833AB4 90deg, #C13584 140deg, #E1306C 190deg, #FD1D1D 240deg, #F56040 290deg, #FCAF45 340deg, #405DE6 360deg)'
             }}
           >
-            <div className="w-20 h-20 rounded-full overflow-hidden flex items-center justify-center shrink-0 border-0">
+            <div className="w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden flex items-center justify-center shrink-0 border-0">
               <img
                 src={img}
                 alt={nome}
@@ -198,27 +198,33 @@ const Clientes = () => {
         
         {/* Container dos clientes com controles */}
         <div className="relative">
-          {/* Botão anterior */}
+          {/* Botão anterior - apenas desktop */}
           <Button
             onClick={prevClient}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-red-600/20 hover:bg-red-600/40 text-white border border-red-600/50 hover:border-red-600 backdrop-blur-sm"
+            className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-red-600/20 hover:bg-red-600/40 text-white border border-red-600/50 hover:border-red-600 backdrop-blur-sm"
             size="icon"
           >
             <ChevronLeft className="w-6 h-6" />
           </Button>
           
-          {/* Botão próximo */}
+          {/* Botão próximo - apenas desktop */}
           <Button
             onClick={nextClient}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-red-600/20 hover:bg-red-600/40 text-white border border-red-600/50 hover:border-red-600 backdrop-blur-sm"
+            className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-red-600/20 hover:bg-red-600/40 text-white border border-red-600/50 hover:border-red-600 backdrop-blur-sm"
             size="icon"
           >
             <ChevronRight className="w-6 h-6" />
           </Button>
           
           {/* Slider dos clientes */}
-          <div className="overflow-hidden mx-16">
-            <div className="flex justify-center items-center">
+          <div className="overflow-hidden mx-0 md:mx-16">
+            {/* Mobile: um cliente por vez */}
+            <div className="md:hidden flex justify-center items-center">
+              <ClientCard {...clientes[currentIndex]} />
+            </div>
+            
+            {/* Desktop: três clientes por vez */}
+            <div className="hidden md:flex justify-center items-center">
               {getVisibleClients().map((cliente, idx) => (
                 <ClientCard key={`${cliente.nome}-${cliente.index}`} {...cliente} />
               ))}
@@ -241,8 +247,28 @@ const Clientes = () => {
           ))}
         </div>
         
-        {/* Status do auto-play */}
-        <div className="text-center mt-4">
+        {/* Botões de navegação mobile */}
+        <div className="md:hidden flex justify-center mt-6 space-x-4">
+          <Button
+            onClick={prevClient}
+            className="bg-red-600/20 hover:bg-red-600/40 text-white border border-red-600/50 hover:border-red-600 backdrop-blur-sm"
+            size="sm"
+          >
+            <ChevronLeft className="w-4 h-4 mr-1" />
+            Anterior
+          </Button>
+          <Button
+            onClick={nextClient}
+            className="bg-red-600/20 hover:bg-red-600/40 text-white border border-red-600/50 hover:border-red-600 backdrop-blur-sm"
+            size="sm"
+          >
+            Próximo
+            <ChevronRight className="w-4 h-4 ml-1" />
+          </Button>
+        </div>
+
+        {/* Status do auto-play - apenas desktop */}
+        <div className="hidden md:block text-center mt-4">
           <p className="text-gray-400 text-sm">
             {isPaused ? 'Auto-play pausado (passe o mouse para fora)' : 'Auto-play ativo'}
           </p>
