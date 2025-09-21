@@ -21,7 +21,7 @@ const Index = () => {
         <ParticlesBackground />
         <div className="absolute top-1/4 left-10 md:left-20 w-64 h-64 rounded-full bg-frezza-red opacity-5 blur-3xl"></div>
         <div className="absolute top-3/4 right-10 md:right-20 w-64 h-64 rounded-full bg-frezza-red opacity-5 blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/3 w-32 h-32 rounded-full bg-white opacity-[0.03] blur-xl"></div>
+        <div className="absolute top-1/2 left-1/3 w-32 h-32 rounded-full bg-white opacity-[0.03] blur-xl"></div>  
         <div className="absolute bottom-1/4 right-1/3 w-48 h-48 rounded-full bg-frezza-red opacity-[0.05] blur-2xl"></div>
       </div>
       
