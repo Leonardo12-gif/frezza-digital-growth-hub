@@ -17,7 +17,7 @@ const Index = () => {
   return (
     <div className="min-h-screen flex flex-col relative bg-black md:bg-noise overflow-hidden">
       {/* Mobile gradient background */}
-      <div className="md:hidden fixed inset-0 bg-gradient-to-br from-red-900/40 via-red-800/20 to-black z-0"></div>
+      <div className="md:hidden fixed inset-0 bg-gradient-to-br from-red-600 via-red-900 to-black z-0"></div>
       
       {/* Background elements - only on tablet/PC */}
       {!isMobile && (
