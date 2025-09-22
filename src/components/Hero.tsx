@@ -4,32 +4,28 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { Vortex } from "@/components/ui/vortex";
 import heroPoster from "@/assets/hero-video-poster.jpg";
+import useMobileDetect from "@/hooks/use-mobile-detect";
 
 const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
+  const isMobile = useMobileDetect();
 
   useEffect(() => {
     setIsLoaded(true);
   }, []);
 
-  return (
-    <Vortex 
-      backgroundColor="black"
-      baseHue={0}
-      rangeY={800}
-      particleCount={400}
-      className="relative w-full min-h-screen min-h-[100svh]"
-      containerClassName="w-full min-h-screen min-h-[100svh]"
+  const content = (
+    <section 
+      id="home" 
+      className="relative w-full min-h-screen min-h-[100svh] flex items-center pt-28 pb-16 z-10"
     >
-      <section 
-        id="home" 
-        className="relative w-full min-h-screen min-h-[100svh] flex items-center pt-28 pb-16 z-10"
-      >
-        {/* Background Elements */}
-        <div className="absolute inset-0 z-0">
-          <div className="absolute top-20 left-10 w-48 h-48 rounded-full bg-frezza-red opacity-5 blur-3xl"></div>
-          <div className="absolute bottom-20 right-10 w-64 h-64 rounded-full bg-frezza-red opacity-5 blur-3xl"></div>
-        </div>
+        {/* Background Elements - only on desktop */}
+        {!isMobile && (
+          <div className="absolute inset-0 z-0">
+            <div className="absolute top-20 left-10 w-48 h-48 rounded-full bg-frezza-red opacity-5 blur-3xl"></div>
+            <div className="absolute bottom-20 right-10 w-64 h-64 rounded-full bg-frezza-red opacity-5 blur-3xl"></div>
+          </div>
+        )}
       
       <div className="container mx-auto relative z-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -41,7 +37,9 @@ const Hero = () => {
             }`}
           >
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
-              Transformamos 
+              <span className="bg-gradient-to-r from-red-600 via-red-500 to-red-900 bg-clip-text text-transparent">
+                Transformamos
+              </span>
               <span className="text-frezza-red block mt-2 md:mt-4 glow"> cliques </span>
               em 
               <span className="text-frezza-red glow"> resultados reais</span>
@@ -80,16 +78,20 @@ const Hero = () => {
                 : "opacity-0 translate-x-20"
             }`}
           >
-            {/* Hero video - Responsivo */}
-            <div className="relative w-full flex items-center justify-center">
-              <div className="relative">
-                {/* Animated border effects around the video container */}
-                <div className="absolute -inset-1 rounded-3xl border border-frezza-red/20 animate-spin-slow" style={{ animationDuration: '15s' }}></div>
-                <div className="absolute -inset-2 rounded-3xl border border-white/10 animate-spin-slow" style={{ animationDuration: '20s', animationDirection: 'reverse' }}></div>
-                
-                {/* Glowing effect around border */}
-                <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-frezza-red/20 via-transparent to-frezza-red/20 animate-pulse"></div>
-                <div className="absolute -inset-1 rounded-3xl shadow-2xl shadow-frezza-red/30 animate-float"></div>
+             {/* Hero video - Responsivo */}
+             <div className="relative w-full flex items-center justify-center">
+               <div className="relative">
+                 {/* Animated border effects around the video container - only on desktop */}
+                 {!isMobile && (
+                   <>
+                     <div className="absolute -inset-1 rounded-3xl border border-frezza-red/20 animate-spin-slow" style={{ animationDuration: '15s' }}></div>
+                     <div className="absolute -inset-2 rounded-3xl border border-white/10 animate-spin-slow" style={{ animationDuration: '20s', animationDirection: 'reverse' }}></div>
+                     
+                     {/* Glowing effect around border */}
+                     <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-frezza-red/20 via-transparent to-frezza-red/20 animate-pulse"></div>
+                     <div className="absolute -inset-1 rounded-3xl shadow-2xl shadow-frezza-red/30 animate-float"></div>
+                   </>
+                 )}
                 
                 {/* Video container responsivo */}
                 <div className="relative w-full max-w-[300px] md:max-w-[400px] rounded-3xl overflow-hidden border border-white/10 ring-1 ring-white/10" 
@@ -109,16 +111,16 @@ const Hero = () => {
               </div>
             </div>
             
-            {/* Stats cards - Ajustadas para mobile */}
-            <div className="absolute top-4 -left-4 md:top-10 md:-left-10 glass-card p-3 md:p-4 rounded-lg animate-float text-xs md:text-sm" style={{ animationDelay: '0.5s' }}>
-              <div className="text-lg md:text-xl font-bold text-frezza-red">+300%</div>
-              <div className="text-gray-300">Aumento de ROI</div>
-            </div>
-            
-            <div className="absolute bottom-4 right-0 md:bottom-5 md:right-0 glass-card p-3 md:p-4 rounded-lg animate-float text-xs md:text-sm" style={{ animationDelay: '1s' }}>
-              <div className="text-lg md:text-xl font-bold text-frezza-red">+10K</div>
-              <div className="text-gray-300">Campanhas</div>
-            </div>
+             {/* Stats cards - Ajustadas para mobile, animações apenas no desktop */}
+             <div className={`absolute top-4 -left-4 md:top-10 md:-left-10 glass-card p-3 md:p-4 rounded-lg text-xs md:text-sm ${!isMobile ? 'animate-float' : ''}`} style={{ animationDelay: '0.5s' }}>
+               <div className="text-lg md:text-xl font-bold text-frezza-red">+300%</div>
+               <div className="text-gray-300">Aumento de ROI</div>
+             </div>
+             
+             <div className={`absolute bottom-4 right-0 md:bottom-5 md:right-0 glass-card p-3 md:p-4 rounded-lg text-xs md:text-sm ${!isMobile ? 'animate-float' : ''}`} style={{ animationDelay: '1s' }}>
+               <div className="text-lg md:text-xl font-bold text-frezza-red">+10K</div>
+               <div className="text-gray-300">Campanhas</div>
+             </div>
           </div>
         </div>
         
@@ -130,6 +132,18 @@ const Hero = () => {
         </div>
       </div>
       </section>
+  );
+
+  return isMobile ? content : (
+    <Vortex 
+      backgroundColor="black"
+      baseHue={0}
+      rangeY={800}
+      particleCount={400}
+      className="relative w-full min-h-screen min-h-[100svh]"
+      containerClassName="w-full min-h-screen min-h-[100svh]"
+    >
+      {content}
     </Vortex>
   );
 };
