@@ -105,7 +105,7 @@
   }
 
   .glow {
-    text-shadow: 0 0 10px rgba(234, 56, 76, 0.5);
+    text-shadow: 0 0 10px rgba(220, 38, 38, 0.5);
   }
 
   .bg-noise {
@@ -128,7 +128,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(90deg, transparent 0%, #ea384c 50%, transparent 100%);
+    background: linear-gradient(90deg, transparent 0%, #dc2626 50%, transparent 100%);
     border-radius: inherit;
     padding: 2px;
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
@@ -157,7 +157,7 @@
     background: transparent;
     border: 2px solid transparent;
     border-radius: inherit;
-    background: linear-gradient(90deg, transparent, #ea384c, transparent) border-box;
+    background: linear-gradient(90deg, transparent, #dc2626, transparent) border-box;
     mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
     mask-composite: exclude;
     -webkit-mask-composite: xor;

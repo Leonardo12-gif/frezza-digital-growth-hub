@@ -24,19 +24,19 @@ const Hero = () => {
                 : "opacity-0 translate-y-10"
             }`}
           >
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight px-4 sm:px-0">
               Transformamos 
               <span className="text-frezza-red block mt-2 md:mt-4 glow"> cliques </span>
               em 
               <span className="text-frezza-red glow"> resultados reais</span>
             </h1>
             
-            <p className="text-xl md:text-2xl text-gray-300 max-w-xl">
+            <p className="text-lg sm:text-xl md:text-2xl text-gray-300 max-w-xl px-4 sm:px-0">
               Sua marca com mais visibilidade, estratégia e performance.
               Conte com quem entende de crescimento digital.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+            <div className="flex flex-col sm:flex-row gap-4 pt-4 px-4 sm:px-0">
               <Button 
                 className="bg-frezza-red hover:bg-frezza-red/80 text-white px-6 py-7 text-lg border border-frezza-red/20" 
                 asChild

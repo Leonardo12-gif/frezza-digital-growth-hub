@@ -59,7 +59,7 @@ export default {
 					dark: '#1E40AF',
 					accent: '#F59E0B',
 					gray: '#6B7280',
-					red: '#ea384c',
+					red: '#dc2626',
 				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
