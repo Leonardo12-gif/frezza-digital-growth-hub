@@ -45,15 +45,26 @@ const Clientes = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [isPaused, setIsPaused] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
 
   // Função para ir para o próximo cliente
   const nextClient = () => {
-    setCurrentIndex((prev) => (prev + 1) % clientes.length);
+    if (isAnimating) return;
+    setIsAnimating(true);
+    setTimeout(() => {
+      setCurrentIndex((prev) => (prev + 1) % clientes.length);
+      setIsAnimating(false);
+    }, 150);
   };
 
   // Função para ir para o cliente anterior
   const prevClient = () => {
-    setCurrentIndex((prev) => (prev - 1 + clientes.length) % clientes.length);
+    if (isAnimating) return;
+    setIsAnimating(true);
+    setTimeout(() => {
+      setCurrentIndex((prev) => (prev - 1 + clientes.length) % clientes.length);
+      setIsAnimating(false);
+    }, 150);
   };
 
   // Função para obter clientes visíveis (3 por vez)
@@ -74,9 +85,11 @@ const Clientes = () => {
     }
   }, [isAutoPlaying, isPaused]);
 
-  const ClientCard = ({ nome, user, url, desc, img }) => (
+  const ClientCard = ({ nome, user, url, desc, img, isActive = true }) => (
     <div
-      className="flex flex-col rounded-2xl shadow-lg px-4 md:px-7 pt-6 md:pt-8 pb-4 md:pb-6 min-h-[320px] md:min-h-[390px] h-full justify-between items-center transition-all duration-700 ease-in-out w-full max-w-[260px] md:min-w-[280px] md:max-w-[300px] mx-2 md:mx-4 group relative overflow-hidden"
+      className={`flex flex-col rounded-2xl shadow-lg px-4 md:px-7 pt-6 md:pt-8 pb-4 md:pb-6 min-h-[320px] md:min-h-[390px] h-full justify-between items-center transition-all duration-700 ease-in-out w-full max-w-[260px] md:min-w-[280px] md:max-w-[300px] mx-2 md:mx-4 group relative overflow-hidden ${
+        isActive ? 'opacity-100 transform translate-x-0 scale-100' : 'opacity-30 transform translate-x-4 scale-95'
+      }`}
       style={{
         boxShadow: "0 6px 30px 0 rgba(220,38,38,0.3), 0 0px 1.5px 0 rgba(255,255,255,0.1)",
       }}
@@ -218,16 +231,53 @@ const Clientes = () => {
           
           {/* Slider dos clientes */}
           <div className="overflow-hidden mx-0 md:mx-16">
-            {/* Mobile: um cliente por vez */}
-            <div className="md:hidden flex justify-center items-center">
-              <ClientCard {...clientes[currentIndex]} />
+            {/* Mobile: um cliente por vez com animação */}
+            <div className="md:hidden flex justify-center items-center relative h-[390px]">
+              <div 
+                className="flex transition-transform duration-500 ease-out"
+                style={{ 
+                  transform: `translateX(-${currentIndex * 100}%)`,
+                  width: `${clientes.length * 100}%`
+                }}
+              >
+                {clientes.map((cliente, index) => (
+                  <div 
+                    key={cliente.nome} 
+                    className="w-full flex justify-center items-center"
+                    style={{ width: `${100 / clientes.length}%` }}
+                  >
+                    <ClientCard {...cliente} isActive={index === currentIndex} />
+                  </div>
+                ))}
+              </div>
             </div>
             
-            {/* Desktop: três clientes por vez */}
-            <div className="hidden md:flex justify-center items-center">
-              {getVisibleClients().map((cliente, idx) => (
-                <ClientCard key={`${cliente.nome}-${cliente.index}`} {...cliente} />
-              ))}
+            {/* Desktop: três clientes por vez com animação */}
+            <div className="hidden md:flex justify-center items-center relative overflow-hidden h-[420px]">
+              <div 
+                className="flex transition-transform duration-600 ease-out"
+                style={{ 
+                  transform: `translateX(-${currentIndex * (100 / 3)}%)`,
+                  width: `${clientes.length * (100 / 3)}%`
+                }}
+              >
+                {clientes.map((cliente, index) => (
+                  <div 
+                    key={cliente.nome} 
+                    className="flex justify-center items-center"
+                    style={{ width: `${100 / clientes.length}%` }}
+                  >
+                    <ClientCard 
+                      {...cliente} 
+                      isActive={
+                        index === currentIndex || 
+                        index === (currentIndex + 1) % clientes.length || 
+                        index === (currentIndex + 2) % clientes.length
+                      } 
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -237,10 +287,18 @@ const Clientes = () => {
           {clientes.map((_, index) => (
             <button
               key={index}
-              onClick={() => setCurrentIndex(index)}
+              onClick={() => {
+                if (!isAnimating) {
+                  setIsAnimating(true);
+                  setTimeout(() => {
+                    setCurrentIndex(index);
+                    setIsAnimating(false);
+                  }, 150);
+                }
+              }}
               className={`w-3 h-3 rounded-full transition-all duration-500 ease-in-out ${
                 index === currentIndex 
-                  ? 'bg-red-600 scale-125' 
+                  ? 'bg-red-600 scale-125 shadow-lg shadow-red-600/50' 
                   : 'bg-gray-600 hover:bg-gray-500 hover:scale-110'
               }`}
             />
@@ -270,7 +328,7 @@ const Clientes = () => {
         {/* Status do auto-play - apenas desktop */}
         <div className="hidden md:block text-center mt-4">
           <p className="text-gray-400 text-sm">
-            {isPaused ? 'Auto-play pausado (passe o mouse para fora)' : 'Auto-play ativo'}
+            {isPaused ? 'Auto-play pausado (passe o mouse para fora)' : isAnimating ? 'Mudando slide...' : 'Auto-play ativo'}
           </p>
         </div>
       </div>
