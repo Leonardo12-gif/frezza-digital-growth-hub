@@ -69,14 +69,14 @@ const Clientes = () => {
   // Auto-play contínuo
   useEffect(() => {
     if (isAutoPlaying && !isPaused) {
-      const interval = setInterval(nextClient, 3000);
+      const interval = setInterval(nextClient, 4000);
       return () => clearInterval(interval);
     }
   }, [isAutoPlaying, isPaused]);
 
   const ClientCard = ({ nome, user, url, desc, img }) => (
     <div
-      className="flex flex-col rounded-2xl shadow-lg px-4 md:px-7 pt-6 md:pt-8 pb-4 md:pb-6 min-h-[320px] md:min-h-[390px] h-full justify-between items-center transition-all duration-500 w-full max-w-[260px] md:min-w-[280px] md:max-w-[300px] mx-2 md:mx-4 group relative overflow-hidden"
+      className="flex flex-col rounded-2xl shadow-lg px-4 md:px-7 pt-6 md:pt-8 pb-4 md:pb-6 min-h-[320px] md:min-h-[390px] h-full justify-between items-center transition-all duration-700 ease-in-out w-full max-w-[260px] md:min-w-[280px] md:max-w-[300px] mx-2 md:mx-4 group relative overflow-hidden"
       style={{
         boxShadow: "0 6px 30px 0 rgba(220,38,38,0.3), 0 0px 1.5px 0 rgba(255,255,255,0.1)",
       }}
@@ -88,7 +88,7 @@ const Clientes = () => {
       
       {/* Fundo animado com gradiente vermelho no hover */}
       <div 
-        className="absolute inset-0 bg-gradient-to-br from-red-600/50 via-red-700/60 to-red-900/80 opacity-0 group-hover:opacity-100 transition-all duration-700 ease-in-out transform group-hover:scale-105"
+        className="absolute inset-0 bg-gradient-to-br from-red-600/50 via-red-700/60 to-red-900/80 opacity-0 group-hover:opacity-100 transition-all duration-1000 ease-in-out transform group-hover:scale-102"
         style={{
           background: "linear-gradient(135deg, rgba(220, 38, 38, 0.6) 0%, rgba(185, 28, 28, 0.7) 30%, rgba(153, 27, 27, 0.8) 60%, rgba(127, 29, 29, 0.9) 100%)"
         }}
@@ -105,7 +105,7 @@ const Clientes = () => {
           className="relative flex items-center justify-center mb-3 group/avatar outline-none focus-visible:ring-2 focus-visible:ring-red-500/80 rounded-full"
         >
           <div
-            className="rounded-full p-1 transition-all duration-150 group-hover/avatar:scale-105"
+            className="rounded-full p-1 transition-all duration-500 ease-in-out group-hover/avatar:scale-103"
             style={{
               background:
                 'conic-gradient(from 210deg at 50% 50%, #405DE6 0deg, #5851DB 40deg, #833AB4 90deg, #C13584 140deg, #E1306C 190deg, #FD1D1D 240deg, #F56040 290deg, #FCAF45 340deg, #405DE6 360deg)'
@@ -147,7 +147,7 @@ const Clientes = () => {
           href={url}
           target="_blank"
           rel="noopener noreferrer"
-          className="font-semibold text-white text-base md:text-lg mb-2 hover:text-gray-200 transition duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500/80 px-2 py-0.5 rounded cursor-pointer w-full text-center"
+          className="font-semibold text-white text-base md:text-lg mb-2 hover:text-gray-200 transition-all duration-300 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500/80 px-2 py-0.5 rounded cursor-pointer w-full text-center"
           aria-label={`Ir para o Instagram de ${nome}`}
         >
           <span
@@ -176,7 +176,7 @@ const Clientes = () => {
             href={url}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center w-8 h-8 rounded-full duration-200 bg-gradient-to-r from-red-600/30 to-black/50 hover:from-red-600 hover:to-red-700 transition-all shadow-sm border border-red-600/40 hover:border-red-600"
+            className="flex items-center justify-center w-8 h-8 rounded-full transition-all duration-400 ease-in-out bg-gradient-to-r from-red-600/30 to-black/50 hover:from-red-600 hover:to-red-700 shadow-sm border border-red-600/40 hover:border-red-600 hover:scale-105"
             aria-label={`Abrir Instagram de ${nome}`}
           >
             <Instagram className="text-white transition-colors" size={20} />
@@ -201,7 +201,7 @@ const Clientes = () => {
           {/* Botão anterior - apenas desktop */}
           <Button
             onClick={prevClient}
-            className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-red-600/20 hover:bg-red-600/40 text-white border border-red-600/50 hover:border-red-600 backdrop-blur-sm"
+            className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-red-600/20 hover:bg-red-600/40 text-white border border-red-600/50 hover:border-red-600 backdrop-blur-sm transition-all duration-300 ease-in-out hover:scale-105"
             size="icon"
           >
             <ChevronLeft className="w-6 h-6" />
@@ -210,7 +210,7 @@ const Clientes = () => {
           {/* Botão próximo - apenas desktop */}
           <Button
             onClick={nextClient}
-            className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-red-600/20 hover:bg-red-600/40 text-white border border-red-600/50 hover:border-red-600 backdrop-blur-sm"
+            className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-red-600/20 hover:bg-red-600/40 text-white border border-red-600/50 hover:border-red-600 backdrop-blur-sm transition-all duration-300 ease-in-out hover:scale-105"
             size="icon"
           >
             <ChevronRight className="w-6 h-6" />
@@ -238,10 +238,10 @@ const Clientes = () => {
             <button
               key={index}
               onClick={() => setCurrentIndex(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+              className={`w-3 h-3 rounded-full transition-all duration-500 ease-in-out ${
                 index === currentIndex 
                   ? 'bg-red-600 scale-125' 
-                  : 'bg-gray-600 hover:bg-gray-500'
+                  : 'bg-gray-600 hover:bg-gray-500 hover:scale-110'
               }`}
             />
           ))}
@@ -251,7 +251,7 @@ const Clientes = () => {
         <div className="md:hidden flex justify-center mt-6 space-x-4">
           <Button
             onClick={prevClient}
-            className="bg-red-600/20 hover:bg-red-600/40 text-white border border-red-600/50 hover:border-red-600 backdrop-blur-sm"
+            className="bg-red-600/20 hover:bg-red-600/40 text-white border border-red-600/50 hover:border-red-600 backdrop-blur-sm transition-all duration-300 ease-in-out hover:scale-105"
             size="sm"
           >
             <ChevronLeft className="w-4 h-4 mr-1" />
@@ -259,7 +259,7 @@ const Clientes = () => {
           </Button>
           <Button
             onClick={nextClient}
-            className="bg-red-600/20 hover:bg-red-600/40 text-white border border-red-600/50 hover:border-red-600 backdrop-blur-sm"
+            className="bg-red-600/20 hover:bg-red-600/40 text-white border border-red-600/50 hover:border-red-600 backdrop-blur-sm transition-all duration-300 ease-in-out hover:scale-105"
             size="sm"
           >
             Próximo

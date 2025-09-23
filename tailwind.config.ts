@@ -129,6 +129,11 @@ export default {
 				'slideInRight': 'slideInRight 0.7s ease-out forwards',
 				'scale': 'scale 0.5s ease-out forwards',
 				'glitch': 'glitch 0.8s ease-in-out infinite',
+			},
+			scale: {
+				'102': '1.02',
+				'103': '1.03',
+				'110': '1.10',
 			}
 		}
 	},
