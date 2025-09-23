@@ -2,8 +2,6 @@
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import { Vortex } from "@/components/ui/vortex";
-import heroPoster from "@/assets/hero-video-poster.jpg";
 
 const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -13,25 +11,11 @@ const Hero = () => {
   }, []);
 
   return (
-    <Vortex 
-      backgroundColor="black"
-      baseHue={0}
-      rangeY={800}
-      particleCount={400}
-      className="relative w-full min-h-screen min-h-[100svh]"
-      containerClassName="w-full min-h-screen min-h-[100svh]"
-    >
-      <section 
-        id="home" 
-        className="relative w-full min-h-screen min-h-[100svh] flex items-center pt-28 pb-16 z-10"
-      >
-        {/* Background Elements */}
-        <div className="absolute inset-0 z-0">
-          <div className="absolute top-20 left-10 w-48 h-48 rounded-full bg-frezza-red opacity-5 blur-3xl"></div>
-          <div className="absolute bottom-20 right-10 w-64 h-64 rounded-full bg-frezza-red opacity-5 blur-3xl"></div>
-        </div>
-      
-      <div className="container mx-auto relative z-20">
+    <section 
+      id="home" 
+      className="relative w-full min-h-screen min-h-[100svh] flex items-center pt-28 pb-16"
+    >      
+      <div className="container mx-auto relative">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div 
             className={`space-y-8 transition-all duration-1000 ${
@@ -130,7 +114,6 @@ const Hero = () => {
         </div>
       </div>
       </section>
-    </Vortex>
   );
 };
 
