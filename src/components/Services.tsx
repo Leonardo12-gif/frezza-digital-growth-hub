@@ -115,74 +115,173 @@ const Services = () => {
 
 return (
   <BackgroundPaths className="relative">
-    <section id="services" ref={sectionRef} className="section-padding opacity-0">
-      <div className="container mx-auto relative z-10">
-      <h2 className="section-title text-gradient">Nossos Serviços</h2>
-      <p className="section-subtitle">
-        Soluções completas para elevar sua presença digital e impacto visual
-      </p>
-
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
-        {services.map((service, index) => (
-          <div key={service.title} className="group">
-            <Card className="border-[#222] bg-[#111] shadow-xl hover:shadow-frezza-red/10 hover:border-frezza-red/40 transition-all duration-500 h-full flex flex-col overflow-hidden">
-              
-              <div className="w-full h-48 overflow-hidden">
-                <img 
-                  src={service.image} 
-                  alt={`${service.title} - Frezza Marketing`}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 border-b border-neutral-700 shadow-md"
-                  style={{ boxShadow: '0 0 10px rgba(255, 255, 255, 0.05)' }}
-                />
-              </div>
-
-              <CardHeader className={`${service.color} flex items-center justify-center py-6`}>
-                <div className="w-16 h-16 rounded-full bg-black/50 backdrop-blur-md flex items-center justify-center shadow-lg group-hover:scale-110 transition-all duration-500">
-                  <service.icon className={`w-8 h-8 ${service.iconColor}`} />
-                </div>
-              </CardHeader>
-
-              <CardContent className="pt-6 text-center flex-1 flex flex-col">
-                <CardTitle className="text-2xl mb-4 text-white group-hover:text-frezza-red transition-colors duration-300">
-                  {service.title}
-                </CardTitle>
-
-                <CardDescription className="text-gray-400 text-lg mb-6">
-                  {service.description}
-                </CardDescription>
-
-                {service.title === "Modelo para Publicidade" && (
-                  <div className="mt-auto mb-4 p-2 bg-[#1a1a1a] rounded-md">
-                    <p className="text-sm text-gray-300">Disponível nas versões masculina e feminina</p>
-                  </div>
-                )}
-
-                <div className="mt-auto">
-                  <Button 
-                    onClick={() => handleWhatsAppClick(service.title)}
-                    className="w-full bg-frezza-red hover:bg-black hover:text-frezza-red text-white font-semibold py-2 border border-frezza-red transition-all duration-300 transform hover:-translate-y-1"
-                  >
-                    QUERO UM ORÇAMENTO
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
+    <section id="services" ref={sectionRef} className="section-padding opacity-0 relative overflow-hidden">
+      {/* Background Futurístico */}
+      <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900/50 to-black"></div>
+      
+      {/* Elementos de Partículas */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 left-20 w-96 h-96 rounded-full bg-frezza-red/5 blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 right-20 w-72 h-72 rounded-full bg-frezza-red/3 blur-2xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+        
+        {/* Linhas de Grid Futurístico */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="grid grid-cols-12 grid-rows-12 w-full h-full">
+            {Array.from({ length: 144 }).map((_, i) => (
+              <div key={i} className="border-r border-b border-frezza-red/20 opacity-30"></div>
+            ))}
           </div>
-        ))}
+        </div>
       </div>
 
-      <div className="mt-24 text-center">
-        <Button 
-          className="bg-frezza-red hover:bg-frezza-red/80 text-white px-8 py-6 text-lg border border-frezza-red/20"
-          asChild
-        >
-          <a href="#contact">Entre em Contato</a>
-        </Button>
-      </div>
+      <div className="container mx-auto relative z-10">
+        {/* Header Futurístico */}
+        <div className="text-center mb-20 relative">
+          <div className="flex items-center justify-center gap-4 mb-8">
+            <div className="w-12 h-[2px] bg-gradient-to-r from-transparent to-frezza-red"></div>
+            <div className="w-4 h-4 border-2 border-frezza-red rotate-45 bg-black"></div>
+            <div className="w-12 h-[2px] bg-gradient-to-l from-transparent to-frezza-red"></div>
+          </div>
+          
+          <h2 className="text-5xl md:text-6xl font-bold mb-6 text-white font-['Montserrat'] relative">
+            <span className="bg-gradient-to-r from-white via-frezza-red to-white bg-clip-text text-transparent">
+              NOSSOS SERVIÇOS
+            </span>
+            <div className="absolute inset-0 bg-gradient-to-r from-white via-frezza-red to-white bg-clip-text text-transparent blur-sm opacity-50"></div>
+          </h2>
+          
+          <div className="max-w-4xl mx-auto">
+            <p className="text-xl md:text-2xl text-gray-300 mb-4 font-light">
+              Soluções completas para elevar sua presença digital
+            </p>
+            <div className="w-24 h-1 bg-gradient-to-r from-frezza-red via-white to-frezza-red mx-auto rounded-full"></div>
+          </div>
+        </div>
+
+        {/* Grid de Serviços Futurístico */}
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 mt-16">
+          {services.map((service, index) => (
+            <div key={service.title} className="group relative" style={{ animationDelay: `${index * 0.1}s` }}>
+              {/* Container Principal do Card */}
+              <div className="relative h-full">
+                {/* Glow Effect External */}
+                <div className="absolute -inset-1 bg-gradient-to-r from-frezza-red/20 via-frezza-red/40 to-frezza-red/20 rounded-2xl blur-lg opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
+                
+                {/* Borda Animada */}
+                <div className="absolute -inset-[1px] bg-gradient-to-r from-transparent via-frezza-red/50 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-500">
+                  <div className="w-full h-full bg-gradient-to-r from-frezza-red/20 via-frezza-red to-frezza-red/20 rounded-2xl animate-pulse"></div>
+                </div>
+
+                {/* Card Principal */}
+                <Card className="relative bg-black/90 backdrop-blur-xl border border-gray-800 rounded-2xl overflow-hidden h-full flex flex-col group-hover:border-frezza-red/50 transition-all duration-500 shadow-2xl group-hover:shadow-frezza-red/20">
+                  {/* Header com Imagem */}
+                  <div className="relative overflow-hidden h-52">
+                    <img 
+                      src={service.image} 
+                      alt={`${service.title} - Frezza Marketing`}
+                      className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
+                    />
+                    
+                    {/* Overlay Gradiente */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent opacity-60 group-hover:opacity-40 transition-all duration-500"></div>
+                    
+                    {/* Efeito de Scan Line */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-frezza-red/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out"></div>
+                    
+                    {/* Ícone Flutuante */}
+                    <div className="absolute top-4 right-4 w-12 h-12 bg-black/80 backdrop-blur-md rounded-full flex items-center justify-center border border-frezza-red/30 group-hover:border-frezza-red group-hover:bg-frezza-red/10 transition-all duration-500">
+                      <service.icon className="w-6 h-6 text-frezza-red group-hover:text-white transition-colors duration-300" />
+                    </div>
+                  </div>
+
+                  {/* Conteúdo */}
+                  <CardContent className="p-6 flex-1 flex flex-col relative">
+                    {/* Título com Efeito Neon */}
+                    <h3 className="text-xl font-bold mb-4 text-white group-hover:text-frezza-red transition-all duration-300 font-['Montserrat'] tracking-wide">
+                      {service.title}
+                      <div className="w-full h-[1px] bg-gradient-to-r from-frezza-red/0 via-frezza-red/50 to-frezza-red/0 mt-2 scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+                    </h3>
+
+                    {/* Descrição */}
+                    <p className="text-gray-400 text-sm leading-relaxed mb-6 flex-1 group-hover:text-gray-300 transition-colors duration-300">
+                      {service.description}
+                    </p>
+
+                    {/* Tag Especial para Modelo */}
+                    {service.title === "Modelo para Publicidade" && (
+                      <div className="mb-4 p-3 bg-gradient-to-r from-frezza-red/10 to-frezza-red/5 border border-frezza-red/20 rounded-lg">
+                        <p className="text-xs text-frezza-red font-medium text-center">
+                          ⚡ Disponível nas versões masculina e feminina
+                        </p>
+                      </div>
+                    )}
+
+                    {/* Botão Futurístico */}
+                    <div className="mt-auto">
+                      <div 
+                        onClick={() => handleWhatsAppClick(service.title)}
+                        className="relative group/button cursor-pointer"
+                      >
+                        {/* Glow do Botão */}
+                        <div className="absolute -inset-1 bg-gradient-to-r from-frezza-red/50 to-frezza-red/30 rounded-lg blur opacity-0 group-hover/button:opacity-100 transition-all duration-300"></div>
+                        
+                        {/* Botão */}
+                        <div className="relative bg-gradient-to-r from-gray-900 to-black border border-frezza-red/30 rounded-lg p-3 group-hover/button:border-frezza-red transition-all duration-300 overflow-hidden">
+                          {/* Background Animado */}
+                          <div className="absolute inset-0 bg-gradient-to-r from-frezza-red/0 via-frezza-red/20 to-frezza-red/0 -translate-x-full group-hover/button:translate-x-full transition-transform duration-500"></div>
+                          
+                          {/* Texto do Botão */}
+                          <div className="relative flex items-center justify-center gap-2 text-white group-hover/button:text-frezza-red font-bold text-sm tracking-wider transition-all duration-300">
+                            <span className="font-['Montserrat']">SOLICITAR ORÇAMENTO</span>
+                            <div className="w-2 h-2 bg-frezza-red rounded-full animate-pulse group-hover/button:bg-white"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Efeitos de Canto */}
+                    <div className="absolute top-0 left-0 w-8 h-8 border-l-2 border-t-2 border-frezza-red/30 group-hover:border-frezza-red transition-colors duration-500"></div>
+                    <div className="absolute bottom-0 right-0 w-8 h-8 border-r-2 border-b-2 border-frezza-red/30 group-hover:border-frezza-red transition-colors duration-500"></div>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Call-to-Action Futurístico */}
+        <div className="mt-32 text-center relative">
+          <div className="relative group/cta cursor-pointer inline-block">
+            {/* Background Glow */}
+            <div className="absolute -inset-4 bg-gradient-to-r from-frezza-red/30 via-frezza-red/50 to-frezza-red/30 rounded-2xl blur-xl opacity-60 group-hover/cta:opacity-100 transition-all duration-700"></div>
+            
+            {/* Container do Botão */}
+            <a href="#contact" className="relative block">
+              <div className="bg-gradient-to-r from-black via-gray-900 to-black p-[2px] rounded-2xl group-hover/cta:from-frezza-red/50 group-hover/cta:via-frezza-red group-hover/cta:to-frezza-red/50 transition-all duration-500">
+                <div className="bg-black rounded-2xl px-12 py-6 group-hover/cta:bg-gradient-to-r group-hover/cta:from-black/90 group-hover/cta:via-black/80 group-hover/cta:to-black/90 relative overflow-hidden">
+                  {/* Scan Effect */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-frezza-red/20 to-transparent -translate-x-full group-hover/cta:translate-x-full transition-transform duration-1000"></div>
+                  
+                  {/* Texto */}
+                  <span className="relative text-2xl font-bold text-white group-hover/cta:text-frezza-red transition-colors duration-300 font-['Montserrat'] tracking-wide">
+                    INICIAR PROJETO AGORA
+                  </span>
+                </div>
+              </div>
+            </a>
+          </div>
+          
+          {/* Indicador */}
+          <div className="mt-6 flex items-center justify-center gap-2">
+            <div className="w-2 h-2 bg-frezza-red rounded-full animate-pulse"></div>
+            <span className="text-gray-400 text-sm uppercase tracking-widest">Consultoria Gratuita</span>
+            <div className="w-2 h-2 bg-frezza-red rounded-full animate-pulse"></div>
+          </div>
+        </div>
       </div>
     </section>
   </BackgroundPaths>
-  );
+);
 };
 
 export default Services;
