@@ -11,7 +11,7 @@ import Clientes from "@/components/Clientes";
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex flex-col relative overflow-hidden">
+    <div className="min-h-screen flex flex-col relative overflow-hidden bg-black">
       {/* Content */}
       <div className="relative flex-1">
         <Header />
