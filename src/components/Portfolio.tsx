@@ -156,18 +156,86 @@ const Portfolio = () => {
           Conheça alguns dos nossos trabalhos e cases de sucesso
         </p>
         
-        {/* Botão de destaque para o portfólio completo */}
-        <div className="flex flex-col items-center justify-center mb-12 mt-8 relative">
-          <div className="absolute -inset-1 bg-gradient-to-r from-frezza-red via-frezza-red/70 to-frezza-red rounded-lg blur-lg opacity-75 animate-pulse"></div>
-          <a href="https://www.canva.com/design/DAGqfGP0KrA/b_tYbS5_f94YrJ9jCZoIIg/view?utm_content=DAGqfGP0KrA&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h60be45537d" target="_blank" rel="noopener noreferrer" className="relative z-10">
-            <Button variant="outline" size="lg" className="border-frezza-red bg-black hover:bg-frezza-red/10 text-frezza-red hover:text-white transition-all duration-300 text-lg font-bold gap-3 px-8 py-6 animate-bounce hover:animate-none transform hover:translate-y-[-3px] hover:translate-x-[3px]">
-              Confira nosso portfólio completo
-              <ArrowRight className="w-5 h-5 animate-pulse" />
-            </Button>
-          </a>
-          <p className="mt-3 text-frezza-red font-medium animate-pulse">
-            Veja todos os nossos trabalhos e resultados
-          </p>
+        {/* Botão Futurístico do Portfólio */}
+        <div className="flex flex-col items-center justify-center mb-16 mt-12 relative">
+          {/* Efeito de Partículas de Fundo */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <div className="absolute top-1/2 left-1/2 w-[600px] h-[600px] -translate-x-1/2 -translate-y-1/2">
+              {Array.from({ length: 20 }).map((_, i) => (
+                <div
+                  key={i}
+                  className="absolute w-1 h-1 bg-frezza-red rounded-full opacity-30 animate-pulse"
+                  style={{
+                    left: `${Math.random() * 100}%`,
+                    top: `${Math.random() * 100}%`,
+                    animationDelay: `${Math.random() * 3}s`,
+                    animationDuration: `${2 + Math.random() * 3}s`
+                  }}
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* Container Principal do Botão */}
+          <div className="relative group cursor-pointer">
+            {/* Glow Effect Externo */}
+            <div className="absolute -inset-8 bg-gradient-to-r from-frezza-red/20 via-frezza-red/40 to-frezza-red/20 rounded-full blur-xl opacity-60 group-hover:opacity-100 animate-pulse group-hover:animate-none transition-all duration-700"></div>
+            
+            {/* Anel Orbital Animado */}
+            <div className="absolute -inset-4 border border-frezza-red/30 rounded-full animate-spin" style={{ animationDuration: '8s' }}></div>
+            <div className="absolute -inset-6 border border-frezza-red/20 rounded-full animate-spin" style={{ animationDuration: '12s', animationDirection: 'reverse' }}></div>
+            
+            {/* Botão Principal */}
+            <a 
+              href="https://www.canva.com/design/DAGqfGP0KrA/b_tYbS5_f94YrJ9jCZoIIg/view?utm_content=DAGqfGP0KrA&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h60be45537d" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="relative z-10 block"
+            >
+              <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-black via-gray-900 to-black p-[2px] group-hover:from-frezza-red/50 group-hover:via-frezza-red group-hover:to-frezza-red/50 transition-all duration-500">
+                {/* Background com Efeito Holográfico */}
+                <div className="relative bg-black rounded-2xl px-12 py-6 group-hover:bg-gradient-to-r group-hover:from-black/90 group-hover:via-black/80 group-hover:to-black/90 transition-all duration-500 overflow-hidden">
+                  {/* Efeito de Scan Line */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-frezza-red/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out"></div>
+                  
+                  {/* Conteúdo do Botão */}
+                  <div className="relative flex items-center gap-4 text-xl font-bold">
+                    <div className="flex items-center gap-3">
+                      <div className="w-3 h-3 bg-frezza-red rounded-full animate-pulse group-hover:animate-none group-hover:bg-white transition-colors duration-300"></div>
+                      <span className="text-white group-hover:text-frezza-red transition-colors duration-300 font-['Montserrat'] tracking-wide">
+                        PORTFÓLIO COMPLETO
+                      </span>
+                    </div>
+                    
+                    {/* Ícone Animado */}
+                    <div className="relative">
+                      <ArrowRight className="w-6 h-6 text-frezza-red group-hover:text-white transform group-hover:translate-x-2 group-hover:scale-110 transition-all duration-300" />
+                      <div className="absolute inset-0 bg-frezza-red rounded-full blur-md opacity-0 group-hover:opacity-50 transition-opacity duration-300"></div>
+                    </div>
+                  </div>
+                  
+                  {/* Efeito de Reflexo */}
+                  <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:via-frezza-red/50 transition-all duration-500"></div>
+                  <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:via-frezza-red/50 transition-all duration-500"></div>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          {/* Texto Descritivo Futurístico */}
+          <div className="mt-8 text-center relative">
+            <div className="flex items-center justify-center gap-2 mb-2">
+              <div className="w-8 h-[1px] bg-gradient-to-r from-transparent to-frezza-red/50"></div>
+              <div className="w-2 h-2 bg-frezza-red rounded-full animate-pulse"></div>
+              <div className="w-8 h-[1px] bg-gradient-to-l from-transparent to-frezza-red/50"></div>
+            </div>
+            <p className="text-frezza-red font-medium text-lg tracking-widest uppercase font-['Montserrat']">
+              Acesso Exclusivo
+            </p>
+            <p className="text-gray-400 text-sm mt-1 max-w-md mx-auto">
+              Explore nossos projetos mais impactantes e cases de sucesso
+            </p>
+          </div>
         </div>
         
         <Tabs defaultValue="all" className="w-full mt-8">
