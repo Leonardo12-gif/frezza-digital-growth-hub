@@ -20,8 +20,23 @@ const Footer = () => {
     `${basePath.replace(/\/$/, "")}${relativePath.startsWith("/") ? relativePath : "/" + relativePath}`;
   
   return (
-    <footer className="bg-[#0a0a0a] text-white pt-24 pb-8 border-t border-[#222]">
-      <div className="container mx-auto px-4 md:px-6">
+    <footer className="bg-black text-white pt-24 pb-8 border-t border-red-500/20 relative overflow-hidden">
+      {/* Futuristic grid background */}
+      <div className="absolute inset-0 opacity-[0.02]"
+        style={{
+          backgroundImage: 'linear-gradient(rgba(220, 38, 38, 0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(220, 38, 38, 0.5) 1px, transparent 1px)',
+          backgroundSize: '50px 50px'
+        }}
+      />
+      
+      {/* Radial gradients */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(220,38,38,0.08),transparent_50%)]"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(220,38,38,0.05),transparent_50%)]"></div>
+      
+      {/* Top glow line */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-red-500/50 to-transparent"></div>
+      
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Logo and Description */}
           <div className="space-y-6">
@@ -39,19 +54,28 @@ const Footer = () => {
             </p>
             
             <div className="flex space-x-4 pt-4">
-              <a href="https://www.facebook.com/profile.php?id=61575768677479" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="w-10 h-10 rounded-full border border-[#333] flex items-center justify-center hover:border-frezza-red hover:bg-frezza-red/10 transition-colors">
-                <Facebook size={18} />
-              </a>
-              <a href="https://www.instagram.com/fa.marketingoficial/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="w-10 h-10 rounded-full border border-[#333] flex items-center justify-center hover:border-frezza-red hover:bg-frezza-red/10 transition-colors">
-                <Instagram size={18} />
-              </a>
-              <a href="https://wa.me/5515991273423" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="w-10 h-10 rounded-full border border-[#333] flex items-center justify-center hover:border-green-600 hover:bg-green-600/10 transition-colors">
-                <img 
-                  src="/lovable-uploads/700ccf25-b57c-4bb6-bc6c-e9316fe138aa.png" 
-                  alt="WhatsApp" 
-                  className="w-5 h-5 filter brightness-0 invert"
-                />
-              </a>
+              <div className="relative group">
+                <div className="absolute -inset-0.5 bg-red-500/30 rounded-full opacity-0 group-hover:opacity-100 blur transition-all"></div>
+                <a href="https://www.facebook.com/profile.php?id=61575768677479" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="relative w-10 h-10 rounded-full border border-red-500/30 flex items-center justify-center hover:border-red-500 hover:bg-red-950/30 transition-all backdrop-blur-sm">
+                  <Facebook size={18} />
+                </a>
+              </div>
+              <div className="relative group">
+                <div className="absolute -inset-0.5 bg-red-500/30 rounded-full opacity-0 group-hover:opacity-100 blur transition-all"></div>
+                <a href="https://www.instagram.com/fa.marketingoficial/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="relative w-10 h-10 rounded-full border border-red-500/30 flex items-center justify-center hover:border-red-500 hover:bg-red-950/30 transition-all backdrop-blur-sm">
+                  <Instagram size={18} />
+                </a>
+              </div>
+              <div className="relative group">
+                <div className="absolute -inset-0.5 bg-green-500/30 rounded-full opacity-0 group-hover:opacity-100 blur transition-all"></div>
+                <a href="https://wa.me/5515991273423" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="relative w-10 h-10 rounded-full border border-red-500/30 flex items-center justify-center hover:border-green-500 hover:bg-green-950/30 transition-all backdrop-blur-sm">
+                  <img 
+                    src="/lovable-uploads/700ccf25-b57c-4bb6-bc6c-e9316fe138aa.png" 
+                    alt="WhatsApp" 
+                    className="w-5 h-5 filter brightness-0 invert"
+                  />
+                </a>
+              </div>
             </div>
           </div>
           
@@ -59,7 +83,8 @@ const Footer = () => {
           <div>
             <h3 className="font-bold text-lg mb-8 relative">
               <span className="relative z-10">Links Rápidos</span>
-              <span className="absolute bottom-0 left-0 w-12 h-0.5 bg-frezza-red"></span>
+              <div className="absolute bottom-0 left-0 w-12 h-px bg-gradient-to-r from-red-500 to-transparent"></div>
+              <div className="absolute -bottom-0.5 left-0 w-12 h-px bg-red-500/50 blur-sm"></div>
             </h3>
             <ul className="space-y-4">
               <li>
@@ -99,7 +124,8 @@ const Footer = () => {
           <div>
             <h3 className="font-bold text-lg mb-8 relative">
               <span className="relative z-10">Serviços</span>
-              <span className="absolute bottom-0 left-0 w-12 h-0.5 bg-frezza-red"></span>
+              <div className="absolute bottom-0 left-0 w-12 h-px bg-gradient-to-r from-red-500 to-transparent"></div>
+              <div className="absolute -bottom-0.5 left-0 w-12 h-px bg-red-500/50 blur-sm"></div>
             </h3>
             <ul className="space-y-4">
               {services.map(service => <li key={service}>
@@ -114,7 +140,8 @@ const Footer = () => {
           <div>
             <h3 className="font-bold text-lg mb-8 relative">
               <span className="relative z-10">Contato</span>
-              <span className="absolute bottom-0 left-0 w-12 h-0.5 bg-frezza-red"></span>
+              <div className="absolute bottom-0 left-0 w-12 h-px bg-gradient-to-r from-red-500 to-transparent"></div>
+              <div className="absolute -bottom-0.5 left-0 w-12 h-px bg-red-500/50 blur-sm"></div>
             </h3>
             <ul className="space-y-6">
               <li className="flex items-center">
@@ -139,7 +166,10 @@ const Footer = () => {
           </div>
         </div>
         
-        <Separator className="my-12 bg-[#222]" />
+        <div className="my-12 relative">
+          <div className="h-px bg-gradient-to-r from-transparent via-red-500/30 to-transparent"></div>
+          <div className="absolute inset-0 h-px bg-red-500/10 blur-sm"></div>
+        </div>
         
         <div className="flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-500 text-sm">
