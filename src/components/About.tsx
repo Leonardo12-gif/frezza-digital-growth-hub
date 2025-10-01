@@ -22,8 +22,17 @@ const About = () => {
     };
   }, []);
   return <section id="about" ref={sectionRef} className="section-padding relative bg-[#030303] opacity-0 overflow-hidden">
-      {/* Geometric Background with Red Palette */}
-      <div className="absolute inset-0 bg-gradient-to-br from-red-500/[0.05] via-transparent to-rose-500/[0.05] blur-3xl" />
+      {/* Futuristic Grid Background */}
+      <div className="absolute inset-0 opacity-[0.03]"
+        style={{
+          backgroundImage: 'linear-gradient(rgba(220, 38, 38, 0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(220, 38, 38, 0.5) 1px, transparent 1px)',
+          backgroundSize: '50px 50px'
+        }}
+      />
+      
+      {/* Radial gradient effects */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(220,38,38,0.15),transparent_50%)]"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_70%,rgba(220,38,38,0.1),transparent_50%)]"></div>
       
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
@@ -98,66 +107,112 @@ const About = () => {
 
       <div className="container mx-auto relative z-10">
         <div className="max-w-6xl mx-auto">
-          <h2 className="section-title text-gradient">Sobre a Frezza Marketing</h2>
+          {/* Futuristic title with holographic effect */}
+          <div className="text-center mb-16">
+            <h2 className="section-title text-gradient relative inline-block">
+              Sobre a Frezza Marketing
+              <div className="absolute -inset-2 bg-gradient-to-r from-red-600/20 via-red-500/30 to-red-600/20 blur-2xl opacity-50 -z-10"></div>
+            </h2>
+            <div className="h-1 w-40 mx-auto mt-6 bg-gradient-to-r from-transparent via-red-500 to-transparent rounded-full"></div>
+          </div>
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center mt-16">
             <div className="lg:col-span-5 order-2 lg:order-1">
-              <div className="space-y-6 text-gray-300 text-lg">
-                <p>
-                  Na Frezza Marketing, somos movidos por 
-                  <span className="text-white font-semibold"> performance</span>, 
-                  <span className="text-white font-semibold"> criatividade</span> e 
-                  <span className="text-white font-semibold"> resultados</span>. 
-                  Atuamos como uma agência completa, especializada em 
-                  <span className="text-frezza-red font-semibold">  Marketing Digital</span> e 
-                  <span className="text-frezza-red font-semibold">   Crescimento da sua marca</span>.
-                </p>
+              {/* Holographic content card */}
+              <div className="relative group">
+                {/* Glowing border effect */}
+                <div className="absolute -inset-0.5 bg-gradient-to-r from-red-600/50 via-red-500/50 to-red-600/50 rounded-2xl opacity-30 group-hover:opacity-50 blur transition-all duration-500"></div>
                 
-                <p>
-                  Nossa missão é <span className="text-white font-semibold">impulsionar marcas para o próximo nível</span>, 
-                  com estratégias personalizadas que conectam empresas ao público certo, na hora certa. 
-                  Com uma equipe criativa, técnica e comprometida, entregamos muito mais que anúncios: 
-                  entregamos presença digital, conversão e crescimento sustentável.
-                </p>
-                
-                <p>
-                  Trabalhamos lado a lado com nossos clientes para construir não apenas campanhas, 
-                  mas <span className="text-white font-semibold">relacionamentos de confiança e resultados consistentes</span>.
-                </p>
+                <div className="relative bg-gradient-to-br from-black/40 via-red-950/20 to-black/40 backdrop-blur-xl border border-red-500/30 rounded-2xl p-8">
+                  {/* Scan line effect */}
+                  <div className="absolute inset-0 rounded-2xl overflow-hidden opacity-20">
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-red-500/20 to-transparent animate-scan-line"></div>
+                  </div>
+                  
+                  <div className="space-y-6 text-gray-300 text-lg relative z-10">
+                    <p>
+                      Na Frezza Marketing, somos movidos por 
+                      <span className="text-white font-semibold"> performance</span>, 
+                      <span className="text-white font-semibold"> criatividade</span> e 
+                      <span className="text-white font-semibold"> resultados</span>. 
+                      Atuamos como uma agência completa, especializada em 
+                      <span className="text-frezza-red font-semibold">  Marketing Digital</span> e 
+                      <span className="text-frezza-red font-semibold">   Crescimento da sua marca</span>.
+                    </p>
+                    
+                    <p>
+                      Nossa missão é <span className="text-white font-semibold">impulsionar marcas para o próximo nível</span>, 
+                      com estratégias personalizadas que conectam empresas ao público certo, na hora certa. 
+                      Com uma equipe criativa, técnica e comprometida, entregamos muito mais que anúncios: 
+                      entregamos presença digital, conversão e crescimento sustentável.
+                    </p>
+                    
+                    <p>
+                      Trabalhamos lado a lado com nossos clientes para construir não apenas campanhas, 
+                      mas <span className="text-white font-semibold">relacionamentos de confiança e resultados consistentes</span>.
+                    </p>
+                  </div>
+                </div>
               </div>
               
               <div className="mt-10">
-                <Button className="bg-frezza-red hover:bg-frezza-red/80 text-white border border-frezza-red/20 px-8 py-6 text-lg" asChild>
-                  <a href="#contact">Entre em Contato</a>
-                </Button>
+                {/* Futuristic CTA button */}
+                <div className="relative group inline-block">
+                  <div className="absolute -inset-1 bg-gradient-to-r from-red-600 via-red-500 to-red-600 rounded-lg opacity-50 group-hover:opacity-75 blur transition-all duration-300"></div>
+                  <Button className="relative bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white border border-red-400/30 px-8 py-6 text-lg shadow-lg shadow-red-500/20" asChild>
+                    <a href="#contact">
+                      <span className="relative z-10">Entre em Contato</span>
+                      <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
+                    </a>
+                  </Button>
+                </div>
               </div>
             </div>
             
             <div className="lg:col-span-7 order-1 lg:order-2">
-              <div className="relative">
-                {/* Decorative elements */}
-                <div className="absolute top-0 left-0 w-full h-full bg-frezza-red/5 -rotate-3 rounded-lg"></div>
-                <div className="absolute top-0 left-0 w-full h-full border border-frezza-red/20 rotate-3 rounded-lg"></div>
+              <div className="relative group">
+                {/* Holographic floating frames */}
+                <div className="absolute -top-4 -left-4 w-full h-full border border-red-500/30 rounded-2xl transform -rotate-3 transition-transform group-hover:rotate-0 duration-500"></div>
+                <div className="absolute -bottom-4 -right-4 w-full h-full border border-red-400/20 rounded-2xl transform rotate-3 transition-transform group-hover:rotate-0 duration-500"></div>
                 
-                {/* Main image */}
-                <div className="relative rounded-lg overflow-hidden border border-[#333] shadow-2xl">
-                  <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70 z-10"></div>
-                  <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80" alt="Equipe Frezza Marketing" className="w-full h-auto" />
+                {/* Glowing corner accents */}
+                <div className="absolute top-0 left-0 w-20 h-20 border-t-2 border-l-2 border-red-500 rounded-tl-2xl"></div>
+                <div className="absolute top-0 right-0 w-20 h-20 border-t-2 border-r-2 border-red-500 rounded-tr-2xl"></div>
+                <div className="absolute bottom-0 left-0 w-20 h-20 border-b-2 border-l-2 border-red-500 rounded-bl-2xl"></div>
+                <div className="absolute bottom-0 right-0 w-20 h-20 border-b-2 border-r-2 border-red-500 rounded-br-2xl"></div>
+                
+                {/* Main holographic image container */}
+                <div className="relative rounded-2xl overflow-hidden border border-red-500/40 shadow-2xl">
+                  {/* Glow effect */}
+                  <div className="absolute -inset-0.5 bg-gradient-to-r from-red-600 via-red-500 to-red-600 opacity-30 blur-lg"></div>
                   
-                  {/* Overlay content */}
+                  {/* Scan line overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-red-500/10 to-transparent opacity-50 animate-scan-line z-20"></div>
+                  
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-70 z-10"></div>
+                  <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80" alt="Equipe Frezza Marketing" className="w-full h-auto relative" />
+                  
+                  {/* Futuristic overlay content */}
                   <div className="absolute bottom-0 left-0 right-0 p-8 z-20">
-                    <div className="flex items-center space-x-4">
-                      <div className="w-1 h-12 bg-frezza-red"></div>
-                      <div>
-                        <h3 className="text-2xl font-bold text-white">Nossa Missão</h3>
-                        <p className="text-gray-300 mt-2">Transformar cliques em crescimento real para o seu negócio</p>
+                    <div className="relative">
+                      {/* Glowing accent line */}
+                      <div className="absolute -left-4 top-0 w-1 h-full bg-gradient-to-b from-red-500 via-red-600 to-transparent">
+                        <div className="absolute inset-0 bg-red-500 blur-sm"></div>
+                      </div>
+                      
+                      <div className="flex items-center space-x-4 backdrop-blur-sm bg-black/30 p-6 rounded-lg border border-red-500/30">
+                        <div className="w-1 h-12 bg-gradient-to-b from-red-500 to-red-700 shadow-lg shadow-red-500/50"></div>
+                        <div>
+                          <h3 className="text-2xl font-bold text-white mb-2 relative">
+                            Nossa Missão
+                            <div className="absolute -inset-1 bg-red-500/20 blur-lg -z-10"></div>
+                          </h3>
+                          <p className="text-gray-300 mt-2">Transformar cliques em crescimento real para o seu negócio</p>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                
-                {/* Stats card */}
-                
               </div>
             </div>
           </div>

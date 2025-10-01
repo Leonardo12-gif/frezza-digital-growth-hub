@@ -117,6 +117,14 @@ export default {
 					'60%': { transform: 'translate(2px, 2px)' },
 					'80%': { transform: 'translate(2px, -2px)' },
 					'100%': { transform: 'translate(0)' },
+				},
+				'scan-line': {
+					'0%': { transform: 'translateY(-100%)' },
+					'100%': { transform: 'translateY(200%)' },
+				},
+				'gradient-shift': {
+					'0%, 100%': { backgroundPosition: '0% 50%' },
+					'50%': { backgroundPosition: '100% 50%' },
 				}
 			},
 			animation: {
@@ -129,6 +137,8 @@ export default {
 				'slideInRight': 'slideInRight 0.7s ease-out forwards',
 				'scale': 'scale 0.5s ease-out forwards',
 				'glitch': 'glitch 0.8s ease-in-out infinite',
+				'scan-line': 'scan-line 3s linear infinite',
+				'gradient-shift': 'gradient-shift 3s ease infinite',
 			},
 			scale: {
 				'102': '1.02',

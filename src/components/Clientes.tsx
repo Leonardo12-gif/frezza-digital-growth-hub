@@ -76,23 +76,38 @@ const Clientes = () => {
 
   const ClientCard = ({ nome, user, url, desc, img }) => (
     <div
-      className="flex flex-col rounded-2xl shadow-lg px-4 md:px-7 pt-6 md:pt-8 pb-4 md:pb-6 min-h-[320px] md:min-h-[390px] h-full justify-between items-center transition-all duration-700 ease-in-out w-full max-w-[260px] md:min-w-[280px] md:max-w-[300px] mx-2 md:mx-4 group relative overflow-hidden"
-      style={{
-        boxShadow: "0 6px 30px 0 rgba(220,38,38,0.3), 0 0px 1.5px 0 rgba(255,255,255,0.1)",
-      }}
+      className="flex flex-col rounded-2xl px-4 md:px-7 pt-6 md:pt-8 pb-4 md:pb-6 min-h-[320px] md:min-h-[390px] h-full justify-between items-center transition-all duration-700 ease-in-out w-full max-w-[260px] md:min-w-[280px] md:max-w-[300px] mx-2 md:mx-4 group relative overflow-hidden"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      {/* Fundo base escuro */}
-      <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-red-800/30 to-black"></div>
+      {/* Holographic base with glassmorphism */}
+      <div className="absolute inset-0 bg-gradient-to-br from-black/40 via-red-950/30 to-black/40 backdrop-blur-xl"></div>
       
-      {/* Fundo animado com gradiente vermelho no hover */}
-      <div 
-        className="absolute inset-0 bg-gradient-to-br from-red-600/50 via-red-700/60 to-red-900/80 opacity-0 group-hover:opacity-100 transition-all duration-1000 ease-in-out transform group-hover:scale-102"
+      {/* Animated border gradient */}
+      <div className="absolute inset-0 rounded-2xl opacity-50 group-hover:opacity-100 transition-opacity duration-500"
         style={{
-          background: "linear-gradient(135deg, rgba(220, 38, 38, 0.6) 0%, rgba(185, 28, 28, 0.7) 30%, rgba(153, 27, 27, 0.8) 60%, rgba(127, 29, 29, 0.9) 100%)"
+          background: 'linear-gradient(45deg, transparent 30%, rgba(220, 38, 38, 0.3) 50%, transparent 70%)',
+          backgroundSize: '200% 200%',
+          animation: 'gradient-shift 3s ease infinite'
         }}
-      ></div>
+      />
+      
+      {/* Neon border effect */}
+      <div className="absolute inset-0 rounded-2xl border border-red-500/30 group-hover:border-red-400/50 transition-all duration-500">
+        <div className="absolute inset-0 rounded-2xl border border-red-400/20 blur-sm"></div>
+      </div>
+      
+      {/* Glow effect on hover */}
+      <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+        style={{
+          boxShadow: '0 0 40px rgba(220, 38, 38, 0.4), inset 0 0 60px rgba(220, 38, 38, 0.1)'
+        }}
+      />
+      
+      {/* Scan line effect */}
+      <div className="absolute inset-0 rounded-2xl overflow-hidden opacity-30">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-red-500/10 to-transparent translate-y-[-100%] group-hover:translate-y-[200%] transition-transform duration-[3s] ease-linear"></div>
+      </div>
       
       {/* Conteúdo do card */}
       <div className="relative z-10 flex flex-col h-full items-center justify-between w-full">
@@ -187,13 +202,32 @@ const Clientes = () => {
   );
 
   return (
-    <section className="py-20 px-2 bg-black relative">
-      <div className="container mx-auto max-w-6xl">
-        <h2 className="text-4xl md:text-5xl font-extrabold text-white text-center mb-2 font-['Montserrat']">
-          Clientes que nós trabalhamos.
-        </h2>
-        <p className="text-center text-red-500 text-base md:text-lg mb-12 select-none font-medium">
-          ⚠️ Clique no <span className="inline-block px-1 rounded font-mono text-white bg-red-900/50">@</span> para acessar o perfil diretamente!
+    <section className="py-20 px-2 bg-black relative overflow-hidden">
+      {/* Futuristic background effects */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(220,38,38,0.15),transparent_50%)]"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(220,38,38,0.1),transparent_50%)]"></div>
+      
+      {/* Grid pattern overlay */}
+      <div className="absolute inset-0 opacity-[0.03]"
+        style={{
+          backgroundImage: 'linear-gradient(rgba(220, 38, 38, 0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(220, 38, 38, 0.5) 1px, transparent 1px)',
+          backgroundSize: '50px 50px'
+        }}
+      />
+      
+      <div className="container mx-auto max-w-6xl relative z-10">
+        {/* Futuristic title with glow */}
+        <div className="text-center mb-12">
+          <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-4 font-['Montserrat'] relative inline-block">
+            Clientes que nós trabalhamos
+            <div className="absolute -inset-1 bg-gradient-to-r from-red-600/20 via-red-500/20 to-red-600/20 blur-xl opacity-50"></div>
+            <span className="relative">.{' '}</span>
+          </h2>
+          <div className="h-1 w-32 mx-auto bg-gradient-to-r from-transparent via-red-500 to-transparent rounded-full"></div>
+        </div>
+        
+        <p className="text-center text-red-400 text-base md:text-lg mb-12 select-none font-medium backdrop-blur-sm">
+          ⚠️ Clique no <span className="inline-block px-2 py-0.5 rounded font-mono text-white bg-red-900/50 border border-red-500/30">@</span> para acessar o perfil diretamente!
         </p>
         
         {/* Container dos clientes com controles */}
