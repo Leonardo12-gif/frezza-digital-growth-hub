@@ -81,115 +81,117 @@ const ContactForm = () => {
   };
 
   return (
-    <section id="contact" ref={sectionRef} className="opacity-0 relative py-20 md:py-32 bg-gradient-to-br from-[#0a0a0a] via-[#111] to-[#0a0a0a] overflow-hidden">
-      {/* Animated red particles background */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-10 left-10 w-32 h-32 bg-frezza-red/10 rounded-full blur-xl animate-pulse"></div>
-        <div className="absolute top-1/2 right-20 w-24 h-24 bg-frezza-red/15 rounded-full blur-lg animate-bounce"></div>
-        <div className="absolute bottom-20 left-1/3 w-40 h-40 bg-frezza-red/5 rounded-full blur-2xl animate-pulse delay-1000"></div>
-        <div className="absolute bottom-10 right-10 w-20 h-20 bg-frezza-red/20 rounded-full blur-md animate-ping"></div>
-      </div>
+    <section id="contact" ref={sectionRef} className="opacity-0 relative py-24 md:py-32 bg-white overflow-hidden">
+      {/* Subtle gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-gray-50"></div>
       
-      <div className="container mx-auto relative z-10 section-padding">
-        <h2 className="section-title text-gradient">Entre em Contato</h2>
-        <p className="section-subtitle">
-          Vamos conversar sobre como podemos impulsionar seu negócio
-        </p>
+      <div className="container mx-auto px-4 md:px-6 relative z-10 max-w-6xl">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 font-['Montserrat']">
+            Entre em Contato
+          </h2>
+          <div className="w-20 h-1 bg-frezza-red mx-auto mb-6"></div>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Vamos conversar sobre como podemos impulsionar seu negócio
+          </p>
+        </div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mt-16">
-          <div className="relative">
-            {/* Decorative elements */}
-            <div className="absolute -z-10 -top-10 -left-10 w-2/3 h-2/3 border border-frezza-red/20 rounded-lg"></div>
-            
-            <div className="bg-[#111] p-12 rounded-lg border border-[#222] shadow-lg input-laser-border">
-              <h3 className="text-2xl font-bold mb-6 text-white">Informações de Contato</h3>
-              
-              <div className="space-y-8 mt-10">
-                <div className="flex items-start">
-                  <div className="bg-frezza-red/10 p-3 rounded-lg mr-5">
-                    <Mail className="h-6 w-6 text-frezza-red" />
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
+          {/* Contact Info - 2 columns */}
+          <div className="lg:col-span-2 space-y-8">
+            {/* Info Cards */}
+            <div className="space-y-6">
+              <div className="group">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-full bg-frezza-red/10 flex items-center justify-center flex-shrink-0 group-hover:bg-frezza-red group-hover:scale-110 transition-all duration-300">
+                    <Mail className="h-5 w-5 text-frezza-red group-hover:text-white transition-colors duration-300" />
                   </div>
                   <div>
-                    <h4 className="font-medium text-white">E-mail</h4>
-                    <a href="mailto:frezza.trafego@gmail.com" className="text-gray-400 hover:text-frezza-red transition-colors">
+                    <h4 className="font-semibold text-gray-900 mb-1">E-mail</h4>
+                    <a href="mailto:frezza.trafego@gmail.com" className="text-gray-600 hover:text-frezza-red transition-colors text-sm">
                       frezza.trafego@gmail.com
                     </a>
                   </div>
                 </div>
-                
-                <div className="flex items-start">
-                  <div className="bg-frezza-red/10 p-3 rounded-lg mr-5">
-                    <Phone className="h-6 w-6 text-frezza-red" />
+              </div>
+              
+              <div className="group">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-full bg-frezza-red/10 flex items-center justify-center flex-shrink-0 group-hover:bg-frezza-red group-hover:scale-110 transition-all duration-300">
+                    <Phone className="h-5 w-5 text-frezza-red group-hover:text-white transition-colors duration-300" />
                   </div>
                   <div>
-                    <h4 className="font-medium text-white">Telefone</h4>
-                    <a href="tel:+5515991273423" className="text-gray-400 hover:text-frezza-red transition-colors">
+                    <h4 className="font-semibold text-gray-900 mb-1">Telefone</h4>
+                    <a href="tel:+5515991273423" className="text-gray-600 hover:text-frezza-red transition-colors text-sm">
                       (15) 99127-3423
                     </a>
                   </div>
                 </div>
-                
-                <div className="flex items-start">
-                  <div className="bg-frezza-red/10 p-3 rounded-lg mr-5">
-                    <MapPin className="h-6 w-6 text-frezza-red" />
+              </div>
+              
+              <div className="group">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-full bg-frezza-red/10 flex items-center justify-center flex-shrink-0 group-hover:bg-frezza-red group-hover:scale-110 transition-all duration-300">
+                    <MapPin className="h-5 w-5 text-frezza-red group-hover:text-white transition-colors duration-300" />
                   </div>
                   <div>
-                    <h4 className="font-medium text-white">Endereço</h4>
-                    <p className="text-gray-400">
+                    <h4 className="font-semibold text-gray-900 mb-1">Localização</h4>
+                    <p className="text-gray-600 text-sm">
                       São Paulo, SP - Brasil
                     </p>
                   </div>
                 </div>
               </div>
-              
-              <div className="mt-16 pt-8 border-t border-[#222]">
-                <h4 className="text-xl font-bold mb-4 text-white">Quer resultados agora?</h4>
-                <p className="text-gray-400 mb-6">
-                  Entre em contato pelo WhatsApp para um atendimento rápido e personalizado.
-                </p>
-                <Button 
-                  variant="outline" 
-                  className="w-full border-frezza-red text-frezza-red hover:bg-frezza-red hover:text-white"
-                  asChild
+            </div>
+            
+            {/* WhatsApp CTA */}
+            <div className="mt-8 p-6 bg-gradient-to-br from-gray-50 to-white rounded-2xl border border-gray-200">
+              <h4 className="font-bold text-gray-900 mb-2">Atendimento Rápido</h4>
+              <p className="text-gray-600 text-sm mb-4">
+                Fale conosco pelo WhatsApp agora
+              </p>
+              <Button 
+                className="w-full bg-green-600 hover:bg-green-700 text-white border-0"
+                asChild
+              >
+                <a 
+                  href="https://wa.me/5515991273423" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
                 >
-                  <a 
-                    href="https://wa.me/5515991273423" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                  >
-                    Falar no WhatsApp
-                  </a>
-                </Button>
-              </div>
+                  WhatsApp
+                </a>
+              </Button>
             </div>
           </div>
           
-          <div className="bg-[#111] p-12 rounded-lg border border-[#222] shadow-lg relative input-laser-border">
-            {/* Decorative elements */}
-            <div className="absolute -z-10 -bottom-10 -right-10 w-1/2 h-1/2 border border-frezza-red/20 rounded-lg"></div>
+          {/* Contact Form - 3 columns */}
+          <div className="lg:col-span-3 bg-white rounded-2xl border border-gray-200 p-8 md:p-10 shadow-sm">
+            <h3 className="text-2xl font-bold text-gray-900 mb-6 font-['Montserrat']">
+              Envie sua mensagem
+            </h3>
             
-            <h3 className="text-2xl font-bold mb-8 text-white">Envie sua mensagem</h3>
-            
-            <form onSubmit={handleSubmit} className="space-y-8 relative z-10">
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
-                  Nome *
+                <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-2">
+                  Nome
                 </label>
                 <Input
                   id="name"
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  placeholder="Seu nome"
+                  placeholder="Digite seu nome"
                   required
-                  className="bg-[#161616] border-[#333] focus:border-frezza-red focus:ring-frezza-red/10 text-white placeholder:text-gray-500 relative z-10"
+                  className="bg-white border-gray-300 focus:border-frezza-red focus:ring-frezza-red text-gray-900 placeholder:text-gray-400 h-12"
                 />
               </div>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
-                    E-mail *
+                  <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">
+                    E-mail
                   </label>
                   <Input
                     id="email"
@@ -199,13 +201,13 @@ const ContactForm = () => {
                     onChange={handleChange}
                     placeholder="seu@email.com"
                     required
-                    className="bg-[#161616] border-[#333] focus:border-frezza-red focus:ring-frezza-red/10 text-white placeholder:text-gray-500 relative z-10"
+                    className="bg-white border-gray-300 focus:border-frezza-red focus:ring-frezza-red text-gray-900 placeholder:text-gray-400 h-12"
                   />
                 </div>
                 
                 <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-gray-300 mb-2">
-                    Telefone (opcional)
+                  <label htmlFor="phone" className="block text-sm font-semibold text-gray-700 mb-2">
+                    Telefone
                   </label>
                   <Input
                     id="phone"
@@ -213,29 +215,29 @@ const ContactForm = () => {
                     value={formData.phone}
                     onChange={handleChange}
                     placeholder="(00) 00000-0000"
-                    className="bg-[#161616] border-[#333] focus:border-frezza-red focus:ring-frezza-red/10 text-white placeholder:text-gray-500 relative z-10"
+                    className="bg-white border-gray-300 focus:border-frezza-red focus:ring-frezza-red text-gray-900 placeholder:text-gray-400 h-12"
                   />
                 </div>
               </div>
               
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
-                  Mensagem *
+                <label htmlFor="message" className="block text-sm font-semibold text-gray-700 mb-2">
+                  Mensagem
                 </label>
                 <Textarea
                   id="message"
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  placeholder="Como podemos ajudar?"
+                  placeholder="Como podemos ajudar você?"
                   required
-                  className="min-h-[150px] bg-[#161616] border-[#333] focus:border-frezza-red focus:ring-frezza-red/10 text-white placeholder:text-gray-500 relative z-10"
+                  className="min-h-[140px] bg-white border-gray-300 focus:border-frezza-red focus:ring-frezza-red text-gray-900 placeholder:text-gray-400 resize-none"
                 />
               </div>
               
               <Button 
                 type="submit" 
-                className="bg-frezza-red hover:bg-frezza-red/80 text-white border border-frezza-red/20 w-full py-6 group relative z-10"
+                className="bg-frezza-red hover:bg-frezza-red/90 text-white w-full h-12 text-base font-semibold group shadow-sm hover:shadow-md transition-all duration-300"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? (
