@@ -81,18 +81,22 @@ const ContactForm = () => {
   };
 
   return (
-    <section id="contact" ref={sectionRef} className="opacity-0 relative py-24 md:py-32 bg-white overflow-hidden">
+    <section id="contact" ref={sectionRef} className="opacity-0 relative py-24 md:py-32 bg-black overflow-hidden">
       {/* Subtle gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-gray-50"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-950 to-black"></div>
+      
+      {/* Subtle glow effects */}
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-frezza-red/5 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-frezza-red/3 rounded-full blur-3xl"></div>
       
       <div className="container mx-auto px-4 md:px-6 relative z-10 max-w-6xl">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 font-['Montserrat']">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 font-['Montserrat']">
             Entre em Contato
           </h2>
           <div className="w-20 h-1 bg-frezza-red mx-auto mb-6"></div>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
             Vamos conversar sobre como podemos impulsionar seu negócio
           </p>
         </div>
@@ -108,8 +112,8 @@ const ContactForm = () => {
                     <Mail className="h-5 w-5 text-frezza-red group-hover:text-white transition-colors duration-300" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900 mb-1">E-mail</h4>
-                    <a href="mailto:frezza.trafego@gmail.com" className="text-gray-600 hover:text-frezza-red transition-colors text-sm">
+                    <h4 className="font-semibold text-white mb-1">E-mail</h4>
+                    <a href="mailto:frezza.trafego@gmail.com" className="text-gray-400 hover:text-frezza-red transition-colors text-sm">
                       frezza.trafego@gmail.com
                     </a>
                   </div>
@@ -122,8 +126,8 @@ const ContactForm = () => {
                     <Phone className="h-5 w-5 text-frezza-red group-hover:text-white transition-colors duration-300" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900 mb-1">Telefone</h4>
-                    <a href="tel:+5515991273423" className="text-gray-600 hover:text-frezza-red transition-colors text-sm">
+                    <h4 className="font-semibold text-white mb-1">Telefone</h4>
+                    <a href="tel:+5515991273423" className="text-gray-400 hover:text-frezza-red transition-colors text-sm">
                       (15) 99127-3423
                     </a>
                   </div>
@@ -136,8 +140,8 @@ const ContactForm = () => {
                     <MapPin className="h-5 w-5 text-frezza-red group-hover:text-white transition-colors duration-300" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900 mb-1">Localização</h4>
-                    <p className="text-gray-600 text-sm">
+                    <h4 className="font-semibold text-white mb-1">Localização</h4>
+                    <p className="text-gray-400 text-sm">
                       São Paulo, SP - Brasil
                     </p>
                   </div>
@@ -146,9 +150,9 @@ const ContactForm = () => {
             </div>
             
             {/* WhatsApp CTA */}
-            <div className="mt-8 p-6 bg-gradient-to-br from-gray-50 to-white rounded-2xl border border-gray-200">
-              <h4 className="font-bold text-gray-900 mb-2">Atendimento Rápido</h4>
-              <p className="text-gray-600 text-sm mb-4">
+            <div className="mt-8 p-6 bg-gradient-to-br from-gray-900 to-black rounded-2xl border border-gray-800">
+              <h4 className="font-bold text-white mb-2">Atendimento Rápido</h4>
+              <p className="text-gray-400 text-sm mb-4">
                 Fale conosco pelo WhatsApp agora
               </p>
               <Button 
@@ -167,14 +171,14 @@ const ContactForm = () => {
           </div>
           
           {/* Contact Form - 3 columns */}
-          <div className="lg:col-span-3 bg-white rounded-2xl border border-gray-200 p-8 md:p-10 shadow-sm">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6 font-['Montserrat']">
+          <div className="lg:col-span-3 bg-gradient-to-br from-gray-950 to-black rounded-2xl border border-gray-800 p-8 md:p-10 shadow-2xl">
+            <h3 className="text-2xl font-bold text-white mb-6 font-['Montserrat']">
               Envie sua mensagem
             </h3>
             
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-2">
+                <label htmlFor="name" className="block text-sm font-semibold text-gray-300 mb-2">
                   Nome
                 </label>
                 <Input
@@ -184,13 +188,13 @@ const ContactForm = () => {
                   onChange={handleChange}
                   placeholder="Digite seu nome"
                   required
-                  className="bg-white border-gray-300 focus:border-frezza-red focus:ring-frezza-red text-gray-900 placeholder:text-gray-400 h-12"
+                  className="bg-black/50 border-gray-800 focus:border-frezza-red focus:ring-frezza-red text-white placeholder:text-gray-500 h-12"
                 />
               </div>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">
+                  <label htmlFor="email" className="block text-sm font-semibold text-gray-300 mb-2">
                     E-mail
                   </label>
                   <Input
@@ -201,12 +205,12 @@ const ContactForm = () => {
                     onChange={handleChange}
                     placeholder="seu@email.com"
                     required
-                    className="bg-white border-gray-300 focus:border-frezza-red focus:ring-frezza-red text-gray-900 placeholder:text-gray-400 h-12"
+                    className="bg-black/50 border-gray-800 focus:border-frezza-red focus:ring-frezza-red text-white placeholder:text-gray-500 h-12"
                   />
                 </div>
                 
                 <div>
-                  <label htmlFor="phone" className="block text-sm font-semibold text-gray-700 mb-2">
+                  <label htmlFor="phone" className="block text-sm font-semibold text-gray-300 mb-2">
                     Telefone
                   </label>
                   <Input
@@ -215,13 +219,13 @@ const ContactForm = () => {
                     value={formData.phone}
                     onChange={handleChange}
                     placeholder="(00) 00000-0000"
-                    className="bg-white border-gray-300 focus:border-frezza-red focus:ring-frezza-red text-gray-900 placeholder:text-gray-400 h-12"
+                    className="bg-black/50 border-gray-800 focus:border-frezza-red focus:ring-frezza-red text-white placeholder:text-gray-500 h-12"
                   />
                 </div>
               </div>
               
               <div>
-                <label htmlFor="message" className="block text-sm font-semibold text-gray-700 mb-2">
+                <label htmlFor="message" className="block text-sm font-semibold text-gray-300 mb-2">
                   Mensagem
                 </label>
                 <Textarea
@@ -231,7 +235,7 @@ const ContactForm = () => {
                   onChange={handleChange}
                   placeholder="Como podemos ajudar você?"
                   required
-                  className="min-h-[140px] bg-white border-gray-300 focus:border-frezza-red focus:ring-frezza-red text-gray-900 placeholder:text-gray-400 resize-none"
+                  className="min-h-[140px] bg-black/50 border-gray-800 focus:border-frezza-red focus:ring-frezza-red text-white placeholder:text-gray-500 resize-none"
                 />
               </div>
               
