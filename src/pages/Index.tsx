@@ -8,6 +8,7 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import ContactInfo from "@/components/ContactInfo";
 import Clientes from "@/components/Clientes";
+import AIAssistant from "@/components/AIAssistant";
 
 const Index = () => {
   return (
@@ -19,6 +20,7 @@ const Index = () => {
         <Services />
         <Portfolio />
         <Clientes />
+        <AIAssistant />
         <ContactInfo />
         <About />
         <ContactForm />
