@@ -43,7 +43,6 @@ const clientes = [
 
 const Clientes = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [isPaused, setIsPaused] = useState(false);
 
   // Função para ir para o próximo cliente
@@ -65,14 +64,6 @@ const Clientes = () => {
     }
     return visible;
   };
-
-  // Auto-play contínuo
-  useEffect(() => {
-    if (isAutoPlaying && !isPaused) {
-      const interval = setInterval(nextClient, 4000);
-      return () => clearInterval(interval);
-    }
-  }, [isAutoPlaying, isPaused]);
 
   const ClientCard = ({ nome, user, url, desc, img }) => (
     <div
@@ -299,13 +290,6 @@ const Clientes = () => {
             Próximo
             <ChevronRight className="w-4 h-4 ml-1" />
           </Button>
-        </div>
-
-        {/* Status do auto-play - apenas desktop */}
-        <div className="hidden md:block text-center mt-4">
-          <p className="text-gray-400 text-sm">
-            {isPaused ? 'Auto-play pausado (passe o mouse para fora)' : 'Auto-play ativo'}
-          </p>
         </div>
       </div>
     </section>
