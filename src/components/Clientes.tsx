@@ -67,166 +67,144 @@ const Clientes = () => {
 
   const ClientCard = ({ nome, user, url, desc, img }) => (
     <div
-      className="flex flex-col rounded-2xl px-4 md:px-7 pt-6 md:pt-8 pb-4 md:pb-6 min-h-[320px] md:min-h-[390px] h-full justify-between items-center transition-all duration-700 ease-in-out w-full max-w-[260px] md:min-w-[280px] md:max-w-[300px] mx-2 md:mx-4 group relative overflow-hidden"
+      className="flex flex-col rounded-3xl p-6 md:p-8 min-h-[380px] md:min-h-[420px] justify-between items-center transition-all duration-500 w-full max-w-[280px] md:max-w-[320px] mx-3 md:mx-4 group relative overflow-hidden hover:scale-[1.02]"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      {/* Holographic base with glassmorphism */}
-      <div className="absolute inset-0 bg-gradient-to-br from-black/40 via-red-950/30 to-black/40 backdrop-blur-xl"></div>
+      {/* Modern glass background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/40 to-black/60 backdrop-blur-2xl"></div>
       
-      {/* Animated border gradient */}
-      <div className="absolute inset-0 rounded-2xl opacity-50 group-hover:opacity-100 transition-opacity duration-500"
-        style={{
-          background: 'linear-gradient(45deg, transparent 30%, rgba(220, 38, 38, 0.3) 50%, transparent 70%)',
-          backgroundSize: '200% 200%',
-          animation: 'gradient-shift 3s ease infinite'
-        }}
-      />
+      {/* Animated gradient border */}
+      <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-frezza-red/0 via-frezza-red/40 to-frezza-red/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
       
-      {/* Neon border effect */}
-      <div className="absolute inset-0 rounded-2xl border border-red-500/30 group-hover:border-red-400/50 transition-all duration-500">
-        <div className="absolute inset-0 rounded-2xl border border-red-400/20 blur-sm"></div>
-      </div>
+      {/* Main border */}
+      <div className="absolute inset-[1px] rounded-3xl bg-black/80 backdrop-blur-xl"></div>
       
-      {/* Glow effect on hover */}
-      <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"
-        style={{
-          boxShadow: '0 0 40px rgba(220, 38, 38, 0.4), inset 0 0 60px rgba(220, 38, 38, 0.1)'
-        }}
-      />
+      {/* Glow effect */}
+      <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl bg-frezza-red/20"></div>
       
-      {/* Scan line effect */}
-      <div className="absolute inset-0 rounded-2xl overflow-hidden opacity-30">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-red-500/10 to-transparent translate-y-[-100%] group-hover:translate-y-[200%] transition-transform duration-[3s] ease-linear"></div>
-      </div>
-      
-      {/* Conteúdo do card */}
+      {/* Content */}
       <div className="relative z-10 flex flex-col h-full items-center justify-between w-full">
-        {/* Avatar com borda degradê Instagram */}
+        {/* Avatar with modern border */}
         <a
           href={url}
           target="_blank"
           rel="noopener noreferrer"
           aria-label={`Abrir Instagram de ${nome}`}
-          className="relative flex items-center justify-center mb-3 group/avatar outline-none focus-visible:ring-2 focus-visible:ring-red-500/80 rounded-full"
+          className="relative flex items-center justify-center mb-4 group/avatar outline-none focus-visible:ring-2 focus-visible:ring-frezza-red rounded-full"
         >
-          <div
-            className="rounded-full p-1 transition-all duration-500 ease-in-out group-hover/avatar:scale-103"
-            style={{
-              background:
-                'conic-gradient(from 210deg at 50% 50%, #405DE6 0deg, #5851DB 40deg, #833AB4 90deg, #C13584 140deg, #E1306C 190deg, #FD1D1D 240deg, #F56040 290deg, #FCAF45 340deg, #405DE6 360deg)'
-            }}
-          >
-            <div className="w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden flex items-center justify-center shrink-0 border-0">
-              <img
-                src={img}
-                alt={nome}
-                className="object-cover w-full h-full rounded-full"
-                draggable={false}
-                loading="lazy"
-              />
+          <div className="relative">
+            {/* Glow ring */}
+            <div className="absolute -inset-2 bg-gradient-to-r from-[#405DE6] via-[#C13584] to-[#FD1D1D] rounded-full opacity-75 blur-md group-hover/avatar:opacity-100 transition-opacity"></div>
+            
+            {/* Instagram gradient border */}
+            <div
+              className="relative rounded-full p-[3px] transition-all duration-300 group-hover/avatar:scale-110"
+              style={{
+                background: 'conic-gradient(from 210deg at 50% 50%, #405DE6 0deg, #5851DB 40deg, #833AB4 90deg, #C13584 140deg, #E1306C 190deg, #FD1D1D 240deg, #F56040 290deg, #FCAF45 340deg, #405DE6 360deg)'
+              }}
+            >
+              <div className="w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden bg-black p-1">
+                <img
+                  src={img}
+                  alt={nome}
+                  className="object-cover w-full h-full rounded-full"
+                  draggable={false}
+                  loading="lazy"
+                />
+              </div>
             </div>
           </div>
         </a>
         
-        {/* Aviso discreto */}
-        <span className="block text-xs text-gray-400 mt-1 mb-1 text-center select-none">
-          clique para acessar o perfil
+        {/* Hint text */}
+        <span className="text-xs text-gray-500 mb-3 text-center">
+          Clique para visitar o perfil
         </span>
 
-        {/* Nome */}
-        <div className="flex items-center justify-center mb-2 w-full">
-          <span
-            className="px-4 py-1 rounded-lg bg-gradient-to-r from-red-600/20 to-black/50 text-white text-lg md:text-xl font-bold font-['Montserrat'] shadow-sm border border-red-600/30 w-full text-center break-words leading-tight"
-            style={{
-              wordBreak: "break-word",
-              hyphens: "auto",
-              fontSize: nome.length > 22 ? "1rem" : undefined,
-            }}
-          >
-            {nome}
-          </span>
+        {/* Name badge */}
+        <div className="w-full mb-3">
+          <div className="relative group/name">
+            <div className="absolute inset-0 bg-gradient-to-r from-frezza-red/20 to-frezza-red/10 rounded-xl blur-sm"></div>
+            <div className="relative px-4 py-2 rounded-xl bg-gradient-to-r from-frezza-red/10 to-black/50 border border-frezza-red/30">
+              <span
+                className="text-white text-lg md:text-xl font-bold font-['Montserrat'] block text-center"
+                style={{
+                  fontSize: nome.length > 22 ? "1rem" : undefined,
+                }}
+              >
+                {nome}
+              </span>
+            </div>
+          </div>
         </div>
         
-        {/* User Instagram */}
+        {/* Instagram username */}
         <a
           href={url}
           target="_blank"
           rel="noopener noreferrer"
-          className="font-semibold text-white text-base md:text-lg mb-2 hover:text-gray-200 transition-all duration-300 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500/80 px-2 py-0.5 rounded cursor-pointer w-full text-center"
+          className="text-gray-300 hover:text-white text-base md:text-lg mb-4 transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-frezza-red px-3 py-1 rounded-lg"
           aria-label={`Ir para o Instagram de ${nome}`}
         >
-          <span
-            className="inline-flex items-center gap-1 w-full justify-center break-all break-words whitespace-pre-line text-center"
-            style={{
-              fontSize: user.length > 22 ? "1rem" : undefined,
-              wordBreak: "break-word",
-              hyphens: "auto",
-              lineHeight: "1.2",
-              minHeight: "2.3em",
-            }}
-            title={user}
-          >
-            {user}
-          </span>
+          <span className="font-medium">{user}</span>
         </a>
         
-        {/* Descrição */}
-        <div className="text-white text-[15px] text-center mb-3 leading-snug max-w-xs mx-auto min-h-[48px] flex items-center justify-center">
+        {/* Description */}
+        <div className="text-gray-400 text-sm md:text-base text-center mb-4 leading-relaxed px-2 min-h-[48px] flex items-center">
           {desc}
         </div>
         
-        {/* Ícone Instagram na base */}
-        <div className="flex-1 flex flex-col items-center justify-end w-full">
-          <a
-            href={url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-center w-8 h-8 rounded-full transition-all duration-400 ease-in-out bg-gradient-to-r from-red-600/30 to-black/50 hover:from-red-600 hover:to-red-700 shadow-sm border border-red-600/40 hover:border-red-600 hover:scale-105"
-            aria-label={`Abrir Instagram de ${nome}`}
-          >
-            <Instagram className="text-white transition-colors" size={20} />
-          </a>
-        </div>
+        {/* Instagram icon button */}
+        <a
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="relative group/button"
+          aria-label={`Abrir Instagram de ${nome}`}
+        >
+          <div className="absolute inset-0 bg-gradient-to-r from-frezza-red to-frezza-red/80 rounded-full blur opacity-50 group-hover/button:opacity-100 transition-opacity"></div>
+          <div className="relative flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-r from-frezza-red to-frezza-red/80 hover:from-frezza-red hover:to-frezza-red transition-all duration-300 group-hover/button:scale-110">
+            <Instagram className="text-white" size={22} />
+          </div>
+        </a>
       </div>
     </div>
   );
 
   return (
-    <section className="py-20 px-2 bg-black relative overflow-hidden">
-      {/* Futuristic background effects */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(220,38,38,0.15),transparent_50%)]"></div>
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(220,38,38,0.1),transparent_50%)]"></div>
+    <section className="py-24 px-4 bg-black relative overflow-hidden">
+      {/* Modern background effects */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black via-frezza-red/5 to-black"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(220,38,38,0.1),transparent_70%)]"></div>
       
-      {/* Grid pattern overlay */}
-      <div className="absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage: 'linear-gradient(rgba(220, 38, 38, 0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(220, 38, 38, 0.5) 1px, transparent 1px)',
-          backgroundSize: '50px 50px'
-        }}
-      />
+      {/* Subtle grid */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(220,38,38,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(220,38,38,0.02)_1px,transparent_1px)] bg-[size:64px_64px]"></div>
       
-      <div className="container mx-auto max-w-6xl relative z-10">
-        {/* Futuristic title with glow */}
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-4 font-['Montserrat'] relative inline-block">
-            Clientes que nós trabalhamos
-            <div className="absolute -inset-1 bg-gradient-to-r from-red-600/20 via-red-500/20 to-red-600/20 blur-xl opacity-50"></div>
-            <span className="relative">.{' '}</span>
+      <div className="container mx-auto max-w-7xl relative z-10">
+        {/* Modern title */}
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-frezza-red/20 bg-frezza-red/5 backdrop-blur-sm mb-6">
+            <div className="w-2 h-2 rounded-full bg-frezza-red animate-pulse"></div>
+            <span className="text-sm text-gray-400 uppercase tracking-wider">Portfólio</span>
+          </div>
+          
+          <h2 className="text-4xl md:text-6xl font-bold text-white mb-4 font-['Montserrat']">
+            Clientes que
+            <span className="text-frezza-red block md:inline md:ml-3 glow"> transformamos</span>
           </h2>
-          <div className="h-1 w-32 mx-auto bg-gradient-to-r from-transparent via-red-500 to-transparent rounded-full"></div>
+          
+          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+            Marcas que confiaram em nosso trabalho e alcançaram resultados extraordinários
+          </p>
         </div>
-        
-        <p className="text-center text-red-400 text-base md:text-lg mb-12 select-none font-medium backdrop-blur-sm">
-          ⚠️ Clique no <span className="inline-block px-2 py-0.5 rounded font-mono text-white bg-red-900/50 border border-red-500/30">@</span> para acessar o perfil diretamente!
-        </p>
         
         {/* Container dos clientes com controles */}
         <div className="relative">
           {/* Botão anterior - apenas desktop */}
           <Button
             onClick={prevClient}
-            className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-red-600/20 hover:bg-red-600/40 text-white border border-red-600/50 hover:border-red-600 backdrop-blur-sm transition-all duration-300 ease-in-out hover:scale-105"
+            className="hidden md:flex absolute -left-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-black/80 hover:bg-frezza-red text-white border border-frezza-red/30 hover:border-frezza-red backdrop-blur-xl transition-all duration-300 shadow-lg shadow-frezza-red/20 hover:shadow-frezza-red/40"
             size="icon"
           >
             <ChevronLeft className="w-6 h-6" />
@@ -235,7 +213,7 @@ const Clientes = () => {
           {/* Botão próximo - apenas desktop */}
           <Button
             onClick={nextClient}
-            className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-red-600/20 hover:bg-red-600/40 text-white border border-red-600/50 hover:border-red-600 backdrop-blur-sm transition-all duration-300 ease-in-out hover:scale-105"
+            className="hidden md:flex absolute -right-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-black/80 hover:bg-frezza-red text-white border border-frezza-red/30 hover:border-frezza-red backdrop-blur-xl transition-all duration-300 shadow-lg shadow-frezza-red/20 hover:shadow-frezza-red/40"
             size="icon"
           >
             <ChevronRight className="w-6 h-6" />
@@ -257,38 +235,39 @@ const Clientes = () => {
           </div>
         </div>
         
-        {/* Indicadores */}
-        <div className="flex justify-center mt-8 space-x-2">
+        {/* Indicadores modernos */}
+        <div className="flex justify-center items-center mt-12 space-x-3">
           {clientes.map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrentIndex(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-500 ease-in-out ${
+              className={`transition-all duration-300 rounded-full ${
                 index === currentIndex 
-                  ? 'bg-red-600 scale-125' 
-                  : 'bg-gray-600 hover:bg-gray-500 hover:scale-110'
+                  ? 'w-12 h-2 bg-frezza-red shadow-lg shadow-frezza-red/50' 
+                  : 'w-2 h-2 bg-gray-600 hover:bg-gray-500'
               }`}
+              aria-label={`Ir para cliente ${index + 1}`}
             />
           ))}
         </div>
         
         {/* Botões de navegação mobile */}
-        <div className="md:hidden flex justify-center mt-6 space-x-4">
+        <div className="md:hidden flex justify-center mt-8 gap-4">
           <Button
             onClick={prevClient}
-            className="bg-red-600/20 hover:bg-red-600/40 text-white border border-red-600/50 hover:border-red-600 backdrop-blur-sm transition-all duration-300 ease-in-out hover:scale-105"
-            size="sm"
+            className="flex-1 max-w-[140px] bg-black/80 hover:bg-frezza-red text-white border border-frezza-red/30 hover:border-frezza-red backdrop-blur-xl transition-all duration-300"
+            size="lg"
           >
-            <ChevronLeft className="w-4 h-4 mr-1" />
+            <ChevronLeft className="w-5 h-5 mr-2" />
             Anterior
           </Button>
           <Button
             onClick={nextClient}
-            className="bg-red-600/20 hover:bg-red-600/40 text-white border border-red-600/50 hover:border-red-600 backdrop-blur-sm transition-all duration-300 ease-in-out hover:scale-105"
-            size="sm"
+            className="flex-1 max-w-[140px] bg-black/80 hover:bg-frezza-red text-white border border-frezza-red/30 hover:border-frezza-red backdrop-blur-xl transition-all duration-300"
+            size="lg"
           >
             Próximo
-            <ChevronRight className="w-4 h-4 ml-1" />
+            <ChevronRight className="w-5 h-5 ml-2" />
           </Button>
         </div>
       </div>
