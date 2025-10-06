@@ -5,7 +5,6 @@ import Portfolio from "@/components/Portfolio";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
-import ContactInfo from "@/components/ContactInfo";
 import Clientes from "@/components/Clientes";
 import AIAssistant from "@/components/AIAssistant";
 
@@ -20,7 +19,6 @@ const Index = () => {
         <AIAssistant />
         <Portfolio />
         <Clientes />
-        <ContactInfo />
         <ContactForm />
         <Footer />
         <WhatsAppButton />
