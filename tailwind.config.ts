@@ -125,6 +125,28 @@ export default {
 				'gradient-shift': {
 					'0%, 100%': { backgroundPosition: '0% 50%' },
 					'50%': { backgroundPosition: '100% 50%' },
+				},
+				shimmer: {
+					"0%, 100%": { backgroundPosition: "0% 50%" },
+					"50%": { backgroundPosition: "100% 50%" },
+				},
+				scan: {
+					"0%": { transform: "translateY(-100%)" },
+					"100%": { transform: "translateY(100%)" },
+				},
+				"ping-slow": {
+					"0%": { transform: "scale(1)", opacity: "1" },
+					"50%": { transform: "scale(1.2)", opacity: "0.5" },
+					"100%": { transform: "scale(1.4)", opacity: "0" },
+				},
+				"ping-slower": {
+					"0%": { transform: "scale(1)", opacity: "1" },
+					"50%": { transform: "scale(1.3)", opacity: "0.3" },
+					"100%": { transform: "scale(1.6)", opacity: "0" },
+				},
+				"pulse-slow": {
+					"0%, 100%": { opacity: "0.3" },
+					"50%": { opacity: "0.8" },
 				}
 			},
 			animation: {
@@ -139,6 +161,11 @@ export default {
 				'glitch': 'glitch 0.8s ease-in-out infinite',
 				'scan-line': 'scan-line 3s linear infinite',
 				'gradient-shift': 'gradient-shift 3s ease infinite',
+				shimmer: "shimmer 3s ease-in-out infinite",
+				scan: "scan 4s linear infinite",
+				"ping-slow": "ping-slow 3s cubic-bezier(0, 0, 0.2, 1) infinite",
+				"ping-slower": "ping-slower 4s cubic-bezier(0, 0, 0.2, 1) infinite",
+				"pulse-slow": "pulse-slow 4s ease-in-out infinite",
 			},
 			scale: {
 				'102': '1.02',
