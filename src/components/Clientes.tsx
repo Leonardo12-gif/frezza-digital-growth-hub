@@ -67,24 +67,27 @@ const Clientes = () => {
 
   const ClientCard = ({ nome, user, url, desc, img }) => (
     <div
-      className="flex flex-col rounded-3xl p-6 md:p-8 min-h-[380px] md:min-h-[420px] justify-between items-center transition-all duration-500 w-full max-w-[280px] md:max-w-[320px] mx-3 md:mx-4 group relative overflow-hidden hover:scale-[1.02]"
+      className="flex flex-col rounded-3xl p-6 md:p-8 min-h-[380px] md:min-h-[420px] justify-between items-center transition-all duration-500 w-full max-w-[280px] md:max-w-[320px] mx-3 md:mx-4 group relative overflow-hidden"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      {/* Modern glass background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/40 to-black/60 backdrop-blur-2xl"></div>
+      {/* Outer glow effect */}
+      <div className="absolute -inset-4 bg-gradient-to-r from-frezza-red/20 via-frezza-red/10 to-frezza-red/20 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
       
-      {/* Animated gradient border */}
-      <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-frezza-red/0 via-frezza-red/40 to-frezza-red/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+      {/* Modern glass background with border */}
+      <div className="absolute inset-0 bg-black/80 backdrop-blur-xl rounded-3xl border-2 border-frezza-red/20 group-hover:border-frezza-red/40 transition-colors duration-500"></div>
       
-      {/* Main border */}
-      <div className="absolute inset-[1px] rounded-3xl bg-black/80 backdrop-blur-xl"></div>
+      {/* Animated corner accents */}
+      <div className="absolute top-0 left-0 w-12 h-12 border-t-2 border-l-2 border-frezza-red/40 rounded-tl-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+      <div className="absolute top-0 right-0 w-12 h-12 border-t-2 border-r-2 border-frezza-red/40 rounded-tr-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-75"></div>
+      <div className="absolute bottom-0 left-0 w-12 h-12 border-b-2 border-l-2 border-frezza-red/40 rounded-bl-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-150"></div>
+      <div className="absolute bottom-0 right-0 w-12 h-12 border-b-2 border-r-2 border-frezza-red/40 rounded-br-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-200"></div>
       
-      {/* Glow effect */}
-      <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl bg-frezza-red/20"></div>
+      {/* Scan line effect */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-frezza-red/10 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-1000 pointer-events-none"></div>
       
       {/* Content */}
-      <div className="relative z-10 flex flex-col h-full items-center justify-between w-full">
+      <div className="relative z-10 flex flex-col h-full items-center justify-between w-full group-hover:scale-[1.02] transition-transform duration-300">
         {/* Avatar with modern border */}
         <a
           href={url}
@@ -174,29 +177,39 @@ const Clientes = () => {
 
   return (
     <section className="py-24 px-4 bg-black relative overflow-hidden">
-      {/* Modern background effects */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-frezza-red/5 to-black"></div>
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(220,38,38,0.1),transparent_70%)]"></div>
+      {/* Modern grid background */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
       
-      {/* Subtle grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(220,38,38,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(220,38,38,0.02)_1px,transparent_1px)] bg-[size:64px_64px]"></div>
+      {/* Gradient overlays */}
+      <div className="absolute inset-0 bg-gradient-to-br from-frezza-red/10 via-transparent to-transparent"></div>
+      <div className="absolute inset-0 bg-gradient-to-tl from-frezza-red/10 via-transparent to-transparent"></div>
+      
+      {/* Radial glow effects */}
+      <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-frezza-red/5 rounded-full blur-[100px]"></div>
+      <div className="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-frezza-red/5 rounded-full blur-[100px]"></div>
       
       <div className="container mx-auto max-w-7xl relative z-10">
         {/* Modern title */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-frezza-red/20 bg-frezza-red/5 backdrop-blur-sm mb-6">
-            <div className="w-2 h-2 rounded-full bg-frezza-red animate-pulse"></div>
-            <span className="text-sm text-gray-400 uppercase tracking-wider">Portfólio</span>
+        <div className="text-center mb-20">
+          <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full border-2 border-frezza-red/30 bg-gradient-to-r from-frezza-red/10 to-transparent backdrop-blur-xl mb-8 shadow-lg shadow-frezza-red/20">
+            <div className="relative">
+              <div className="w-3 h-3 rounded-full bg-frezza-red animate-pulse"></div>
+              <div className="absolute inset-0 w-3 h-3 rounded-full bg-frezza-red animate-ping"></div>
+            </div>
+            <span className="text-sm md:text-base text-gray-300 uppercase tracking-widest font-semibold">Nossos Clientes</span>
           </div>
           
-          <h2 className="text-4xl md:text-6xl font-bold text-white mb-4 font-['Montserrat']">
+          <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 font-['Montserrat'] leading-tight">
             Clientes que
-            <span className="text-frezza-red block md:inline md:ml-3 glow"> transformamos</span>
+            <span className="text-frezza-red block md:inline md:ml-4 glow mt-2 md:mt-0"> transformamos</span>
           </h2>
           
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            Marcas que confiaram em nosso trabalho e alcançaram resultados extraordinários
-          </p>
+          <div className="relative inline-block">
+            <div className="absolute inset-0 bg-frezza-red/20 blur-xl"></div>
+            <p className="relative text-gray-400 text-lg md:text-xl max-w-3xl mx-auto px-4">
+              Marcas que confiaram em nosso trabalho e alcançaram resultados extraordinários
+            </p>
+          </div>
         </div>
         
         {/* Container dos clientes com controles */}
@@ -204,19 +217,19 @@ const Clientes = () => {
           {/* Botão anterior - apenas desktop */}
           <Button
             onClick={prevClient}
-            className="hidden md:flex absolute -left-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-black/80 hover:bg-frezza-red text-white border border-frezza-red/30 hover:border-frezza-red backdrop-blur-xl transition-all duration-300 shadow-lg shadow-frezza-red/20 hover:shadow-frezza-red/40"
+            className="hidden md:flex absolute -left-4 top-1/2 -translate-y-1/2 z-20 w-14 h-14 bg-black/90 hover:bg-gradient-to-r hover:from-frezza-red hover:to-frezza-red/80 text-white border-2 border-frezza-red/40 hover:border-frezza-red backdrop-blur-xl transition-all duration-300 shadow-xl shadow-frezza-red/30 hover:shadow-frezza-red/60 hover:scale-110 group"
             size="icon"
           >
-            <ChevronLeft className="w-6 h-6" />
+            <ChevronLeft className="w-7 h-7 group-hover:scale-110 transition-transform" />
           </Button>
           
           {/* Botão próximo - apenas desktop */}
           <Button
             onClick={nextClient}
-            className="hidden md:flex absolute -right-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-black/80 hover:bg-frezza-red text-white border border-frezza-red/30 hover:border-frezza-red backdrop-blur-xl transition-all duration-300 shadow-lg shadow-frezza-red/20 hover:shadow-frezza-red/40"
+            className="hidden md:flex absolute -right-4 top-1/2 -translate-y-1/2 z-20 w-14 h-14 bg-black/90 hover:bg-gradient-to-r hover:from-frezza-red hover:to-frezza-red/80 text-white border-2 border-frezza-red/40 hover:border-frezza-red backdrop-blur-xl transition-all duration-300 shadow-xl shadow-frezza-red/30 hover:shadow-frezza-red/60 hover:scale-110 group"
             size="icon"
           >
-            <ChevronRight className="w-6 h-6" />
+            <ChevronRight className="w-7 h-7 group-hover:scale-110 transition-transform" />
           </Button>
           
           {/* Slider dos clientes */}
@@ -235,27 +248,36 @@ const Clientes = () => {
           </div>
         </div>
         
-        {/* Indicadores modernos */}
-        <div className="flex justify-center items-center mt-12 space-x-3">
+        {/* Indicadores modernos futuristas */}
+        <div className="flex justify-center items-center mt-16 gap-4">
           {clientes.map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrentIndex(index)}
-              className={`transition-all duration-300 rounded-full ${
-                index === currentIndex 
-                  ? 'w-12 h-2 bg-frezza-red shadow-lg shadow-frezza-red/50' 
-                  : 'w-2 h-2 bg-gray-600 hover:bg-gray-500'
-              }`}
+              className="group relative"
               aria-label={`Ir para cliente ${index + 1}`}
-            />
+            >
+              <div className={`transition-all duration-500 rounded-full ${
+                index === currentIndex 
+                  ? 'w-16 h-3 bg-gradient-to-r from-frezza-red to-frezza-red/60' 
+                  : 'w-3 h-3 bg-gray-700 hover:bg-gray-500 hover:scale-125'
+              }`}>
+                {index === currentIndex && (
+                  <>
+                    <div className="absolute inset-0 rounded-full bg-frezza-red blur-md animate-pulse"></div>
+                    <div className="absolute inset-0 rounded-full bg-gradient-to-r from-frezza-red/0 via-white/50 to-frezza-red/0 animate-[shimmer_2s_infinite]"></div>
+                  </>
+                )}
+              </div>
+            </button>
           ))}
         </div>
         
-        {/* Botões de navegação mobile */}
-        <div className="md:hidden flex justify-center mt-8 gap-4">
+        {/* Botões de navegação mobile modernos */}
+        <div className="md:hidden flex justify-center mt-10 gap-4">
           <Button
             onClick={prevClient}
-            className="flex-1 max-w-[140px] bg-black/80 hover:bg-frezza-red text-white border border-frezza-red/30 hover:border-frezza-red backdrop-blur-xl transition-all duration-300"
+            className="flex-1 max-w-[150px] bg-black/90 hover:bg-gradient-to-r hover:from-frezza-red hover:to-frezza-red/80 text-white border-2 border-frezza-red/40 hover:border-frezza-red backdrop-blur-xl transition-all duration-300 shadow-lg shadow-frezza-red/30 hover:shadow-frezza-red/50 hover:scale-105"
             size="lg"
           >
             <ChevronLeft className="w-5 h-5 mr-2" />
@@ -263,7 +285,7 @@ const Clientes = () => {
           </Button>
           <Button
             onClick={nextClient}
-            className="flex-1 max-w-[140px] bg-black/80 hover:bg-frezza-red text-white border border-frezza-red/30 hover:border-frezza-red backdrop-blur-xl transition-all duration-300"
+            className="flex-1 max-w-[150px] bg-black/90 hover:bg-gradient-to-r hover:from-frezza-red hover:to-frezza-red/80 text-white border-2 border-frezza-red/40 hover:border-frezza-red backdrop-blur-xl transition-all duration-300 shadow-lg shadow-frezza-red/30 hover:shadow-frezza-red/50 hover:scale-105"
             size="lg"
           >
             Próximo
