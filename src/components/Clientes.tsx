@@ -38,6 +38,13 @@ const clientes = [
     url: "https://www.instagram.com/fabiano.jugger",
     desc: "Atleta de fisiculturismo, campeão de Mr Olympia.",
     img: "/lovable-uploads/fabiano-jugger-new.jpg"
+  },
+  {
+    nome: "Villa dos Inglezes",
+    user: "@villadosinglezes",
+    url: "https://www.instagram.com/villadosinglezes/",
+    desc: "Condomínio residencial planejado em Sorocaba (SP), conhecido por sua ampla área verde, infraestrutura de lazer e segurança.",
+    img: "/lovable-uploads/villa-dos-inglezes.png"
   }
 ];
 
