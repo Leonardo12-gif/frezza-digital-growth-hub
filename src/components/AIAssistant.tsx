@@ -16,7 +16,7 @@ const AIAssistant = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-frezza-red/5 to-transparent h-32 animate-scan"></div>
       
       <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-3xl mx-auto">
           {/* Header */}
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-frezza-red/30 bg-gradient-to-r from-frezza-red/10 to-frezza-red/5 backdrop-blur-md mb-6 relative group">
@@ -31,7 +31,7 @@ const AIAssistant = () => {
             </h2>
             
             <p className="text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed">
-              Converse com nosso assistente inteligente e esclareça todas as suas dúvidas sobre nossos serviços de forma rápida e eficiente.
+              Tire suas dúvidas sobre nossos serviços de forma rápida e eficiente.
             </p>
           </div>
 
