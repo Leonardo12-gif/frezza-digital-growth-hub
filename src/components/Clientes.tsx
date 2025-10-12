@@ -19,7 +19,7 @@ const clientes = [
     img: "/lovable-uploads/46160644-af2b-4687-bf1e-2fd232bf96f4.png"
   },
   {
-    nome: "Alphatruck",
+    nome: "Rota Forte Truck",
     user: "@rotafortetruck",
     url: "https://www.instagram.com/rotafortetruck/",
     desc: "Oficina mecânica para caminhões pesados.",
