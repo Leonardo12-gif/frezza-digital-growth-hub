@@ -20,10 +20,10 @@ const clientes = [
   },
   {
     nome: "Alphatruck",
-    user: "@alphatruck",
-    url: "https://www.instagram.com/alphatruckofc/",
+    user: "@rotafortetruck",
+    url: "https://www.instagram.com/rotafortetruck/",
     desc: "Oficina mecânica para caminhões pesados.",
-    img: "/lovable-uploads/6c16c0b7-e20b-4db3-9bb0-5cbb958765b7.png"
+    img: "/lovable-uploads/rota-forte-truck.jpg"
   },
   {
     nome: "Gabriela Garcia Academy",
