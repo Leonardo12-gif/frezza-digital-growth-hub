@@ -43,7 +43,7 @@ const clientes = [
     nome: "Villa dos Inglezes",
     user: "@villadosinglezes",
     url: "https://www.instagram.com/villadosinglezes/",
-    desc: "Condomínio residencial planejado em Sorocaba (SP), conhecido por sua ampla área verde, infraestrutura de lazer e segurança.",
+    desc: "Condomínio residencial em Sorocaba com área verde e infraestrutura completa.",
     img: "/lovable-uploads/villa-dos-inglezes.png"
   }
 ];
