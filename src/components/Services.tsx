@@ -1,12 +1,13 @@
 
 
-import { useEffect, useRef } from "react";
-import { Video, Film, Users, TrendingUp, Leaf, Share2, Bot } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { Video, Film, Users, TrendingUp, Leaf, Share2, Bot, ChevronDown } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
 const Services = () => {
   const sectionRef = useRef<HTMLElement>(null);
+  const [showAll, setShowAll] = useState(false);
   // Get base URL from environment
   const basePath = import.meta.env.BASE_URL || "/";
 
@@ -149,7 +150,7 @@ return (
 
         {/* Grid de Serviços Futurístico */}
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 mt-16">
-          {services.map((service, index) => (
+          {services.slice(0, showAll ? services.length : 3).map((service, index) => (
             <div key={service.title} className="group relative" style={{ animationDelay: `${index * 0.1}s` }}>
               {/* Container Principal do Card */}
               <div className="relative h-full">
@@ -219,6 +220,31 @@ return (
             </div>
           ))}
         </div>
+
+        {/* Botão Ver Mais */}
+        {!showAll && (
+          <div className="mt-16 flex justify-center">
+            <button 
+              onClick={() => setShowAll(true)}
+              className="group relative overflow-hidden"
+            >
+              {/* Glow Effect */}
+              <div className="absolute -inset-1 bg-gradient-to-r from-frezza-red via-white to-frezza-red rounded-xl blur-md opacity-0 group-hover:opacity-50 transition-opacity duration-500"></div>
+              
+              {/* Button Container */}
+              <div className="relative flex items-center gap-3 px-10 py-4 bg-black border-2 border-frezza-red rounded-xl overflow-hidden transition-all duration-300 group-hover:border-white">
+                {/* Animated Background */}
+                <div className="absolute inset-0 bg-gradient-to-r from-frezza-red/0 via-frezza-red/10 to-frezza-red/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
+                
+                {/* Content */}
+                <span className="relative text-lg font-bold font-['Montserrat'] tracking-wider text-frezza-red group-hover:text-white transition-colors duration-300">
+                  VER MAIS SERVIÇOS
+                </span>
+                <ChevronDown className="relative w-5 h-5 text-frezza-red group-hover:text-white group-hover:animate-bounce transition-colors duration-300" />
+              </div>
+            </button>
+          </div>
+        )}
 
         {/* Call-to-Action limpo */}
         <div className="mt-32 text-center relative">
