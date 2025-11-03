@@ -45,6 +45,13 @@ const clientes = [
     url: "https://www.instagram.com/villadosinglezes/",
     desc: "Condomínio residencial em Sorocaba com área verde e infraestrutura completa.",
     img: "/lovable-uploads/villa-dos-inglezes.png"
+  },
+  {
+    nome: "SPA MIDIA",
+    user: "@spamidia",
+    url: "https://www.instagram.com/spamidia/",
+    desc: "Empresa de comunicação visual super renomada em Sorocaba-SP.",
+    img: "/lovable-uploads/spa-midia-logo.png"
   }
 ];
 
