@@ -1,9 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { Bot, Sparkles } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const AIAssistant = () => {
+  const { ref: sectionRef, isVisible } = useScrollAnimation({ threshold: 0.15 });
   return (
-    <section className="relative py-24 overflow-hidden bg-black">
+    <section ref={sectionRef} className={`relative py-24 overflow-hidden bg-black scroll-animate ${isVisible ? 'visible' : ''}`}>
       {/* Background Effects */}
       <div className="absolute inset-0 bg-gradient-to-b from-black via-frezza-red/10 to-black"></div>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(220,38,38,0.15)_0%,transparent_70%)]"></div>

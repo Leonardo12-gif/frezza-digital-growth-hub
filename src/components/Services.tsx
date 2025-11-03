@@ -1,36 +1,16 @@
 
 
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { Video, Film, Users, TrendingUp, Leaf, Share2, Bot, ChevronDown } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const Services = () => {
-  const sectionRef = useRef<HTMLElement>(null);
+  const { ref: sectionRef, isVisible } = useScrollAnimation({ threshold: 0.15 });
   const [showAll, setShowAll] = useState(false);
   // Get base URL from environment
   const basePath = import.meta.env.BASE_URL || "/";
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      entries => {
-        if (entries[0].isIntersecting) {
-          sectionRef.current?.classList.add('animate-fadeIn');
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, []);
 
   const services = [
     {
@@ -114,7 +94,7 @@ const Services = () => {
   };
 
 return (
-    <section id="services" ref={sectionRef} className="section-padding opacity-0 relative overflow-hidden bg-black">
+    <section id="services" ref={sectionRef} className={`section-padding scroll-animate ${isVisible ? 'visible' : ''} relative overflow-hidden bg-black`}>
       {/* Background moderno e limpo */}
       <div className="absolute inset-0 bg-gradient-to-b from-black via-frezza-red/5 to-black"></div>
       

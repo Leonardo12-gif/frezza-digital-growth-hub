@@ -1,12 +1,13 @@
 
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const Testimonials = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const sectionRef = useRef<HTMLElement>(null);
+  const { ref: sectionRef, isVisible } = useScrollAnimation({ threshold: 0.15 });
   
   const testimonials = [
     {
@@ -35,27 +36,6 @@ const Testimonials = () => {
     }
   ];
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      entries => {
-        if (entries[0].isIntersecting) {
-          sectionRef.current?.classList.add('animate-fadeIn');
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, []);
-
   const nextTestimonial = () => {
     setActiveIndex((prevIndex) => 
       prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
@@ -69,7 +49,7 @@ const Testimonials = () => {
   };
 
   return (
-    <section id="testimonials" ref={sectionRef} className="section-padding bg-[#0a0a0a] opacity-0">
+    <section id="testimonials" ref={sectionRef} className={`section-padding bg-[#0a0a0a] scroll-animate ${isVisible ? 'visible' : ''}`}>
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/3 right-1/4 w-80 h-80 rounded-full bg-frezza-red opacity-5 blur-3xl"></div>
       </div>

@@ -1,27 +1,11 @@
-import { useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+
 const About = () => {
-  const sectionRef = useRef<HTMLElement>(null);
-  useEffect(() => {
-    const observer = new IntersectionObserver(entries => {
-      if (entries[0].isIntersecting) {
-        sectionRef.current?.classList.add('animate-fadeIn');
-      }
-    }, {
-      threshold: 0.1
-    });
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, []);
-  return <section id="about" ref={sectionRef} className="section-padding relative bg-[#030303] opacity-0 overflow-hidden">
+  const { ref: sectionRef, isVisible } = useScrollAnimation({ threshold: 0.15 });
+  return <section id="about" ref={sectionRef} className={`section-padding relative bg-[#030303] scroll-animate ${isVisible ? 'visible' : ''} overflow-hidden`}>
       {/* Futuristic Grid Background */}
       <div className="absolute inset-0 opacity-[0.03]"
         style={{

@@ -1,31 +1,15 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ChartBarIncreasing, Instagram, Handshake, Video, Scissors, Camera, BarChart, ArrowRight } from "lucide-react";
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const Portfolio = () => {
   const [activeCategory, setActiveCategory] = useState("all");
-  const sectionRef = useRef<HTMLElement>(null);
-  useEffect(() => {
-    const observer = new IntersectionObserver(entries => {
-      if (entries[0].isIntersecting) {
-        sectionRef.current?.classList.add('animate-fadeIn');
-      }
-    }, {
-      threshold: 0.1
-    });
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, []);
+  const { ref: sectionRef, isVisible } = useScrollAnimation({ threshold: 0.15 });
 
   // Portfólio otimizado com imagens hospedadas localmente
   const portfolioItems = [{
@@ -143,7 +127,7 @@ const Portfolio = () => {
         </video>
       </AspectRatio>;
   };
-  return <section id="portfolio" ref={sectionRef} className="section-padding bg-black opacity-0">
+  return <section id="portfolio" ref={sectionRef} className={`section-padding bg-black scroll-animate ${isVisible ? 'visible' : ''}`}>
       {/* Background Elements */}
       <div className="absolute inset-x-0 pointer-events-none">
         <div className="absolute top-10 left-10 w-96 h-96 rounded-full bg-frezza-red opacity-5 blur-3xl"></div>

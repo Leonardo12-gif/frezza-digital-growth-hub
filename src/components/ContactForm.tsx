@@ -1,15 +1,16 @@
 
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
 import { sendEmail } from "@/utils/emailService";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const ContactForm = () => {
   const { toast } = useToast();
-  const sectionRef = useRef<HTMLElement>(null);
+  const { ref: sectionRef, isVisible } = useScrollAnimation({ threshold: 0.15 });
   
   const [formData, setFormData] = useState({
     name: "",
@@ -19,27 +20,6 @@ const ContactForm = () => {
   });
   
   const [isSubmitting, setIsSubmitting] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      entries => {
-        if (entries[0].isIntersecting) {
-          sectionRef.current?.classList.add('animate-fadeIn');
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, []);
   
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -81,7 +61,7 @@ const ContactForm = () => {
   };
 
   return (
-    <section id="contact" ref={sectionRef} className="opacity-0 relative py-24 md:py-32 bg-black overflow-hidden">
+    <section id="contact" ref={sectionRef} className={`scroll-animate ${isVisible ? 'visible' : ''} relative py-24 md:py-32 bg-black overflow-hidden`}>
       {/* Modern grid background */}
       <div className="absolute inset-0 bg-black">
         <div className="absolute inset-0" style={{

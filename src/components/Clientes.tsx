@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Instagram, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 // Dados dos clientes
 const clientes = [
@@ -58,6 +59,7 @@ const clientes = [
 const Clientes = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const { ref: sectionRef, isVisible } = useScrollAnimation({ threshold: 0.15 });
 
   // Função para ir para o próximo cliente
   const nextClient = () => {
@@ -190,7 +192,7 @@ const Clientes = () => {
   );
 
   return (
-    <section className="py-24 px-4 bg-black relative overflow-hidden">
+    <section ref={sectionRef} className={`py-24 px-4 bg-black relative overflow-hidden scroll-animate ${isVisible ? 'visible' : ''}`}>
       {/* Modern grid background */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
       
