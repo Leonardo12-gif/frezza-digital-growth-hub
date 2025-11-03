@@ -6,16 +6,14 @@ const AIAssistant = () => {
   const { ref: sectionRef, isVisible } = useScrollAnimation({ threshold: 0.15 });
   return (
     <section ref={sectionRef} className={`relative py-24 overflow-hidden bg-black scroll-animate ${isVisible ? 'visible' : ''}`}>
-      {/* Background Effects */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-frezza-red/10 to-black"></div>
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(220,38,38,0.15)_0%,transparent_70%)]"></div>
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(220,38,38,0.1)_0%,transparent_50%)]"></div>
+      {/* Background consistente */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black via-black to-black"></div>
       
-      {/* Animated Grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(220,38,38,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(220,38,38,0.05)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_80%_60%_at_50%_50%,black,transparent)] animate-pulse-slow"></div>
+      {/* Grid sutil */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(220,38,38,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(220,38,38,0.02)_1px,transparent_1px)] bg-[size:64px_64px]"></div>
       
-      {/* Scanning Line Effect */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-frezza-red/5 to-transparent h-32 animate-scan"></div>
+      {/* Glow sutil */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(220,38,38,0.05),transparent_70%)]"></div>
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-2xl mx-auto">

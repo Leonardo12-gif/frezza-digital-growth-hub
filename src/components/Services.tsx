@@ -95,14 +95,14 @@ const Services = () => {
 
 return (
     <section id="services" ref={sectionRef} className={`section-padding scroll-animate ${isVisible ? 'visible' : ''} relative overflow-hidden bg-black`}>
-      {/* Background moderno e limpo */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-frezza-red/5 to-black"></div>
+      {/* Background consistente */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black via-black to-black"></div>
       
       {/* Grid sutil */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(220,38,38,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(220,38,38,0.03)_1px,transparent_1px)] bg-[size:64px_64px]"></div>
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(220,38,38,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(220,38,38,0.02)_1px,transparent_1px)] bg-[size:64px_64px]"></div>
       
       {/* Glow sutil */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(220,38,38,0.1),transparent_70%)]"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(220,38,38,0.05),transparent_70%)]"></div>
 
       <div className="container mx-auto relative z-10">
         {/* Header Futurístico */}

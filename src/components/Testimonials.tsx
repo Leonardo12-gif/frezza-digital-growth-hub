@@ -49,10 +49,15 @@ const Testimonials = () => {
   };
 
   return (
-    <section id="testimonials" ref={sectionRef} className={`section-padding bg-[#0a0a0a] scroll-animate ${isVisible ? 'visible' : ''}`}>
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/3 right-1/4 w-80 h-80 rounded-full bg-frezza-red opacity-5 blur-3xl"></div>
-      </div>
+    <section id="testimonials" ref={sectionRef} className={`section-padding bg-black scroll-animate ${isVisible ? 'visible' : ''} relative overflow-hidden`}>
+      {/* Background consistente */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black via-black to-black"></div>
+      
+      {/* Grid sutil */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(220,38,38,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(220,38,38,0.02)_1px,transparent_1px)] bg-[size:64px_64px]"></div>
+      
+      {/* Glow sutil */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(220,38,38,0.05),transparent_70%)]"></div>
       <div className="container mx-auto relative z-10">
         <h2 className="section-title text-gradient">O que nossos clientes dizem</h2>
         <p className="section-subtitle">

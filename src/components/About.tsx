@@ -5,18 +5,15 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const About = () => {
   const { ref: sectionRef, isVisible } = useScrollAnimation({ threshold: 0.15 });
-  return <section id="about" ref={sectionRef} className={`section-padding relative bg-[#030303] scroll-animate ${isVisible ? 'visible' : ''} overflow-hidden`}>
-      {/* Futuristic Grid Background */}
-      <div className="absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage: 'linear-gradient(rgba(220, 38, 38, 0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(220, 38, 38, 0.5) 1px, transparent 1px)',
-          backgroundSize: '50px 50px'
-        }}
-      />
+  return <section id="about" ref={sectionRef} className={`section-padding relative bg-black scroll-animate ${isVisible ? 'visible' : ''} overflow-hidden`}>
+      {/* Background consistente */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black via-black to-black"></div>
       
-      {/* Radial gradient effects */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(220,38,38,0.15),transparent_50%)]"></div>
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_70%,rgba(220,38,38,0.1),transparent_50%)]"></div>
+      {/* Grid sutil */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(220,38,38,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(220,38,38,0.02)_1px,transparent_1px)] bg-[size:64px_64px]"></div>
+      
+      {/* Glow sutil */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(220,38,38,0.05),transparent_70%)]"></div>
       
       <div className="absolute inset-0 overflow-hidden">
         <motion.div

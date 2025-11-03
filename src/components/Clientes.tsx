@@ -193,16 +193,14 @@ const Clientes = () => {
 
   return (
     <section ref={sectionRef} className={`py-24 px-4 bg-black relative overflow-hidden scroll-animate ${isVisible ? 'visible' : ''}`}>
-      {/* Modern grid background */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
+      {/* Background consistente */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black via-black to-black"></div>
       
-      {/* Gradient overlays */}
-      <div className="absolute inset-0 bg-gradient-to-br from-frezza-red/10 via-transparent to-transparent"></div>
-      <div className="absolute inset-0 bg-gradient-to-tl from-frezza-red/10 via-transparent to-transparent"></div>
+      {/* Grid sutil */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(220,38,38,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(220,38,38,0.02)_1px,transparent_1px)] bg-[size:64px_64px]"></div>
       
-      {/* Radial glow effects */}
-      <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-frezza-red/5 rounded-full blur-[100px]"></div>
-      <div className="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-frezza-red/5 rounded-full blur-[100px]"></div>
+      {/* Glow sutil */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(220,38,38,0.05),transparent_70%)]"></div>
       
       <div className="container mx-auto max-w-7xl relative z-10">
         {/* Modern title */}

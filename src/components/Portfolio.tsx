@@ -127,12 +127,15 @@ const Portfolio = () => {
         </video>
       </AspectRatio>;
   };
-  return <section id="portfolio" ref={sectionRef} className={`section-padding bg-black scroll-animate ${isVisible ? 'visible' : ''}`}>
-      {/* Background Elements */}
-      <div className="absolute inset-x-0 pointer-events-none">
-        <div className="absolute top-10 left-10 w-96 h-96 rounded-full bg-frezza-red opacity-5 blur-3xl"></div>
-        <div className="absolute bottom-20 right-10 w-72 h-72 rounded-full bg-frezza-red opacity-5 blur-3xl"></div>
-      </div>
+  return <section id="portfolio" ref={sectionRef} className={`section-padding bg-black scroll-animate ${isVisible ? 'visible' : ''} relative overflow-hidden`}>
+      {/* Background consistente */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black via-black to-black"></div>
+      
+      {/* Grid sutil */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(220,38,38,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(220,38,38,0.02)_1px,transparent_1px)] bg-[size:64px_64px]"></div>
+      
+      {/* Glow sutil */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(220,38,38,0.05),transparent_70%)]"></div>
       
       <div className="container mx-auto relative z-10">
         <h2 className="section-title text-gradient">Nosso Portfólio</h2>

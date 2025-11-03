@@ -62,22 +62,14 @@ const ContactForm = () => {
 
   return (
     <section id="contact" ref={sectionRef} className={`scroll-animate ${isVisible ? 'visible' : ''} relative py-24 md:py-32 bg-black overflow-hidden`}>
-      {/* Modern grid background */}
-      <div className="absolute inset-0 bg-black">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `linear-gradient(rgba(239, 68, 68, 0.03) 1px, transparent 1px),
-                           linear-gradient(90deg, rgba(239, 68, 68, 0.03) 1px, transparent 1px)`,
-          backgroundSize: '50px 50px'
-        }}></div>
-      </div>
+      {/* Background consistente */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black via-black to-black"></div>
       
-      {/* Gradient overlays */}
-      <div className="absolute inset-0 bg-gradient-to-br from-black via-transparent to-frezza-red/5"></div>
-      <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+      {/* Grid sutil */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(220,38,38,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(220,38,38,0.02)_1px,transparent_1px)] bg-[size:64px_64px]"></div>
       
-      {/* Subtle glow effects */}
-      <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-frezza-red/10 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-1/3 right-1/4 w-96 h-96 bg-frezza-red/5 rounded-full blur-3xl"></div>
+      {/* Glow sutil */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(220,38,38,0.05),transparent_70%)]"></div>
       
       <div className="container mx-auto px-4 md:px-6 relative z-10 max-w-6xl">
         {/* Header */}
