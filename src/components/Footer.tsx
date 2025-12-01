@@ -53,9 +53,9 @@ const Footer = () => {
               <div className="absolute -inset-2 bg-frezza-red/20 rounded-lg blur-xl opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
               
               <img
-                src={getFullPath("/lovable-uploads/ebe49235-58da-4d8b-bc7e-d356459a8c4f.png")}
+                src={getFullPath("/lovable-uploads/frezza-logo-new.png")}
                 alt="Frezza Marketing Logo"
-                className="h-14 w-auto relative z-10 transition-transform duration-300 group-hover:scale-105"
+                className="h-16 w-auto relative z-10 transition-transform duration-300 group-hover:scale-105"
               />
             </div>
             
