@@ -11,7 +11,7 @@ const Hero = () => {
   return (
     <section 
       id="home" 
-      className="relative w-full min-h-screen flex flex-col items-center justify-center pt-20 pb-16 overflow-hidden bg-black"
+      className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden bg-black"
     >
       {/* Subtle grid background */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff02_1px,transparent_1px),linear-gradient(to_bottom,#ffffff02_1px,transparent_1px)] bg-[size:4rem_4rem]" />
@@ -48,7 +48,7 @@ const Hero = () => {
         
         {/* Video with delayed animation */}
         <div 
-          className={`mt-12 md:mt-16 w-full max-w-md transition-all duration-1000 delay-1000 ${
+          className={`mt-10 md:mt-12 w-full max-w-[200px] md:max-w-[240px] transition-all duration-1000 delay-1000 ${
             isLoaded ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-12 scale-95"
           }`}
         >
