@@ -13,17 +13,13 @@ const Hero = () => {
   return (
     <section 
       id="home" 
-      className="relative w-full min-h-screen min-h-[100svh] flex items-center pt-28 pb-16 overflow-hidden"
+      className="relative w-full min-h-screen min-h-[100svh] flex items-center pt-28 pb-16 overflow-hidden bg-black"
     >
-      {/* Modern grid background */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+      {/* Subtle grid background */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff02_1px,transparent_1px),linear-gradient(to_bottom,#ffffff02_1px,transparent_1px)] bg-[size:4rem_4rem]" />
       
-      {/* Gradient overlays */}
-      <div className="absolute inset-0 bg-gradient-to-br from-frezza-red/5 via-transparent to-transparent" />
-      <div className="absolute inset-0 bg-gradient-to-tl from-frezza-red/5 via-transparent to-transparent" />
-      
-      {/* Radial glow effect */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-frezza-red/10 rounded-full blur-[120px] animate-pulse" style={{ animationDuration: '4s' }} />
+      {/* Subtle radial glow effect */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-frezza-red/5 rounded-full blur-[120px]" />
       
       <div className="container mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
