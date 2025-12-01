@@ -64,7 +64,7 @@ const Header = () => {
           <div className="h-20 w-auto relative">
             <div className="absolute inset-0 bg-frezza-red/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <img 
-              src={`${basePath}lovable-uploads/ebe49235-58da-4d8b-bc7e-d356459a8c4f.png`}
+              src={`${basePath}lovable-uploads/frezza-logo-new.png`}
               alt="Frezza Marketing Logo" 
               className="h-20 w-auto relative z-10 transition-transform duration-300 group-hover:scale-105"
             />
