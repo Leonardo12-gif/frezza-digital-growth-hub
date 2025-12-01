@@ -11,7 +11,7 @@ const Hero = () => {
   return (
     <section 
       id="home" 
-      className="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden bg-black"
+      className="relative w-full min-h-screen flex flex-col items-center justify-center py-24 overflow-hidden bg-black"
     >
       {/* Floating decorative shapes */}
       <div className="absolute top-20 right-[15%] w-32 h-48 bg-gradient-to-br from-gray-700/30 to-gray-900/30 rounded-full rotate-45 blur-sm animate-float" style={{ animationDelay: '0s', animationDuration: '6s' }} />
@@ -52,6 +52,35 @@ const Hero = () => {
         >
           Sua empresa no próximo nível
         </p>
+        
+        {/* Video */}
+        <div 
+          className={`mt-10 w-full max-w-[180px] md:max-w-[220px] transition-all duration-1000 delay-700 ${
+            isLoaded ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-8 scale-95"
+          }`}
+        >
+          <div className="relative group">
+            <div className="absolute -inset-2 rounded-2xl border border-frezza-red/20 bg-gradient-to-br from-frezza-red/5 to-transparent" />
+            <div className="absolute -top-1 -left-1 w-4 h-4 border-t-2 border-l-2 border-frezza-red rounded-tl-lg" />
+            <div className="absolute -top-1 -right-1 w-4 h-4 border-t-2 border-r-2 border-frezza-red rounded-tr-lg" />
+            <div className="absolute -bottom-1 -left-1 w-4 h-4 border-b-2 border-l-2 border-frezza-red rounded-bl-lg" />
+            <div className="absolute -bottom-1 -right-1 w-4 h-4 border-b-2 border-r-2 border-frezza-red rounded-br-lg" />
+            
+            <div 
+              className="relative rounded-xl overflow-hidden border border-white/10 shadow-xl shadow-frezza-red/10 bg-black/50"
+              style={{ aspectRatio: '9/16' }}
+            >
+              <video 
+                src="/hero-video.mp4" 
+                controls
+                loop 
+                playsInline 
+                poster="/placeholder.svg" 
+                className="w-full h-full object-cover" 
+              />
+            </div>
+          </div>
+        </div>
         
         {/* Scroll indicator */}
         <div 
