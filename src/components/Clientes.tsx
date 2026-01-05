@@ -53,6 +53,13 @@ const clientes = [
     url: "https://www.instagram.com/spamidia/",
     desc: "Empresa de comunicação visual super renomada em Sorocaba-SP.",
     img: "/lovable-uploads/spa-midia-logo.png"
+  },
+  {
+    nome: "Mais Mídia",
+    user: "@maismidiapaineis",
+    url: "https://www.instagram.com/maismidiapaineis/",
+    desc: "Empresa de publicidade que aluga outdoors estratégicos em Sorocaba e região.",
+    img: "/lovable-uploads/mais-midia-logo.jpg"
   }
 ];
 
