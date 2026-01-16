@@ -132,7 +132,7 @@ const ContactForm = () => {
             </div>
             
             {/* WhatsApp CTA */}
-            <div className="mt-8 p-6 bg-gradient-to-br from-gray-900 to-black rounded-2xl border border-gray-800">
+            <div className="mt-8 p-6 bg-black rounded-2xl border border-frezza-red/30">
               <h4 className="font-bold text-white mb-2">Atendimento Rápido</h4>
               <p className="text-gray-400 text-sm mb-4">
                 Fale conosco pelo WhatsApp agora
@@ -153,7 +153,7 @@ const ContactForm = () => {
           </div>
           
           {/* Contact Form - 3 columns */}
-          <div className="lg:col-span-3 bg-gradient-to-br from-gray-950 to-black rounded-2xl border border-gray-800 p-8 md:p-10 shadow-2xl">
+          <div className="lg:col-span-3 bg-black rounded-2xl border border-frezza-red/30 p-8 md:p-10 shadow-2xl">
             <h3 className="text-2xl font-bold text-white mb-6 font-['Montserrat']">
               Envie sua mensagem
             </h3>
@@ -170,7 +170,7 @@ const ContactForm = () => {
                   onChange={handleChange}
                   placeholder="Digite seu nome"
                   required
-                  className="bg-black/50 border-gray-800 focus:border-frezza-red focus:ring-frezza-red text-white placeholder:text-gray-500 h-12"
+                  className="bg-black border-frezza-red/20 focus:border-frezza-red focus:ring-frezza-red text-white placeholder:text-gray-500 h-12"
                 />
               </div>
               
@@ -187,7 +187,7 @@ const ContactForm = () => {
                     onChange={handleChange}
                     placeholder="seu@email.com"
                     required
-                    className="bg-black/50 border-gray-800 focus:border-frezza-red focus:ring-frezza-red text-white placeholder:text-gray-500 h-12"
+                    className="bg-black border-frezza-red/20 focus:border-frezza-red focus:ring-frezza-red text-white placeholder:text-gray-500 h-12"
                   />
                 </div>
                 
@@ -201,7 +201,7 @@ const ContactForm = () => {
                     value={formData.phone}
                     onChange={handleChange}
                     placeholder="(00) 00000-0000"
-                    className="bg-black/50 border-gray-800 focus:border-frezza-red focus:ring-frezza-red text-white placeholder:text-gray-500 h-12"
+                    className="bg-black border-frezza-red/20 focus:border-frezza-red focus:ring-frezza-red text-white placeholder:text-gray-500 h-12"
                   />
                 </div>
               </div>
@@ -217,7 +217,7 @@ const ContactForm = () => {
                   onChange={handleChange}
                   placeholder="Como podemos ajudar você?"
                   required
-                  className="min-h-[140px] bg-black/50 border-gray-800 focus:border-frezza-red focus:ring-frezza-red text-white placeholder:text-gray-500 resize-none"
+                  className="min-h-[140px] bg-black border-frezza-red/20 focus:border-frezza-red focus:ring-frezza-red text-white placeholder:text-gray-500 resize-none"
                 />
               </div>
               

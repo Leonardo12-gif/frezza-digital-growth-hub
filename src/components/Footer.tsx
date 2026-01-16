@@ -25,8 +25,8 @@ const Footer = () => {
   
   return (
     <footer className="relative bg-black text-white pt-24 pb-8 border-t border-frezza-red/20 overflow-hidden">
-      {/* Background Futurístico */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black via-gray-900/30 to-black"></div>
+      {/* Background Preto Absoluto */}
+      <div className="absolute inset-0 bg-black"></div>
       
       {/* Grid Pattern */}
       <div className="absolute inset-0 opacity-5">
