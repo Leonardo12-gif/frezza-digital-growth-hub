@@ -60,6 +60,20 @@ const clientes = [
     url: "https://www.instagram.com/maismidiapaineis/",
     desc: "Empresa de publicidade que aluga outdoors estratégicos em Sorocaba e região.",
     img: "/lovable-uploads/mais-midia-logo.jpg"
+  },
+  {
+    nome: "Elaluz Concept",
+    user: "@elaluzconcept",
+    url: "https://www.instagram.com/elaluzconcept/",
+    desc: "Loja de roupas com alfaiataria, essência e feminilidade.",
+    img: "/lovable-uploads/elaluz-logo.jpg"
+  },
+  {
+    nome: "Robério Fontes",
+    user: "@roberiofonttes",
+    url: "https://www.instagram.com/roberiofonttes/",
+    desc: "Proprietário de um salão de beleza feminino de alto padrão.",
+    img: "/lovable-uploads/roberio-fontes-logo.jpg"
   }
 ];
 
