@@ -86,10 +86,9 @@ const Services = () => {
       ref={sectionRef} 
       className={`py-24 md:py-32 scroll-animate ${isVisible ? 'visible' : ''} relative overflow-hidden bg-black`}
     >
-      {/* Background */}
+      {/* Background - Preto absoluto */}
       <div className="absolute inset-0 bg-black"></div>
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(220,38,38,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(220,38,38,0.02)_1px,transparent_1px)] bg-[size:64px_64px]"></div>
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(220,38,38,0.08),transparent_50%)]"></div>
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(220,38,38,0.015)_1px,transparent_1px),linear-gradient(90deg,rgba(220,38,38,0.015)_1px,transparent_1px)] bg-[size:64px_64px]"></div>
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Header */}
