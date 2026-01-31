@@ -104,7 +104,7 @@ const Clientes = () => {
 
   const ClientCard = ({ nome, user, url, desc, img }) => (
     <div
-      className="flex flex-col p-8 md:p-10 min-h-[340px] md:min-h-[380px] justify-between items-center transition-all duration-300 w-full max-w-[300px] md:max-w-[340px] mx-4 group"
+      className="flex flex-col rounded-2xl p-8 md:p-10 min-h-[380px] md:min-h-[420px] justify-between items-center transition-all duration-300 w-full max-w-[300px] md:max-w-[340px] mx-4 group bg-black/50 border border-gray-800 hover:border-frezza-red/50"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
