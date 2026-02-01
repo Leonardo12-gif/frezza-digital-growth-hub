@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Instagram, ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
+import { useState, useEffect, useCallback } from "react";
+import { Instagram, ChevronLeft, ChevronRight, ExternalLink, Pause, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { motion } from "framer-motion";
@@ -80,72 +80,67 @@ const clientes = [
 
 const Clientes = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [isPaused, setIsPaused] = useState(false);
   const { ref: sectionRef, isVisible } = useScrollAnimation({ threshold: 0.1 });
 
-  // Navegação
-  const nextClient = () => {
-    setCurrentIndex((prev) => (prev + 1) % clientes.length);
-  };
+  // Autoplay
+  useEffect(() => {
+    if (!isAutoPlaying || isPaused) return;
+    
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % clientes.length);
+    }, 4000);
 
-  const prevClient = () => {
-    setCurrentIndex((prev) => (prev - 1 + clientes.length) % clientes.length);
-  };
+    return () => clearInterval(interval);
+  }, [isAutoPlaying, isPaused]);
 
-  // Clientes visíveis (3 no desktop)
-  const getVisibleClients = () => {
+  // Navegação manual
+  const goToIndex = useCallback((index: number) => {
+    setCurrentIndex(index);
+    // Pausa brevemente ao clicar manualmente
+    setIsPaused(true);
+    setTimeout(() => setIsPaused(false), 6000);
+  }, []);
+
+  const nextClient = useCallback(() => {
+    goToIndex((currentIndex + 1) % clientes.length);
+  }, [currentIndex, goToIndex]);
+
+  const prevClient = useCallback(() => {
+    goToIndex((currentIndex - 1 + clientes.length) % clientes.length);
+  }, [currentIndex, goToIndex]);
+
+  // Clientes visíveis (4 no desktop, 2 no tablet, 1 no mobile)
+  const getVisibleClients = (count: number) => {
     const visible = [];
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < count; i++) {
       const index = (currentIndex + i) % clientes.length;
-      visible.push({ ...clientes[index], index });
+      visible.push({ ...clientes[index], originalIndex: index });
     }
     return visible;
-  };
-
-  const staggerContainer = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.1,
-      },
-    },
-  };
-
-  const cardItem = {
-    hidden: { opacity: 0, y: 40 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut" as const,
-      },
-    },
   };
 
   return (
     <section 
       ref={sectionRef} 
       className={`py-32 px-4 bg-black relative overflow-hidden scroll-animate ${isVisible ? 'visible' : ''}`}
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
     >
-      {/* Background minimalista */}
+      {/* Background */}
       <div className="absolute inset-0 bg-black"></div>
-      
-      {/* Linha decorativa superior */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-frezza-red/30 to-transparent"></div>
-      
-      {/* Grid sutil */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(220,38,38,0.015)_1px,transparent_1px),linear-gradient(90deg,rgba(220,38,38,0.015)_1px,transparent_1px)] bg-[size:80px_80px]"></div>
       
       <div className="container mx-auto max-w-7xl relative z-10">
-        {/* Header moderno e minimalista */}
+        {/* Header */}
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="mb-20"
+          className="mb-16"
         >
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
             <div>
@@ -163,68 +158,94 @@ const Clientes = () => {
               </h2>
             </div>
             
-            <p className="text-gray-500 text-lg max-w-md leading-relaxed">
-              Marcas que confiaram em nosso trabalho e alcançaram resultados extraordinários nas redes sociais.
-            </p>
+            <div className="flex flex-col items-start md:items-end gap-4">
+              <p className="text-gray-500 text-lg max-w-md leading-relaxed text-left md:text-right">
+                Marcas que confiaram em nosso trabalho e alcançaram resultados extraordinários.
+              </p>
+              
+              {/* Controles */}
+              <div className="flex items-center gap-3">
+                <Button
+                  onClick={() => setIsAutoPlaying(!isAutoPlaying)}
+                  variant="outline"
+                  size="icon"
+                  className="w-10 h-10 rounded-full bg-transparent border border-white/10 hover:border-frezza-red hover:bg-frezza-red/10 text-white transition-all duration-300"
+                  title={isAutoPlaying ? "Pausar" : "Reproduzir"}
+                >
+                  {isAutoPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
+                </Button>
+                <Button
+                  onClick={prevClient}
+                  variant="outline"
+                  size="icon"
+                  className="w-10 h-10 rounded-full bg-transparent border border-white/10 hover:border-frezza-red hover:bg-frezza-red/10 text-white transition-all duration-300"
+                >
+                  <ChevronLeft className="w-5 h-5" />
+                </Button>
+                <Button
+                  onClick={nextClient}
+                  variant="outline"
+                  size="icon"
+                  className="w-10 h-10 rounded-full bg-transparent border border-white/10 hover:border-frezza-red hover:bg-frezza-red/10 text-white transition-all duration-300"
+                >
+                  <ChevronRight className="w-5 h-5" />
+                </Button>
+              </div>
+            </div>
           </div>
         </motion.div>
         
-        {/* Grid de clientes */}
-        <div className="relative">
-          {/* Navegação desktop */}
-          <div className="hidden md:flex absolute -top-16 right-0 gap-3 z-20">
-            <Button
-              onClick={prevClient}
-              variant="outline"
-              size="icon"
-              className="w-12 h-12 rounded-full bg-transparent border border-white/10 hover:border-frezza-red hover:bg-frezza-red/10 text-white transition-all duration-300"
+        {/* Carrossel com transição suave */}
+        <div className="relative overflow-hidden">
+          {/* Mobile: 1 cliente */}
+          <div className="md:hidden">
+            <motion.div
+              key={currentIndex}
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -50 }}
+              transition={{ duration: 0.5, ease: "easeInOut" }}
+              className="px-2"
             >
-              <ChevronLeft className="w-5 h-5" />
-            </Button>
-            <Button
-              onClick={nextClient}
-              variant="outline"
-              size="icon"
-              className="w-12 h-12 rounded-full bg-transparent border border-white/10 hover:border-frezza-red hover:bg-frezza-red/10 text-white transition-all duration-300"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </Button>
+              <ClientCard client={clientes[currentIndex]} index={currentIndex} />
+            </motion.div>
           </div>
           
-          {/* Cards container */}
-          <motion.div
-            key={currentIndex}
-            variants={staggerContainer}
-            initial="hidden"
-            animate="visible"
-            className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8"
-          >
-            {/* Mobile: 1 cliente */}
-            <motion.div variants={cardItem} className="md:hidden">
-              <ClientCard client={clientes[currentIndex]} />
-            </motion.div>
-            
-            {/* Desktop: 3 clientes */}
-            {getVisibleClients().map((cliente) => (
-              <motion.div 
-                key={`${cliente.nome}-${cliente.index}`}
-                variants={cardItem}
-                className="hidden md:block"
+          {/* Tablet: 2 clientes */}
+          <div className="hidden md:grid lg:hidden grid-cols-2 gap-6">
+            {getVisibleClients(2).map((cliente, idx) => (
+              <motion.div
+                key={`${cliente.nome}-${cliente.originalIndex}`}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
               >
-                <ClientCard client={cliente} />
+                <ClientCard client={cliente} index={cliente.originalIndex} />
               </motion.div>
             ))}
-          </motion.div>
+          </div>
+          
+          {/* Desktop: 4 clientes */}
+          <div className="hidden lg:grid grid-cols-4 gap-6">
+            {getVisibleClients(4).map((cliente, idx) => (
+              <motion.div
+                key={`${cliente.nome}-${cliente.originalIndex}`}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+              >
+                <ClientCard client={cliente} index={cliente.originalIndex} />
+              </motion.div>
+            ))}
+          </div>
         </div>
         
-        {/* Indicadores minimalistas */}
-        <div className="flex justify-center items-center mt-16 gap-2">
+        {/* Indicadores */}
+        <div className="flex justify-center items-center mt-12 gap-2">
           {clientes.map((_, index) => (
             <button
               key={index}
-              onClick={() => {
-                setCurrentIndex(index);
-              }}
+              onClick={() => goToIndex(index)}
               className="group p-1"
               aria-label={`Ir para cliente ${index + 1}`}
             >
@@ -237,35 +258,29 @@ const Clientes = () => {
           ))}
         </div>
         
-        {/* Navegação mobile */}
-        <div className="md:hidden flex justify-center mt-8 gap-4">
-          <Button
-            onClick={prevClient}
-            variant="outline"
-            className="flex-1 max-w-[140px] h-12 bg-transparent border border-white/10 hover:border-frezza-red hover:bg-frezza-red/10 text-white transition-all duration-300"
-          >
-            <ChevronLeft className="w-5 h-5 mr-2" />
-            Anterior
-          </Button>
-          <Button
-            onClick={nextClient}
-            variant="outline"
-            className="flex-1 max-w-[140px] h-12 bg-transparent border border-white/10 hover:border-frezza-red hover:bg-frezza-red/10 text-white transition-all duration-300"
-          >
-            Próximo
-            <ChevronRight className="w-5 h-5 ml-2" />
-          </Button>
-        </div>
+        {/* Barra de progresso do autoplay */}
+        {isAutoPlaying && (
+          <div className="flex justify-center mt-4">
+            <div className="w-32 h-0.5 bg-white/10 rounded-full overflow-hidden">
+              <motion.div
+                key={currentIndex}
+                className="h-full bg-frezza-red"
+                initial={{ width: "0%" }}
+                animate={{ width: isPaused ? "0%" : "100%" }}
+                transition={{ duration: isPaused ? 0 : 4, ease: "linear" }}
+              />
+            </div>
+          </div>
+        )}
       </div>
       
-      {/* Linha decorativa inferior */}
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-frezza-red/30 to-transparent"></div>
     </section>
   );
 };
 
-// Componente de card moderno
-const ClientCard = ({ client }: { client: typeof clientes[0] }) => {
+// Card do cliente
+const ClientCard = ({ client, index }: { client: typeof clientes[0]; index: number }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -276,75 +291,63 @@ const ClientCard = ({ client }: { client: typeof clientes[0] }) => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       className="group relative block h-full"
-      whileHover={{ y: -8 }}
-      transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+      whileHover={{ y: -4 }}
+      transition={{ duration: 0.3 }}
     >
-      <div className="relative h-full min-h-[420px] rounded-2xl overflow-hidden bg-white/[0.02] border border-white/5 hover:border-frezza-red/30 transition-all duration-500">
-        {/* Imagem de fundo com overlay */}
-        <div className="absolute inset-0">
-          <img
-            src={client.img}
-            alt={client.nome}
-            className="w-full h-full object-cover opacity-20 group-hover:opacity-30 group-hover:scale-110 transition-all duration-700"
-            loading="lazy"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/90 to-black/70"></div>
-        </div>
-        
+      <div className="relative h-full min-h-[320px] rounded-2xl overflow-hidden bg-white/[0.02] border border-white/5 hover:border-frezza-red/30 transition-all duration-500">
         {/* Conteúdo */}
-        <div className="relative h-full flex flex-col justify-end p-8">
-          {/* Avatar */}
-          <div className="absolute top-8 left-8">
+        <div className="relative h-full flex flex-col p-6">
+          {/* Header com avatar */}
+          <div className="flex items-start justify-between mb-auto">
+            {/* Avatar padronizado */}
             <div className="relative">
-              <div className="w-20 h-20 rounded-2xl overflow-hidden border-2 border-white/10 group-hover:border-frezza-red/50 transition-colors duration-500">
+              <div className="w-16 h-16 rounded-xl overflow-hidden border-2 border-white/10 group-hover:border-frezza-red/50 transition-colors duration-500 bg-white/5 flex items-center justify-center">
                 <img
                   src={client.img}
                   alt={client.nome}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain p-1"
                   loading="lazy"
                 />
               </div>
-              <div className="absolute -bottom-2 -right-2 w-8 h-8 rounded-lg bg-black border border-white/10 flex items-center justify-center group-hover:border-frezza-red/50 group-hover:bg-frezza-red/10 transition-all duration-300">
-                <Instagram className="w-4 h-4 text-white/60 group-hover:text-frezza-red transition-colors" />
+              <div className="absolute -bottom-1 -right-1 w-6 h-6 rounded-md bg-black border border-white/10 flex items-center justify-center group-hover:border-frezza-red/50 group-hover:bg-frezza-red/10 transition-all duration-300">
+                <Instagram className="w-3 h-3 text-white/60 group-hover:text-frezza-red transition-colors" />
               </div>
             </div>
+            
+            {/* Número */}
+            <span className="text-4xl font-bold text-white/[0.05] select-none">
+              {String(index + 1).padStart(2, '0')}
+            </span>
           </div>
           
           {/* Info */}
-          <div className="mt-auto">
-            {/* Número decorativo */}
-            <div className="absolute top-8 right-8 text-[80px] font-bold text-white/[0.03] leading-none select-none pointer-events-none">
-              {String(clientes.indexOf(client) + 1).padStart(2, '0')}
+          <div className="mt-6 space-y-3">
+            <div>
+              <h3 className="text-lg font-bold text-white mb-1 group-hover:text-frezza-red transition-colors duration-300 line-clamp-1">
+                {client.nome}
+              </h3>
+              <span className="text-frezza-red/80 text-sm font-medium">
+                {client.user}
+              </span>
             </div>
             
-            <div className="space-y-4">
-              <div>
-                <h3 className="text-2xl font-bold text-white mb-1 group-hover:text-frezza-red transition-colors duration-300">
-                  {client.nome}
-                </h3>
-                <span className="text-frezza-red/80 text-sm font-medium">
-                  {client.user}
-                </span>
-              </div>
-              
-              <p className="text-gray-400 text-sm leading-relaxed">
-                {client.desc}
-              </p>
-              
-              {/* Link hover indicator */}
-              <div className="flex items-center gap-2 text-white/40 group-hover:text-frezza-red transition-colors duration-300">
-                <span className="text-xs uppercase tracking-wider">Ver perfil</span>
-                <ExternalLink className="w-3 h-3 transform group-hover:translate-x-1 transition-transform duration-300" />
-              </div>
+            <p className="text-gray-500 text-sm leading-relaxed line-clamp-2">
+              {client.desc}
+            </p>
+            
+            {/* Link */}
+            <div className="flex items-center gap-2 text-white/30 group-hover:text-frezza-red transition-colors duration-300 pt-2">
+              <span className="text-xs uppercase tracking-wider">Ver perfil</span>
+              <ExternalLink className="w-3 h-3 transform group-hover:translate-x-1 transition-transform duration-300" />
             </div>
           </div>
           
-          {/* Borda animada inferior */}
+          {/* Borda animada */}
           <motion.div 
             className="absolute bottom-0 left-0 h-[2px] bg-frezza-red"
             initial={{ width: 0 }}
             animate={{ width: isHovered ? '100%' : 0 }}
-            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.3 }}
           />
         </div>
       </div>
