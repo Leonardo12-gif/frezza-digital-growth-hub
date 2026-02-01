@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { Instagram, ChevronLeft, ChevronRight, ExternalLink, Pause, Play } from "lucide-react";
+import { Instagram, ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { motion } from "framer-motion";
@@ -80,27 +80,25 @@ const clientes = [
 
 const Clientes = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [isPaused, setIsPaused] = useState(false);
   const { ref: sectionRef, isVisible } = useScrollAnimation({ threshold: 0.1 });
 
-  // Autoplay
+  // Autoplay contínuo
   useEffect(() => {
-    if (!isAutoPlaying || isPaused) return;
+    if (isPaused) return;
     
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % clientes.length);
-    }, 4000);
+    }, 3000);
 
     return () => clearInterval(interval);
-  }, [isAutoPlaying, isPaused]);
+  }, [isPaused]);
 
-  // Navegação manual
+  // Navegação manual - pausa temporariamente
   const goToIndex = useCallback((index: number) => {
     setCurrentIndex(index);
-    // Pausa brevemente ao clicar manualmente
     setIsPaused(true);
-    setTimeout(() => setIsPaused(false), 6000);
+    setTimeout(() => setIsPaused(false), 5000);
   }, []);
 
   const nextClient = useCallback(() => {
@@ -111,7 +109,7 @@ const Clientes = () => {
     goToIndex((currentIndex - 1 + clientes.length) % clientes.length);
   }, [currentIndex, goToIndex]);
 
-  // Clientes visíveis (4 no desktop, 2 no tablet, 1 no mobile)
+  // Clientes visíveis
   const getVisibleClients = (count: number) => {
     const visible = [];
     for (let i = 0; i < count; i++) {
@@ -125,8 +123,6 @@ const Clientes = () => {
     <section 
       ref={sectionRef} 
       className={`py-32 px-4 bg-black relative overflow-hidden scroll-animate ${isVisible ? 'visible' : ''}`}
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
     >
       {/* Background */}
       <div className="absolute inset-0 bg-black"></div>
@@ -166,15 +162,6 @@ const Clientes = () => {
               {/* Controles */}
               <div className="flex items-center gap-3">
                 <Button
-                  onClick={() => setIsAutoPlaying(!isAutoPlaying)}
-                  variant="outline"
-                  size="icon"
-                  className="w-10 h-10 rounded-full bg-transparent border border-white/10 hover:border-frezza-red hover:bg-frezza-red/10 text-white transition-all duration-300"
-                  title={isAutoPlaying ? "Pausar" : "Reproduzir"}
-                >
-                  {isAutoPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
-                </Button>
-                <Button
                   onClick={prevClient}
                   variant="outline"
                   size="icon"
@@ -195,16 +182,15 @@ const Clientes = () => {
           </div>
         </motion.div>
         
-        {/* Carrossel com transição suave */}
+        {/* Carrossel */}
         <div className="relative overflow-hidden">
           {/* Mobile: 1 cliente */}
           <div className="md:hidden">
             <motion.div
               key={currentIndex}
-              initial={{ opacity: 0, x: 50 }}
+              initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -50 }}
-              transition={{ duration: 0.5, ease: "easeInOut" }}
+              transition={{ duration: 0.4 }}
               className="px-2"
             >
               <ClientCard client={clientes[currentIndex]} index={currentIndex} />
@@ -216,9 +202,9 @@ const Clientes = () => {
             {getVisibleClients(2).map((cliente, idx) => (
               <motion.div
                 key={`${cliente.nome}-${cliente.originalIndex}`}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.4, delay: idx * 0.05 }}
               >
                 <ClientCard client={cliente} index={cliente.originalIndex} />
               </motion.div>
@@ -230,9 +216,9 @@ const Clientes = () => {
             {getVisibleClients(4).map((cliente, idx) => (
               <motion.div
                 key={`${cliente.nome}-${cliente.originalIndex}`}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.4, delay: idx * 0.05 }}
               >
                 <ClientCard client={cliente} index={cliente.originalIndex} />
               </motion.div>
@@ -249,7 +235,7 @@ const Clientes = () => {
               className="group p-1"
               aria-label={`Ir para cliente ${index + 1}`}
             >
-              <div className={`transition-all duration-500 rounded-full ${
+              <div className={`transition-all duration-300 rounded-full ${
                 index === currentIndex 
                   ? 'w-8 h-1.5 bg-frezza-red' 
                   : 'w-1.5 h-1.5 bg-white/20 hover:bg-white/40'
@@ -257,21 +243,6 @@ const Clientes = () => {
             </button>
           ))}
         </div>
-        
-        {/* Barra de progresso do autoplay */}
-        {isAutoPlaying && (
-          <div className="flex justify-center mt-4">
-            <div className="w-32 h-0.5 bg-white/10 rounded-full overflow-hidden">
-              <motion.div
-                key={currentIndex}
-                className="h-full bg-frezza-red"
-                initial={{ width: "0%" }}
-                animate={{ width: isPaused ? "0%" : "100%" }}
-                transition={{ duration: isPaused ? 0 : 4, ease: "linear" }}
-              />
-            </div>
-          </div>
-        )}
       </div>
       
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-frezza-red/30 to-transparent"></div>
@@ -279,7 +250,7 @@ const Clientes = () => {
   );
 };
 
-// Card do cliente
+// Card do cliente com foto redonda estilo Instagram
 const ClientCard = ({ client, index }: { client: typeof clientes[0]; index: number }) => {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -295,22 +266,28 @@ const ClientCard = ({ client, index }: { client: typeof clientes[0]; index: numb
       transition={{ duration: 0.3 }}
     >
       <div className="relative h-full min-h-[320px] rounded-2xl overflow-hidden bg-white/[0.02] border border-white/5 hover:border-frezza-red/30 transition-all duration-500">
-        {/* Conteúdo */}
         <div className="relative h-full flex flex-col p-6">
-          {/* Header com avatar */}
+          {/* Header */}
           <div className="flex items-start justify-between mb-auto">
-            {/* Avatar padronizado */}
+            {/* Avatar redondo estilo Instagram */}
             <div className="relative">
-              <div className="w-16 h-16 rounded-xl overflow-hidden border-2 border-white/10 group-hover:border-frezza-red/50 transition-colors duration-500 bg-white/5 flex items-center justify-center">
-                <img
-                  src={client.img}
-                  alt={client.nome}
-                  className="w-full h-full object-contain p-1"
-                  loading="lazy"
-                />
+              <div 
+                className="p-[3px] rounded-full"
+                style={{
+                  background: 'linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)'
+                }}
+              >
+                <div className="w-16 h-16 rounded-full overflow-hidden bg-black p-[2px]">
+                  <img
+                    src={client.img}
+                    alt={client.nome}
+                    className="w-full h-full object-cover rounded-full"
+                    loading="lazy"
+                  />
+                </div>
               </div>
-              <div className="absolute -bottom-1 -right-1 w-6 h-6 rounded-md bg-black border border-white/10 flex items-center justify-center group-hover:border-frezza-red/50 group-hover:bg-frezza-red/10 transition-all duration-300">
-                <Instagram className="w-3 h-3 text-white/60 group-hover:text-frezza-red transition-colors" />
+              <div className="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-black border-2 border-frezza-red flex items-center justify-center">
+                <Instagram className="w-3 h-3 text-white" />
               </div>
             </div>
             
