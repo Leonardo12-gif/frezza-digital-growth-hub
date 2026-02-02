@@ -1,218 +1,180 @@
-import { Facebook, Instagram, MessageSquare, Mail, Phone } from "lucide-react";
-import { Separator } from "@/components/ui/separator";
+
+import { Instagram, Mail, Phone, ArrowUpRight } from "lucide-react";
+import { motion } from "framer-motion";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  const services = [
-    "Gravação de Vídeo (Opcional DRONE)",
-    "Edição de Vídeo",
-    "Personal Media",
-    "Modelo para Publicidade",
-    "Tráfego Pago",
-    "Tráfego Orgânico",
-    "Social Media",
-    "Criação de Site Profissional",
-    "Automação e Atendimento Digital"
-  ];
   
-  // Get base URL from environment
   const basePath = import.meta.env.BASE_URL || "/";
   
-  // Utiliza o basePath corretamente, evitando "//" no caminho da imagem
-  // Remove barra final caso tenha, apenas para concatenar o path do arquivo corretamente
   const getFullPath = (relativePath: string) =>
     `${basePath.replace(/\/$/, "")}${relativePath.startsWith("/") ? relativePath : "/" + relativePath}`;
-  
+
+  const navLinks = [
+    { name: "Início", href: "#home" },
+    { name: "Serviços", href: "#services" },
+    { name: "Portfólio", href: "#portfolio" },
+    { name: "Sobre", href: "#about" },
+    { name: "Contato", href: "#contact" },
+  ];
+
+  const socialLinks = [
+    { 
+      name: "Instagram", 
+      href: "https://www.instagram.com/fa.marketingoficial/",
+      icon: Instagram
+    },
+    { 
+      name: "Facebook", 
+      href: "https://www.facebook.com/profile.php?id=61575768677479",
+      icon: () => (
+        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+        </svg>
+      )
+    },
+    { 
+      name: "WhatsApp", 
+      href: "https://wa.me/5515991273423",
+      icon: () => (
+        <img 
+          src="/lovable-uploads/700ccf25-b57c-4bb6-bc6c-e9316fe138aa.png" 
+          alt="WhatsApp" 
+          className="w-4 h-4 filter brightness-0 invert"
+        />
+      )
+    },
+  ];
+
   return (
-    <footer className="relative bg-black text-white pt-24 pb-8 border-t border-frezza-red/20 overflow-hidden">
-      {/* Background Preto Absoluto */}
-      <div className="absolute inset-0 bg-black"></div>
+    <footer className="relative bg-black text-white overflow-hidden">
+      {/* Subtle top border */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
       
-      {/* Grid Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="grid grid-cols-12 grid-rows-12 w-full h-full">
-          {Array.from({ length: 144 }).map((_, i) => (
-            <div key={i} className="border-r border-b border-frezza-red/30"></div>
-          ))}
-        </div>
-      </div>
-      
-      {/* Glow Effects */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-frezza-red/10 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-frezza-red/5 rounded-full blur-3xl"></div>
-      
-      {/* Linha Superior Brilhante */}
-      <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-frezza-red to-transparent"></div>
-      
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-          {/* Logo and Description */}
-          <div className="space-y-6 group">
-            <div className="mb-4 relative">
-              {/* Glow Effect */}
-              <div className="absolute -inset-2 bg-frezza-red/20 rounded-lg blur-xl opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
-              
+      {/* Main Content */}
+      <div className="container mx-auto px-4 md:px-6 py-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8">
+          
+          {/* Logo & Description - 5 cols */}
+          <div className="lg:col-span-5 space-y-6">
+            <motion.a 
+              href="#home"
+              className="inline-block"
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.2 }}
+            >
               <img
                 src={getFullPath("/lovable-uploads/frezza-logo-new.png")}
                 alt="Frezza Marketing Logo"
-                className="h-16 w-auto relative z-10 transition-transform duration-300 group-hover:scale-105"
+                className="h-12"
               />
-            </div>
+            </motion.a>
             
-            <p className="text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
-              Sua agência de marketing digital focada em performance, criação de conteúdo audiovisual e resultados reais para empresas que querem crescer online.
+            <p className="text-gray-500 text-sm leading-relaxed max-w-sm">
+              Agência de marketing digital focada em performance e resultados reais para empresas que querem crescer online.
             </p>
             
-            <div className="flex space-x-4 pt-4">
-              <a href="https://www.facebook.com/profile.php?id=61575768677479" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="group/social relative w-10 h-10 rounded-full border border-gray-800 flex items-center justify-center hover:border-frezza-red transition-all duration-300 overflow-hidden">
-                <div className="absolute inset-0 bg-frezza-red/0 group-hover/social:bg-frezza-red/10 transition-all duration-300"></div>
-                <Facebook size={18} className="relative z-10 text-gray-400 group-hover/social:text-frezza-red transition-colors duration-300" />
-              </a>
-              <a href="https://www.instagram.com/fa.marketingoficial/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="group/social relative w-10 h-10 rounded-full border border-gray-800 flex items-center justify-center hover:border-frezza-red transition-all duration-300 overflow-hidden">
-                <div className="absolute inset-0 bg-frezza-red/0 group-hover/social:bg-frezza-red/10 transition-all duration-300"></div>
-                <Instagram size={18} className="relative z-10 text-gray-400 group-hover/social:text-frezza-red transition-colors duration-300" />
-              </a>
-              <a href="https://wa.me/5515991273423" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="group/social relative w-10 h-10 rounded-full border border-gray-800 flex items-center justify-center hover:border-green-500 transition-all duration-300 overflow-hidden">
-                <div className="absolute inset-0 bg-green-500/0 group-hover/social:bg-green-500/10 transition-all duration-300"></div>
-                <img 
-                  src="/lovable-uploads/700ccf25-b57c-4bb6-bc6c-e9316fe138aa.png" 
-                  alt="WhatsApp" 
-                  className="w-5 h-5 filter brightness-0 invert relative z-10 group-hover/social:brightness-100 group-hover/social:invert-0 transition-all duration-300"
-                />
-              </a>
-            </div>
-          </div>
-          
-          {/* Quick Links */}
-          <div>
-            <h3 className="font-bold text-lg mb-8 relative group/title">
-              <span className="relative z-10 text-white group-hover/title:text-frezza-red transition-colors duration-300 font-['Montserrat']">Links Rápidos</span>
-              <span className="absolute bottom-0 left-0 w-12 h-0.5 bg-frezza-red group-hover/title:w-24 transition-all duration-500"></span>
-              <span className="absolute bottom-0 left-0 w-12 h-0.5 bg-frezza-red blur-sm opacity-50"></span>
-            </h3>
-            <ul className="space-y-4">
-              <li className="group/link">
-                <a href="#home" className="text-gray-400 hover:text-frezza-red transition-all duration-300 flex items-center gap-2">
-                  <span className="w-0 h-[1px] bg-frezza-red group-hover/link:w-3 transition-all duration-300"></span>
-                  Início
-                </a>
-              </li>
-              <li className="group/link">
-                <a href="#services" className="text-gray-400 hover:text-frezza-red transition-all duration-300 flex items-center gap-2">
-                  <span className="w-0 h-[1px] bg-frezza-red group-hover/link:w-3 transition-all duration-300"></span>
-                  Serviços
-                </a>
-              </li>
-              <li className="group/link">
-                <a href="#portfolio" className="text-gray-400 hover:text-frezza-red transition-all duration-300 flex items-center gap-2">
-                  <span className="w-0 h-[1px] bg-frezza-red group-hover/link:w-3 transition-all duration-300"></span>
-                  Portfólio
-                </a>
-              </li>
-              <li className="group/link">
-                <a href="#testimonials" className="text-gray-400 hover:text-frezza-red transition-all duration-300 flex items-center gap-2">
-                  <span className="w-0 h-[1px] bg-frezza-red group-hover/link:w-3 transition-all duration-300"></span>
-                  Depoimentos
-                </a>
-              </li>
-              <li className="group/link">
-                <a href="#about" className="text-gray-400 hover:text-frezza-red transition-all duration-300 flex items-center gap-2">
-                  <span className="w-0 h-[1px] bg-frezza-red group-hover/link:w-3 transition-all duration-300"></span>
-                  Sobre Nós
-                </a>
-              </li>
-              <li className="group/link">
-                <a href="#contact" className="text-gray-400 hover:text-frezza-red transition-all duration-300 flex items-center gap-2">
-                  <span className="w-0 h-[1px] bg-frezza-red group-hover/link:w-3 transition-all duration-300"></span>
-                  Contato
-                </a>
-              </li>
-            </ul>
-          </div>
-          
-          {/* Services */}
-          <div>
-            <h3 className="font-bold text-lg mb-8 relative group/title">
-              <span className="relative z-10 text-white group-hover/title:text-frezza-red transition-colors duration-300 font-['Montserrat']">Serviços</span>
-              <span className="absolute bottom-0 left-0 w-12 h-0.5 bg-frezza-red group-hover/title:w-24 transition-all duration-500"></span>
-              <span className="absolute bottom-0 left-0 w-12 h-0.5 bg-frezza-red blur-sm opacity-50"></span>
-            </h3>
-            <ul className="space-y-4">
-              {services.map(service => <li key={service} className="group/link">
-                  <a href="#services" className="text-gray-400 hover:text-frezza-red transition-all duration-300 flex items-center gap-2 text-sm">
-                    <span className="w-0 h-[1px] bg-frezza-red group-hover/link:w-3 transition-all duration-300"></span>
-                    {service}
+            {/* Social Links */}
+            <div className="flex items-center gap-3 pt-2">
+              {socialLinks.map((social) => {
+                const IconComponent = social.icon;
+                return (
+                  <a
+                    key={social.name}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={social.name}
+                    className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:bg-frezza-red hover:border-frezza-red transition-all duration-300"
+                  >
+                    <IconComponent className="w-4 h-4" />
                   </a>
-                </li>)}
+                );
+              })}
+            </div>
+          </div>
+          
+          {/* Navigation - 3 cols */}
+          <div className="lg:col-span-3">
+            <h4 className="text-white font-semibold mb-6 text-sm uppercase tracking-wider">
+              Navegação
+            </h4>
+            <ul className="space-y-3">
+              {navLinks.map((link) => (
+                <li key={link.name}>
+                  <a 
+                    href={link.href}
+                    className="text-gray-500 hover:text-white text-sm transition-colors duration-200 flex items-center gap-2 group"
+                  >
+                    <span className="w-0 group-hover:w-2 h-px bg-frezza-red transition-all duration-200"></span>
+                    {link.name}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
           
-          {/* Contact Info */}
-          <div>
-            <h3 className="font-bold text-lg mb-8 relative group/title">
-              <span className="relative z-10 text-white group-hover/title:text-frezza-red transition-colors duration-300 font-['Montserrat']">Contato</span>
-              <span className="absolute bottom-0 left-0 w-12 h-0.5 bg-frezza-red group-hover/title:w-24 transition-all duration-500"></span>
-              <span className="absolute bottom-0 left-0 w-12 h-0.5 bg-frezza-red blur-sm opacity-50"></span>
-            </h3>
-            <ul className="space-y-6">
-              <li className="group/contact flex items-center">
-                <div className="mr-3 w-8 h-8 rounded-full border border-frezza-red/30 flex items-center justify-center group-hover/contact:border-frezza-red group-hover/contact:bg-frezza-red/10 transition-all duration-300">
-                  <Mail size={16} className="text-frezza-red" />
-                </div>
-                <a href="mailto:frezza.trafego@gmail.com" className="text-gray-400 hover:text-frezza-red transition-colors duration-300 text-sm">
-                  frezza.trafego@gmail.com
+          {/* Contact - 4 cols */}
+          <div className="lg:col-span-4">
+            <h4 className="text-white font-semibold mb-6 text-sm uppercase tracking-wider">
+              Contato
+            </h4>
+            <ul className="space-y-4">
+              <li>
+                <a 
+                  href="mailto:frezza.trafego@gmail.com"
+                  className="flex items-center gap-3 text-gray-500 hover:text-white transition-colors duration-200 group"
+                >
+                  <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center group-hover:bg-frezza-red/10 transition-colors duration-200">
+                    <Mail className="w-4 h-4 text-frezza-red" />
+                  </div>
+                  <span className="text-sm">frezza.trafego@gmail.com</span>
                 </a>
               </li>
-              <li className="group/contact flex items-center">
-                <div className="mr-3 w-8 h-8 rounded-full border border-frezza-red/30 flex items-center justify-center group-hover/contact:border-frezza-red group-hover/contact:bg-frezza-red/10 transition-all duration-300">
-                  <Phone size={16} className="text-frezza-red" />
-                </div>
-                <a href="tel:+5515991273423" className="text-gray-400 hover:text-frezza-red transition-colors duration-300 text-sm">
-                  (15) 99127-3423
-                </a>
-              </li>
-              <li className="group/contact flex items-center">
-                <div className="mr-3 w-8 h-8 rounded-full border border-green-500/30 flex items-center justify-center group-hover/contact:border-green-500 group-hover/contact:bg-green-500/10 transition-all duration-300">
-                  <MessageSquare size={16} className="text-green-500" />
-                </div>
-                <a href="https://wa.me/5515991273423" className="text-gray-400 hover:text-green-500 transition-colors duration-300 text-sm">
-                  WhatsApp
+              <li>
+                <a 
+                  href="tel:+5515991273423"
+                  className="flex items-center gap-3 text-gray-500 hover:text-white transition-colors duration-200 group"
+                >
+                  <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center group-hover:bg-frezza-red/10 transition-colors duration-200">
+                    <Phone className="w-4 h-4 text-frezza-red" />
+                  </div>
+                  <span className="text-sm">(15) 99127-3423</span>
                 </a>
               </li>
             </ul>
+            
+            {/* CTA */}
+            <a 
+              href="#contact"
+              className="inline-flex items-center gap-2 mt-6 px-5 py-2.5 rounded-full bg-frezza-red/10 border border-frezza-red/30 text-frezza-red text-sm font-medium hover:bg-frezza-red hover:text-white transition-all duration-300 group"
+            >
+              Fale Conosco
+              <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
+            </a>
           </div>
         </div>
-        
-        {/* Separator com Glow */}
-        <div className="relative my-12">
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-frezza-red/50 to-transparent blur-sm"></div>
-          <Separator className="relative bg-gradient-to-r from-transparent via-frezza-red to-transparent" />
-        </div>
-        
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-          <p className="text-gray-500 text-sm group/copy cursor-default">
-            <span className="group-hover/copy:text-frezza-red transition-colors duration-300">&copy; {currentYear}</span> Frezza Marketing. Todos os direitos reservados.
-          </p>
-          
-          <div className="flex flex-col items-center">
-            <p className="text-gray-500 text-sm mb-2 md:mb-0">
-              Site criado por: <a href="https://www.instagram.com/l.frezza/" target="_blank" rel="noopener noreferrer" className="text-frezza-red hover:text-white transition-colors font-medium relative group/creator">
+      </div>
+      
+      {/* Bottom Bar */}
+      <div className="border-t border-white/5">
+        <div className="container mx-auto px-4 md:px-6 py-6">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-600">
+            <p>
+              © {currentYear} Frezza Marketing. Todos os direitos reservados.
+            </p>
+            
+            <p>
+              Desenvolvido por{" "}
+              <a 
+                href="https://www.instagram.com/l.frezza/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-frezza-red transition-colors duration-200"
+              >
                 Leonardo Frezza
-                <span className="absolute bottom-0 left-0 w-full h-[1px] bg-frezza-red scale-x-100 group-hover/creator:scale-x-0 transition-transform duration-300"></span>
-                <span className="absolute bottom-0 left-0 w-full h-[1px] bg-white scale-x-0 group-hover/creator:scale-x-100 transition-transform duration-300"></span>
               </a>
             </p>
-          </div>
-          
-          <div className="flex space-x-6 mt-4 md:mt-0 text-sm text-gray-500">
-            <a href="#" className="hover:text-frezza-red transition-colors duration-300 relative group/terms">
-              Termos de Uso
-              <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-frezza-red group-hover/terms:w-full transition-all duration-300"></span>
-            </a>
-            <a href="#" className="hover:text-frezza-red transition-colors duration-300 relative group/privacy">
-              Política de Privacidade
-              <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-frezza-red group-hover/privacy:w-full transition-all duration-300"></span>
-            </a>
           </div>
         </div>
       </div>
