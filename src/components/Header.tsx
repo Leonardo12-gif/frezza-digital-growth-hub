@@ -1,13 +1,15 @@
 
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ArrowRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [activeSection, setActiveSection] = useState("home");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,6 +29,19 @@ const Header = () => {
       }
 
       setLastScrollY(currentScrollY);
+
+      // Detect active section
+      const sections = ["home", "services", "portfolio", "about", "contact"];
+      for (const section of sections.reverse()) {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          if (rect.top <= 150) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -39,103 +54,173 @@ const Header = () => {
   const basePath = import.meta.env.BASE_URL || "/";
   
   const navLinks = [
-    { name: "Início", href: "#home" },
-    { name: "Serviços", href: "#services" },
-    { name: "Portfolio", href: "#portfolio" },
-    { name: "Sobre", href: "#about" },
-    { name: "Contato", href: "#contact" },
+    { name: "Início", href: "#home", id: "home" },
+    { name: "Serviços", href: "#services", id: "services" },
+    { name: "Portfolio", href: "#portfolio", id: "portfolio" },
+    { name: "Sobre", href: "#about", id: "about" },
+    { name: "Contato", href: "#contact", id: "contact" },
   ];
 
   return (
     <header 
       className={`fixed w-full z-50 transition-all duration-500 ${
         isScrolled 
-          ? "bg-black/90 backdrop-blur-xl shadow-[0_8px_32px_rgba(239,68,68,0.15)] py-3 border-b border-frezza-red/10" 
-          : "bg-transparent py-6"
+          ? "bg-black/80 backdrop-blur-2xl py-2" 
+          : "bg-transparent py-4"
       } ${isVisible ? "translate-y-0" : "-translate-y-full"}`}
     >
-      {/* Futuristic glow line at bottom */}
-      {isScrolled && (
-        <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-frezza-red/50 to-transparent"></div>
-      )}
-      
-      <div className="container mx-auto px-4 md:px-6 flex items-center justify-between relative">
-        <a href="#home" className="flex items-center group">
-          <div className="h-20 w-auto relative">
-            <div className="absolute inset-0 bg-frezza-red/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            <img 
-              src={`${basePath}lovable-uploads/frezza-logo-new.png`}
-              alt="Frezza Marketing Logo" 
-              className="h-20 w-auto relative z-10 transition-transform duration-300 group-hover:scale-105"
-            />
-          </div>
-        </a>
-
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-1">
-          {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              className="relative group px-4 py-2 text-gray-300 hover:text-white transition-all duration-300 font-medium tracking-wide"
+      <div className="container mx-auto px-4 md:px-6">
+        <div className={`flex items-center justify-between relative ${
+          isScrolled ? "py-2" : "py-0"
+        }`}>
+          {/* Logo */}
+          <a href="#home" className="flex items-center group relative z-10">
+            <motion.div 
+              className="relative"
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.2 }}
             >
-              <span className="relative z-10">{link.name}</span>
-              {/* Futuristic hover effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-frezza-red/0 via-frezza-red/10 to-frezza-red/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg"></div>
-              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-gradient-to-r from-transparent via-frezza-red to-transparent group-hover:w-full transition-all duration-300"></div>
-            </a>
-          ))}
-        </nav>
+              <div className="absolute inset-0 bg-frezza-red/20 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full"></div>
+              <img 
+                src={`${basePath}lovable-uploads/frezza-logo-new.png`}
+                alt="Frezza Marketing Logo" 
+                className={`relative z-10 transition-all duration-300 ${
+                  isScrolled ? "h-14" : "h-16"
+                }`}
+              />
+            </motion.div>
+          </a>
 
-        {/* CTA Button - Desktop */}
-        <div className="hidden md:block">
-          <Button 
-            className="relative bg-gradient-to-r from-frezza-red to-red-600 hover:from-red-600 hover:to-frezza-red text-white border border-frezza-red/30 shadow-[0_0_20px_rgba(239,68,68,0.3)] hover:shadow-[0_0_30px_rgba(239,68,68,0.5)] transition-all duration-300 overflow-hidden group" 
-            asChild
-          >
-            <a href="#contact" className="relative z-10">
-              <span className="relative z-10">Fale Conosco</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700"></div>
-            </a>
-          </Button>
-        </div>
+          {/* Desktop Navigation - Pill Style */}
+          <nav className="hidden md:flex items-center">
+            <div className={`flex items-center gap-1 px-2 py-2 rounded-full transition-all duration-300 ${
+              isScrolled ? "bg-white/5 border border-white/10" : ""
+            }`}>
+              {navLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  className="relative group"
+                >
+                  <div className={`px-4 py-2 rounded-full transition-all duration-300 ${
+                    activeSection === link.id 
+                      ? "bg-frezza-red text-white" 
+                      : "text-gray-400 hover:text-white hover:bg-white/5"
+                  }`}>
+                    <span className="text-sm font-medium">{link.name}</span>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </nav>
 
-        {/* Mobile Menu Button */}
-        <button
-          className="md:hidden text-white relative group p-2"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-        >
-          <div className="absolute inset-0 bg-frezza-red/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity"></div>
-          {mobileMenuOpen ? <X size={24} className="relative z-10" /> : <Menu size={24} className="relative z-10" />}
-        </button>
-      </div>
-
-      {/* Mobile Navigation */}
-      {mobileMenuOpen && (
-        <nav className="md:hidden bg-black/95 py-6 px-6 backdrop-blur-xl border-t border-frezza-red/20 animate-slideUp shadow-[0_8px_32px_rgba(239,68,68,0.2)]">
-          <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-frezza-red/50 to-transparent"></div>
-          <div className="flex flex-col space-y-4">
-            {navLinks.map((link, index) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className="group relative text-gray-200 hover:text-white py-3 transition-all duration-300 font-medium text-lg pl-4 rounded-lg hover:bg-frezza-red/10"
-                onClick={() => setMobileMenuOpen(false)}
-                style={{ animationDelay: `${index * 50}ms` }}
-              >
-                <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-0 bg-frezza-red group-hover:h-full transition-all duration-300 rounded-r"></div>
-                <span className="relative z-10">{link.name}</span>
-              </a>
-            ))}
+          {/* CTA Button - Desktop */}
+          <div className="hidden md:block">
             <Button 
-              className="bg-gradient-to-r from-frezza-red to-red-600 hover:from-red-600 hover:to-frezza-red text-white w-full mt-4 border border-frezza-red/30 shadow-[0_0_20px_rgba(239,68,68,0.3)] transition-all duration-300" 
+              className="group relative bg-transparent border border-frezza-red/50 text-white hover:bg-frezza-red hover:border-frezza-red transition-all duration-300 rounded-full px-6" 
               asChild
             >
-              <a href="#contact" onClick={() => setMobileMenuOpen(false)}>Fale Conosco</a>
+              <a href="#contact" className="flex items-center gap-2">
+                <span>Fale Conosco</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+              </a>
             </Button>
           </div>
-        </nav>
-      )}
+
+          {/* Mobile Menu Button */}
+          <button
+            className={`md:hidden relative z-10 p-3 rounded-full transition-all duration-300 ${
+              mobileMenuOpen ? "bg-frezza-red" : "bg-white/5 border border-white/10"
+            }`}
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            <AnimatePresence mode="wait">
+              {mobileMenuOpen ? (
+                <motion.div
+                  key="close"
+                  initial={{ rotate: -90, opacity: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  exit={{ rotate: 90, opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <X size={20} className="text-white" />
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="menu"
+                  initial={{ rotate: 90, opacity: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  exit={{ rotate: -90, opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <Menu size={20} className="text-white" />
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Navigation - Full Screen */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.nav 
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="md:hidden bg-black/98 backdrop-blur-xl border-t border-white/5 overflow-hidden"
+          >
+            <div className="container mx-auto px-4 py-8">
+              <div className="flex flex-col space-y-2">
+                {navLinks.map((link, index) => (
+                  <motion.a
+                    key={link.name}
+                    href={link.href}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.05 }}
+                    className={`group flex items-center justify-between py-4 px-4 rounded-xl transition-all duration-300 ${
+                      activeSection === link.id 
+                        ? "bg-frezza-red/10 border border-frezza-red/30" 
+                        : "hover:bg-white/5"
+                    }`}
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    <span className={`text-lg font-medium ${
+                      activeSection === link.id ? "text-frezza-red" : "text-white"
+                    }`}>
+                      {link.name}
+                    </span>
+                    <ArrowRight className={`w-5 h-5 transition-all duration-300 ${
+                      activeSection === link.id 
+                        ? "text-frezza-red" 
+                        : "text-gray-600 group-hover:text-white group-hover:translate-x-1"
+                    }`} />
+                  </motion.a>
+                ))}
+              </div>
+              
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                className="mt-8"
+              >
+                <Button 
+                  className="w-full bg-frezza-red hover:bg-red-600 text-white rounded-xl h-14 text-base font-semibold" 
+                  asChild
+                >
+                  <a href="#contact" onClick={() => setMobileMenuOpen(false)} className="flex items-center justify-center gap-2">
+                    Fale Conosco
+                    <ArrowRight className="w-5 h-5" />
+                  </a>
+                </Button>
+              </motion.div>
+            </div>
+          </motion.nav>
+        )}
+      </AnimatePresence>
     </header>
   );
 };

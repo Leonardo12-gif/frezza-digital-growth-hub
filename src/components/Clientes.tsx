@@ -7,6 +7,20 @@ import { motion } from "framer-motion";
 // Dados dos clientes
 const clientes = [
   {
+    nome: "Robério Fontes",
+    user: "@roberiofonttes",
+    url: "https://www.instagram.com/roberiofonttes/",
+    desc: "Salão de beleza feminino de alto padrão.",
+    img: "/lovable-uploads/roberio-fontes-logo.jpg"
+  },
+  {
+    nome: "Elaluz Concept",
+    user: "@elaluzconcept",
+    url: "https://www.instagram.com/elaluzconcept/",
+    desc: "Loja de roupas com alfaiataria e feminilidade.",
+    img: "/lovable-uploads/elaluz-logo.jpg"
+  },
+  {
     nome: "Jhonne Tatuagens",
     user: "@jhonnetatuagens",
     url: "https://www.instagram.com/jhonnetattuagens/",
@@ -61,20 +75,6 @@ const clientes = [
     url: "https://www.instagram.com/maismidiapaineis/",
     desc: "Publicidade com outdoors estratégicos em Sorocaba.",
     img: "/lovable-uploads/mais-midia-logo.jpg"
-  },
-  {
-    nome: "Elaluz Concept",
-    user: "@elaluzconcept",
-    url: "https://www.instagram.com/elaluzconcept/",
-    desc: "Loja de roupas com alfaiataria e feminilidade.",
-    img: "/lovable-uploads/elaluz-logo.jpg"
-  },
-  {
-    nome: "Robério Fontes",
-    user: "@roberiofonttes",
-    url: "https://www.instagram.com/roberiofonttes/",
-    desc: "Salão de beleza feminino de alto padrão.",
-    img: "/lovable-uploads/roberio-fontes-logo.jpg"
   }
 ];
 
