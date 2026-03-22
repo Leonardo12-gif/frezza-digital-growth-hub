@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import { TrendingUp, Users, Target, ArrowUpRight } from "lucide-react";
+import { TrendingUp, Users, Target } from "lucide-react";
 
 const cases = [
   {
