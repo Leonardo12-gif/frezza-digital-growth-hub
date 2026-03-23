@@ -74,7 +74,7 @@ const Hero = () => {
           className="mt-8 flex items-center gap-3 text-sm text-gray-500"
         >
           <span className="text-frezza-red font-bold text-lg">+R$ 22.000</span>
-          <span>em contratos mensais gerenciados</span>
+          <span>de faturamentos gerados</span>
         </motion.div>
 
         {/* CTAs */}
