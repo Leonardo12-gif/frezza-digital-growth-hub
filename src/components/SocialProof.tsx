@@ -4,7 +4,7 @@ import { Users, DollarSign, LayoutGrid, CheckCircle } from "lucide-react";
 
 const stats = [
   { icon: Users, number: "13", label: "Clientes Ativos", suffix: "" },
-  { icon: DollarSign, number: "+R$ 22.000", label: "Em Contratos Mensais", suffix: "" },
+  { icon: DollarSign, number: "+R$ 10 milhões", label: "Em receitas gerados", suffix: "" },
   { icon: LayoutGrid, number: "4", label: "Segmentos Atendidos", suffix: "" },
   { icon: CheckCircle, number: "100%", label: "Entrega no Prazo", suffix: "" },
 ];
