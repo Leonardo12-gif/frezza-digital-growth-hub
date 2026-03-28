@@ -71,7 +71,7 @@ const SocialProof = () => {
                 className="group relative"
                 title={client.name}
               >
-                <div className="w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden bg-white/5 border border-white/10 group-hover:border-frezza-red/30 transition-all duration-300 grayscale group-hover:grayscale-0">
+                <div className="w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden bg-white/5 border border-white/10 group-hover:border-frezza-red/30 transition-all duration-300">
                   <img
                     src={client.img}
                     alt={client.name}
