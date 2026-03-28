@@ -19,7 +19,7 @@ const founders = [
 const timeline = [
   { year: "2023", event: "Fundação da Frezza Marketing em Sorocaba/SP" },
   { year: "2024", event: "Marca de 10+ clientes ativos e 4 segmentos atendidos" },
-  { year: "2025", event: "+R$ 22.000 em contratos mensais gerenciados" },
+  { year: "2025", event: "+R$ 10 milhões em receitas gerados para clientes" },
 ];
 
 const QuemSomos = () => {

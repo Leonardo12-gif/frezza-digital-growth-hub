@@ -73,7 +73,7 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 0.5 }}
           className="mt-8 flex items-center gap-3 text-sm text-gray-500"
         >
-          <span className="text-frezza-red font-bold text-lg">+R$ 22.000</span>
+          <span className="text-frezza-red font-bold text-lg">+R$ 10 milhões</span>
           <span>de faturamentos gerados</span>
         </motion.div>
 
