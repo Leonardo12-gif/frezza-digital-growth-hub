@@ -13,6 +13,7 @@ const founders = [
     role: "Co-fundador & Estrategista Digital",
     bio: "Apaixonado por performance e dados, cria estratégias de tráfego e automação que geram resultados mensuráveis.",
     initials: "LF",
+    photo: "/lovable-uploads/leonardo-frezza.jpg",
   },
 ];
 
