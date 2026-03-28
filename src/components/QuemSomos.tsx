@@ -13,6 +13,7 @@ const founders = [
     role: "Co-fundador & Estrategista Digital",
     bio: "Apaixonado por performance e dados, cria estratégias de tráfego e automação que geram resultados mensuráveis.",
     initials: "LF",
+    photo: "/lovable-uploads/leonardo-frezza.jpg",
   },
 ];
 
@@ -62,10 +63,15 @@ const QuemSomos = () => {
               className="group relative rounded-2xl bg-white/[0.02] border border-white/5 hover:border-frezza-red/30 transition-all duration-500 p-8"
             >
               <div className="flex items-start gap-6">
-                {/* Avatar placeholder */}
-                <div className="w-20 h-20 rounded-full bg-gradient-to-br from-frezza-red/30 to-frezza-red/5 border border-frezza-red/20 flex items-center justify-center shrink-0">
-                  <span className="text-2xl font-bold text-frezza-red">{founder.initials}</span>
-                </div>
+                {founder.photo ? (
+                  <div className="w-20 h-20 rounded-full overflow-hidden border border-frezza-red/20 shrink-0">
+                    <img src={founder.photo} alt={founder.name} className="w-full h-full object-cover" />
+                  </div>
+                ) : (
+                  <div className="w-20 h-20 rounded-full bg-gradient-to-br from-frezza-red/30 to-frezza-red/5 border border-frezza-red/20 flex items-center justify-center shrink-0">
+                    <span className="text-2xl font-bold text-frezza-red">{founder.initials}</span>
+                  </div>
+                )}
                 <div>
                   <h3 className="text-xl font-bold text-white group-hover:text-frezza-red transition-colors duration-300">
                     {founder.name}
