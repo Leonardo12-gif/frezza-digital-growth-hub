@@ -10,7 +10,7 @@ import CTAFinal from "@/components/CTAFinal";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
-import AIAssistant from "@/components/AIAssistant";
+
 
 const Index = () => {
   return (
@@ -23,7 +23,7 @@ const Index = () => {
         <CaseStudies />
         <QuemSomos />
         <ProcessoTrabalho />
-        <AIAssistant />
+        
         <Depoimentos />
         <CTAFinal />
         <ContactForm />
