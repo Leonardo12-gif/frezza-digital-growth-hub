@@ -47,7 +47,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="relative bg-black text-white overflow-hidden">
+    <footer className="relative bg-black text-white overflow-hidden" role="contentinfo" aria-label="Rodapé - Frezza Marketing, agência de marketing digital em Sorocaba">
       {/* Subtle top border */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
       
@@ -65,7 +65,7 @@ const Footer = () => {
             >
               <img
                 src={getFullPath("/lovable-uploads/frezza-logo-new.png")}
-                alt="Frezza Marketing Logo"
+                alt="Frezza Marketing - Agência de marketing digital em Sorocaba"
                 className="h-12"
               />
             </motion.a>

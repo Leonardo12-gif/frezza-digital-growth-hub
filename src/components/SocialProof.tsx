@@ -29,6 +29,7 @@ const SocialProof = () => {
     <section
       id="numeros"
       ref={sectionRef}
+      aria-label="Resultados da agência de marketing digital Frezza Marketing em Sorocaba"
       className={`py-20 bg-black relative overflow-hidden scroll-animate ${isVisible ? 'visible' : ''}`}
     >
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-frezza-red/20 to-transparent" />
@@ -74,7 +75,7 @@ const SocialProof = () => {
                 <div className="w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden bg-white/5 border border-white/10 group-hover:border-frezza-red/30 transition-all duration-300">
                   <img
                     src={client.img}
-                    alt={client.name}
+                    alt={`${client.name} - Cliente da agência de marketing digital Frezza Marketing em Sorocaba`}
                     className="w-full h-full object-cover"
                     loading="lazy"
                   />
