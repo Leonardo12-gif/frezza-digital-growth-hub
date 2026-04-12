@@ -86,7 +86,7 @@ const CaseStudies = () => {
               {/* Client Header */}
               <div className="p-6 pb-4 flex items-center gap-4">
                 <div className="w-14 h-14 rounded-full overflow-hidden bg-white/5 border border-white/10 shrink-0">
-                  <img src={caseItem.image} alt={caseItem.client} className="w-full h-full object-cover" loading="lazy" />
+                  <img src={caseItem.image} alt={`${caseItem.client} - Case de sucesso de marketing digital em Sorocaba`} className="w-full h-full object-cover" loading="lazy" />
                 </div>
                 <div>
                   <h3 className="text-lg font-bold text-white group-hover:text-frezza-red transition-colors duration-300">

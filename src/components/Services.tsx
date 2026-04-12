@@ -55,6 +55,7 @@ const Services = () => {
     <section
       id="services"
       ref={sectionRef}
+      aria-label="Serviços de marketing digital, tráfego pago e criação de sites em Sorocaba"
       className={`py-24 md:py-32 scroll-animate ${isVisible ? 'visible' : ''} relative overflow-hidden bg-black`}
     >
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-frezza-red/20 to-transparent" />

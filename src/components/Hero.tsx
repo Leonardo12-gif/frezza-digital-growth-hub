@@ -12,6 +12,7 @@ const Hero = () => {
   return (
     <section 
       id="home" 
+      aria-label="Agência de marketing digital em Sorocaba - Frezza Marketing"
       className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden bg-black"
     >
       {/* Video/Image Background */}

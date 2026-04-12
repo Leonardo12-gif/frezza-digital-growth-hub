@@ -83,7 +83,7 @@ const Header = () => {
               <div className="absolute inset-0 bg-frezza-red/20 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full"></div>
               <img 
                 src={`${basePath}lovable-uploads/frezza-logo-new.png`}
-                alt="Frezza Marketing Logo" 
+                alt="Frezza Marketing - Agência de marketing digital em Sorocaba" 
                 className={`relative z-10 transition-all duration-300 ${
                   isScrolled ? "h-14" : "h-16"
                 }`}
